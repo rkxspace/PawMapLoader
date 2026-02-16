@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{1B42C86D-9EB3-4109-8FBF-47829A64078C}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>PawMapLoader</RootNamespace>
+        <AssemblyName>PawMapLoader</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="AsmResolver">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AsmResolver.dll</HintPath>
+        </Reference>
+        <Reference Include="AsmResolver.DotNet">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AsmResolver.DotNet.dll</HintPath>
+        </Reference>
+        <Reference Include="AsmResolver.PE">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AsmResolver.PE.dll</HintPath>
+        </Reference>
+        <Reference Include="AsmResolver.PE.File">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AsmResolver.PE.File.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
+        <Reference Include="AssetRipper.Primitives">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AssetRipper.Primitives.dll</HintPath>
+        </Reference>
+        <Reference Include="AssetRipper.VersionUtilities">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AssetRipper.VersionUtilities.dll</HintPath>
+        </Reference>
+        <Reference Include="AssetsTools.NET">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AssetsTools.NET.dll</HintPath>
+        </Reference>
+        <Reference Include="bHapticsLib">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\bHapticsLib.dll</HintPath>
+        </Reference>
+        <Reference Include="Iced">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Iced.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppBattlehub.RTEditor">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppBattlehub.RTEditor.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppBattlehub.RTEditor.Demo">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppBattlehub.RTEditor.Demo.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppBattlehub.RTEditor.URP">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppBattlehub.RTEditor.URP.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2Cppcom.rlabrecque.steamworks.net">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2Cppcom.rlabrecque.steamworks.net.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppDOTween">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppDOTween.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppFastSpringBone10">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppFastSpringBone10.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppFMODUnity">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppFMODUnity.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppFMODUnityResonance">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppFMODUnityResonance.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppInterop.Common">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Il2CppInterop.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppInterop.Generator">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Il2CppInterop.Generator.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppInterop.HarmonySupport">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Il2CppInterop.HarmonySupport.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppInterop.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppMono.Security">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppMono.Security.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2Cppmscorlib">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppMToon">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppMToon.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppNewtonsoft.Json">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppNewtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppParticleImage">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppParticleImage.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSimpleSQL_Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSimpleSQL_Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Configuration">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Configuration.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Core">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Data">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Data.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Drawing">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Drawing.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Numerics">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Numerics.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Runtime.Serialization">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Xml">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Xml.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Xml.Linq">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppSystem.Xml.Linq.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppUIShapesKit">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppUIShapesKit.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppUniGLTF">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppUniGLTF.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppUniGLTF.Utils">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppUniGLTF.Utils.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppUniHumanoid">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppUniHumanoid.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppVRM10">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppVRM10.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppVrmLib">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppVrmLib.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppVRMShaders.GLTF.IO.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppVRMShaders.GLTF.IO.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppVRMShaders.GLTF.UniUnlit.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppVRMShaders.GLTF.UniUnlit.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppVRMShaders.VRM.IO.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppVRMShaders.VRM.IO.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppVRMShaders.VRM10.Format.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppVRMShaders.VRM10.Format.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppVRMShaders.VRM10.MToon10.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppVRMShaders.VRM10.MToon10.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppWhinarn.UnityMeshSimplifier.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2CppWhinarn.UnityMeshSimplifier.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2Cpp__Generated">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Il2Cpp__Generated.dll</HintPath>
+        </Reference>
+        <Reference Include="IndexRange">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\IndexRange.dll</HintPath>
+        </Reference>
+        <Reference Include="MelonLoader">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MelonLoader.dll</HintPath>
+        </Reference>
+        <Reference Include="MelonLoader.NativeHost">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MelonLoader.NativeHost.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Diagnostics.NETCore.Client">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Diagnostics.NETCore.Client.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Diagnostics.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Diagnostics.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Configuration">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Configuration.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Configuration.Binder">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Logging">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Logging.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Options">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Options.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Primitives">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Primitives.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Win32.SystemEvents">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Win32.SystemEvents.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Mono.Cecil.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Mdb">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Mono.Cecil.Mdb.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Pdb">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Mono.Cecil.Pdb.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Rocks">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Mono.Cecil.Rocks.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MonoMod.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.Backports">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MonoMod.Backports.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.ILHelpers">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MonoMod.ILHelpers.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.RuntimeDetour">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MonoMod.RuntimeDetour.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.Utils">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MonoMod.Utils.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Configuration.ConfigurationManager">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Configuration.ConfigurationManager.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Drawing.Common">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Drawing.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Json" />
+        <Reference Include="System.Json.Microsoft" />
+        <Reference Include="System.Security.Cryptography.ProtectedData">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Security.Cryptography.ProtectedData.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Security.Permissions">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Security.Permissions.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Windows.Extensions">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Windows.Extensions.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Xml"/>
+        <Reference Include="Tomlet">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Tomlet.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Addressables">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Addressables.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Burst">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Burst.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Burst.Unsafe">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Burst.Unsafe.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Collections">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Collections.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Collections.LowLevel.ILSupport">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.InputSystem">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.InputSystem.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.InputSystem.ForUI">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Localization">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Localization.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Mathematics">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Mathematics.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Profiling.Core">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Profiling.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.RenderPipelines.Core.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.ResourceManager">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.ResourceManager.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.TextMeshPro">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.TextMeshPro.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Timeline">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Timeline.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AccessibilityModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.AccessibilityModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AIModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.AIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AndroidJNIModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.AndroidJNIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AnimationModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.AnimationModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ARModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ARModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AssetBundleModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.AssetBundleModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AudioModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.AudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ClothModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ClothModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ContentLoadModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ContentLoadModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CrashReportingModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.CrashReportingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.DirectorModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.DirectorModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.DSPGraphModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.DSPGraphModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.GameCenterModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.GameCenterModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.GIModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.GIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.GraphicsStateCollectionSerializerModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.GraphicsStateCollectionSerializerModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.GridModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.GridModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.HierarchyCoreModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.HierarchyCoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.HotReloadModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.HotReloadModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Il2CppAssetBundleManager">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Il2CppImageConversionManager">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\UnityEngine.Il2CppImageConversionManager.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ImageConversionModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ImageConversionModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.InputForUIModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.InputForUIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.InputLegacyModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.InputModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.InputModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.JSONSerializeModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.JSONSerializeModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.LocalizationModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.LocalizationModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.MarshallingModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.MarshallingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.MultiplayerModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.MultiplayerModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ParticleSystemModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ParticleSystemModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PerformanceReportingModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.PerformanceReportingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Physics2DModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.Physics2DModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PropertiesModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.PropertiesModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ScreenCaptureModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ScreenCaptureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ShaderVariantAnalyticsModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ShaderVariantAnalyticsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SharedInternalsModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.SharedInternalsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SpriteMaskModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.SpriteMaskModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SpriteShapeModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.SpriteShapeModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.StreamingModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.StreamingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SubstanceModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.SubstanceModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SubsystemsModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.SubsystemsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TerrainModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.TerrainModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TerrainPhysicsModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TextCoreFontEngineModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TextCoreTextEngineModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TextRenderingModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TilemapModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.TilemapModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TLSModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.TLSModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UIElementsModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UIElementsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UmbraModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UmbraModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityAnalyticsModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityConnectModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityConnectModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityCurlModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityCurlModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityTestProtocolModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VehiclesModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.VehiclesModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VFXModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.VFXModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VideoModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.VideoModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VRModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.VRModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.WindModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.WindModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.XRModule">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.XRModule.dll</HintPath>
+        </Reference>
+        <Reference Include="WebSocketDotNet">
+          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\WebSocketDotNet.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Class1.cs"/>
+        <Compile Include="Enum\LevelDataProvider.cs" />
+        <Compile Include="Init\InitMelon.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Res\AssetManager.cs" />
+        <Compile Include="Res\FileManagement.cs" />
+        <Compile Include="Res\MapJson.cs" />
+        <Compile Include="Res\MapList.cs" />
+        <Compile Include="Res\MapMetadata.cs" />
+        <Compile Include="Res\PawMap.cs" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
