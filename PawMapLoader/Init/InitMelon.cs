@@ -7,6 +7,9 @@ namespace PawMapLoader
     {
         public static void InitMelon()
         {
+            var harmonyInstance =  new HarmonyLib.Harmony("space.rkx.pawmaploader");
+            harmonyInstance.PatchAll();
+            
             Enum.LevelDataProvider.WaitForDataProvider();
         }
 

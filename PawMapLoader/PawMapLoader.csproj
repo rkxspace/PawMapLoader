@@ -569,10 +569,12 @@
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\FileManagement.cs" />
+        <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\MapJson.cs" />
         <Compile Include="Res\MapList.cs" />
         <Compile Include="Res\MapMetadata.cs" />
         <Compile Include="Res\PawMap.cs" />
+        <Compile Include="Res\Store.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
