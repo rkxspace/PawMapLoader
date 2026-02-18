@@ -7,6 +7,7 @@ using Il2CppLoadingScreen;
 using MelonLoader;
 using PawMapLoader.Res.Abstractions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PawMapLoader.Res
 {
@@ -16,19 +17,20 @@ namespace PawMapLoader.Res
         [HarmonyPrefix]
         public static bool Prefix(GameManager __instance)
         {
+            string scenename = ConfigManager.Instance.Level.Scene.SceneName;
             Store.IsMapCustom = false;
-            if (ConfigManager.Instance.Level.Scene.SceneName == "AtroCity" || ConfigManager.Instance.Level.Scene.SceneName == "DownTown") return true;
+            if (scenename == "AtroCity" || scenename == "DownTown") return true;
             try
             {
                 Store.IsMapCustom = true;
-                MelonLogger.Msg("Loading " + ConfigManager.Instance.Level.Scene.SceneName);
-                var stream = FileManagement.OpenMapFile(ConfigManager.Instance.Level.Scene.SceneName);
+                MelonLogger.Msg("Loading " + scenename);
+                var stream = FileManagement.OpenMapFile(scenename);
                 Store.LoadedAssetBundle = AssetBundle.LoadFromStream(stream);
-                MelonLogger.Msg("Loaded " + ConfigManager.Instance.Level.Scene.SceneName);
+                MelonLogger.Msg("Loaded " + scenename);
                 stream.Close();
                 stream.Dispose();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 MelonLogger.Error("Failed to load bundle " + e);
             }
@@ -68,7 +70,7 @@ namespace PawMapLoader.Res
         {
             if (AbUe.GetTypeAll<CityBlockGrid>()[0] == null)
             {
-                foreach (var go in UnityEngine.SceneManagement.SceneManager
+                foreach (var go in SceneManager
                              .GetSceneByName(GameManager._instance.GameplaySceneName).GetRootGameObjects())
                 {
                     if (go.name == "SceneConfig")
@@ -97,6 +99,7 @@ namespace PawMapLoader.Res
             }
             return true;
         }
+
         [HarmonyFinalizer]
         public static Exception Finalizer(Exception __exception, ref bool __result)
         {
