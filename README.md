@@ -4,10 +4,6 @@
 This mod is made with Melonloader in mind. Not BepInEx.
 
 ## How to use
-Right now I am not shipping compiled releases, the mod simply isn't ready for that.
-Clone the repo and compile it using your preferred tools.
-
-After compiling, drop the mod into the Mods folder.
 The mod will create a `Maps` folder in `Pawperty Damage/UserData`.
 It is up to the user to make a `maps.json` inside `Maps`.
 
