@@ -1,8 +1,10 @@
 using HarmonyLib;
+using Il2CppConfig;
 using Il2CppEffects;
 using Il2CppGame;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using PawMapLoader.Abstractions;
 using Il2CppLoadingScreen;
+using MelonLoader;
 using UnityEngine;
 
 namespace PawMapLoader.Res
@@ -11,8 +13,34 @@ namespace PawMapLoader.Res
     public static class GameManager_StartGame_Patch
     {
         [HarmonyPrefix]
+        public static void Prefix(GameManager __instance)
+        {
+            if (ConfigManager.Instance.Level.Scene.SceneName == "AtroCity" || ConfigManager.Instance.Level.Scene.SceneName == "DownTown") return;
+            try
+            {
+                MelonLogger.Msg("Loading " + ConfigManager.Instance.Level.Scene.SceneName);
+                var stream = FileManagement.OpenMapFile(ConfigManager.Instance.Level.Scene.SceneName);
+                Store.LoadedAssetBundle = AssetBundle.LoadFromStream(stream);
+                MelonLogger.Msg("Loaded " + ConfigManager.Instance.Level.Scene.SceneName);
+                stream.Close();
+                stream.Dispose();
+            }
+            catch (System.Exception e)
+            {
+                MelonLogger.Error("Failed to load bundle " + e);
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(GameManager), nameof(GameManager.GoToMainMenu))]
+    public static class GameManager_GoToMainMenu_Patch
+    {
+        [HarmonyPrefix]
         public static bool Prefix(GameManager __instance)
         {
+            if (!Store.IsMapCustom) return true;
+            Store.LoadedAssetBundle?.Unload(true);
+            Store.LoadedAssetBundle = null;
             return true;
         }
     }
@@ -34,7 +62,7 @@ namespace PawMapLoader.Res
         public static void Prefix(BuildingsManager __instance)
         {
             Store.IsMapCustom = false;
-            if (UnityEngine.Resources.FindObjectsOfTypeAll<CityBlockGrid>()[0] == null)
+            if (AbUe.GetTypeAll<CityBlockGrid>()[0] == null)
             {
                 Store.IsMapCustom = true;
                 foreach (var go in UnityEngine.SceneManagement.SceneManager

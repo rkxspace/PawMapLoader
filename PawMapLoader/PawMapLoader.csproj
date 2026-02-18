@@ -563,6 +563,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Abstractions\AbUnityEngine.cs" />
         <Compile Include="Class1.cs"/>
         <Compile Include="Components\BuildingSetup.cs" />
         <Compile Include="Enum\LevelDataProvider.cs" />
@@ -571,10 +572,10 @@
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\FileManagement.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
-        <Compile Include="Res\MapJson.cs" />
-        <Compile Include="Res\MapList.cs" />
-        <Compile Include="Res\MapMetadata.cs" />
-        <Compile Include="Res\PawMap.cs" />
+        <Compile Include="Res\Json\MapJson.cs" />
+        <Compile Include="Res\Json\MapList.cs" />
+        <Compile Include="Res\Json\MapMetadata.cs" />
+        <Compile Include="Res\Json\PawMap.cs" />
         <Compile Include="Res\Store.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>

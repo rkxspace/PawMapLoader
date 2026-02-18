@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace PawMapLoader.Res
+namespace PawMapLoader.Res.Json
 {
     public class MapMetadata
     {
