@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace PawMapLoader.Res
+namespace PawMapLoader.Res.Json
 {
     public class MapList
     {

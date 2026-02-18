@@ -1,5 +1,4 @@
-using System.IO;
-using MelonLoader.Utils;
+using PawMapLoader.Res.Json;
 
 namespace PawMapLoader
 {
@@ -16,8 +15,8 @@ namespace PawMapLoader
         public static void InitMaps()
         {
             Res.FileManagement.EnsureCustomMapsDirectory();
-            Res.MapJson.Read();
-            Res.AssetManager.LoadAssetBundles();
+            MapJson.Read();
+            Res.AssetManager.LoadMapData();
         }
     }
 }

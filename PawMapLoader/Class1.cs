@@ -1,4 +1,3 @@
-using Il2CppGame;
 using MelonLoader;
 using PawMapLoader;
 

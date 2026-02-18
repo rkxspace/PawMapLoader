@@ -1,34 +1,21 @@
 using System;
-using System.Collections.Generic;
-using HarmonyLib;
+using System.Linq;
 using Il2CppGame;
-using Il2CppSystem.IO;
 using MelonLoader;
-using UnityEngine;
+using PawMapLoader.Res.Json;
 
 namespace PawMapLoader.Res
 {
     public class AssetManager
     {
-        public static void LoadAssetBundles()
+        public static void LoadMapData()
         {
-            var levels = new List<SceneConfig>();
+            var levels = LevelDataProvider.Instance._levels.ToList();
             
-            foreach (var lvl in LevelDataProvider.Instance._levels)
+            foreach (PawMap pawMap in Store.Maps.PawMaps)
             {
-                levels.Add(lvl);
-            }
-            
-            foreach (PawMap pawMap in MapJson.Maps.PawMaps)
-            {
-                MelonLogger.Msg("Loading " + pawMap.AssetFile);
-                var stream = FileManagement.OpenMapFile(pawMap.AssetFile);
                 try
                 {
-                    var bundle = AssetBundle.LoadFromStream(stream);
-                    
-                    MelonLogger.Msg("Loaded " + pawMap.AssetFile + "\nContents of bundle: " + bundle.GetAllScenePaths()[0].ToString());
-                    
                     MelonLogger.Msg("Adding " + pawMap.AssetFile + " data.");
                     SceneConfig sceneConfig = new SceneConfig();
                     sceneConfig.LevelName = pawMap.Name;
