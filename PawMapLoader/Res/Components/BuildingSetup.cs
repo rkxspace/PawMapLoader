@@ -4,9 +4,13 @@ using Il2CppDestructibles;
 using Il2CppScoring;
 using MelonLoader;
 using UnityEngine;
+//TODO: Finish Quick Building Component
 
 namespace PawMapLoader.Res.Components
 {
+    /// <summary>
+    /// BuildingSetup is a component made for handling building creation.
+    /// </summary>
     [RegisterTypeInIl2Cpp]
     public class BuildingSetup : MonoBehaviour
     {
