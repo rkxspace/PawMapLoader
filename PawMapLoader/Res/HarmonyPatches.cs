@@ -1,10 +1,11 @@
+using System;
 using HarmonyLib;
 using Il2CppConfig;
 using Il2CppEffects;
 using Il2CppGame;
-using PawMapLoader.Abstractions;
 using Il2CppLoadingScreen;
 using MelonLoader;
+using PawMapLoader.Res.Abstractions;
 using UnityEngine;
 
 namespace PawMapLoader.Res
@@ -13,11 +14,13 @@ namespace PawMapLoader.Res
     public static class GameManager_StartGame_Patch
     {
         [HarmonyPrefix]
-        public static void Prefix(GameManager __instance)
+        public static bool Prefix(GameManager __instance)
         {
-            if (ConfigManager.Instance.Level.Scene.SceneName == "AtroCity" || ConfigManager.Instance.Level.Scene.SceneName == "DownTown") return;
+            Store.IsMapCustom = false;
+            if (ConfigManager.Instance.Level.Scene.SceneName == "AtroCity" || ConfigManager.Instance.Level.Scene.SceneName == "DownTown") return true;
             try
             {
+                Store.IsMapCustom = true;
                 MelonLogger.Msg("Loading " + ConfigManager.Instance.Level.Scene.SceneName);
                 var stream = FileManagement.OpenMapFile(ConfigManager.Instance.Level.Scene.SceneName);
                 Store.LoadedAssetBundle = AssetBundle.LoadFromStream(stream);
@@ -29,6 +32,8 @@ namespace PawMapLoader.Res
             {
                 MelonLogger.Error("Failed to load bundle " + e);
             }
+
+            return true;
         }
     }
 
@@ -61,10 +66,8 @@ namespace PawMapLoader.Res
         [HarmonyPrefix]
         public static void Prefix(BuildingsManager __instance)
         {
-            Store.IsMapCustom = false;
             if (AbUe.GetTypeAll<CityBlockGrid>()[0] == null)
             {
-                Store.IsMapCustom = true;
                 foreach (var go in UnityEngine.SceneManagement.SceneManager
                              .GetSceneByName(GameManager._instance.GameplaySceneName).GetRootGameObjects())
                 {
@@ -93,6 +96,16 @@ namespace PawMapLoader.Res
                 return false;
             }
             return true;
+        }
+        [HarmonyFinalizer]
+        public static Exception Finalizer(Exception __exception, ref bool __result)
+        {
+            if (__exception is IndexOutOfRangeException)
+            {
+                __result = false;
+                return null;
+            }
+            return __exception;
         }
     }
 }

@@ -5,7 +5,7 @@ using Il2CppScoring;
 using MelonLoader;
 using UnityEngine;
 
-namespace PawMapLoader.Components
+namespace PawMapLoader.Res.Components
 {
     [RegisterTypeInIl2Cpp]
     public class BuildingSetup : MonoBehaviour

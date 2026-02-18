@@ -2,7 +2,7 @@ using System.Collections;
 using MelonLoader;
 using UnityEngine;
 
-namespace PawMapLoader.Enum
+namespace PawMapLoader.Res.Enum
 {
     public class LevelDataProvider
     {

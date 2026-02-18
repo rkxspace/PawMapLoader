@@ -1,3 +1,4 @@
+using PawMapLoader.Res.Enum;
 using PawMapLoader.Res.Json;
 
 namespace PawMapLoader
@@ -9,7 +10,7 @@ namespace PawMapLoader
             var harmonyInstance =  new HarmonyLib.Harmony("space.rkx.pawmaploader");
             harmonyInstance.PatchAll();
             
-            Enum.LevelDataProvider.WaitForDataProvider();
+            LevelDataProvider.WaitForDataProvider();
         }
 
         public static void InitMaps()
