@@ -4,6 +4,7 @@ using Il2CppDestructibles;
 using Il2CppScoring;
 using MelonLoader;
 using UnityEngine;
+
 //TODO: Finish Quick Building Component
 
 namespace PawMapLoader.Res.Components
@@ -27,7 +28,7 @@ namespace PawMapLoader.Res.Components
             
             damageable.MaxHealth = Health;
             damageable.Health = Health;
-            
+
             Il2CppSystem.Collections.Generic.List<Damageable> cdamageables = new Il2CppSystem.Collections.Generic.List<Damageable>();
             foreach (GameObject section in Sections)
             {
@@ -42,7 +43,12 @@ namespace PawMapLoader.Res.Components
             
             building.Damageable = damageable;
             building.DamageEffectsPlayer = dmgeffectsplayer;
+
+            dmgtoscore.ValuePerHealth = 700f;
+            dmgtoscore._damageable = damageable;
+            dmgtoscore.Type = PlayerScore.ScoreType.Building;
             
+            playsoundondamage._damageable = damageable;
         }
     }
 }
