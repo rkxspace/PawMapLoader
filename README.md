@@ -1,6 +1,14 @@
 # PawMapLoader
 <sup>The mod that loads maps into Pawperty Damage</sup>
 
+## TODO
+- [X] Load a map successfully
+- [X] Load map but in a lazy way
+- [ ] Unload map when exit
+- [ ] Make components for easy creation of different object types.
+- [ ] Create an SDK for use in Unity
+- [ ] Maybe fix additional things
+
 This mod is made with Melonloader in mind. Not BepInEx.
 
 ## How to use
