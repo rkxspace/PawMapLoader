@@ -564,6 +564,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class1.cs"/>
+        <Compile Include="Components\BuildingSetup.cs" />
         <Compile Include="Enum\LevelDataProvider.cs" />
         <Compile Include="Init\InitMelon.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
