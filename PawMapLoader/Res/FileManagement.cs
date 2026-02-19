@@ -1,4 +1,5 @@
 using System.IO;
+using Il2CppConfig;
 using MelonLoader;
 using MelonLoader.Utils;
 using FileMode = Il2CppSystem.IO.FileMode;
@@ -45,6 +46,12 @@ namespace PawMapLoader.Res
             }
             MelonLogger.Error("Map File Not Found: " + assetPath);
             return null;
+        }
+
+        public static string GetScriptFile(string scriptName)
+        {
+            var scriptPath = (ConfigManager.Instance.Level.Scene.SceneName + ".Scripts." + scriptName).Replace(".", "\\") + ".json";
+            return File.Exists(scriptPath) ? File.ReadAllText(scriptPath) : null;
         }
     }
 }

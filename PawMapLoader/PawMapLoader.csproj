@@ -567,8 +567,9 @@
         <Compile Include="Init\InitMelon.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Res\Abstractions\AbUnityEngine.cs" />
+        <Compile Include="Res\Additions\TextScript.cs" />
         <Compile Include="Res\AssetManager.cs" />
-        <Compile Include="Res\Components\BuildingSetup.cs" />
+        <Compile Include="Res\Components\PawScript.cs" />
         <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\FileManagement.cs" />
@@ -577,6 +578,10 @@
         <Compile Include="Res\Json\MapList.cs" />
         <Compile Include="Res\Json\MapMetadata.cs" />
         <Compile Include="Res\Json\PawMap.cs" />
+        <Compile Include="Res\PawScript\Interpreter.cs" />
+        <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
+        <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />
+        <Compile Include="Res\PawScript\PawScriptRegister.cs" />
         <Compile Include="Res\Store.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
