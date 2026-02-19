@@ -10,6 +10,7 @@ namespace PawMapLoader.Res
         public static bool MapLoadLocked = false;
         public static bool IsMapCustom = false;
         public static AssetBundle LoadedAssetBundle;
+        public static AssetBundle ExtraAssetBundle;
         public static Stream BundleStream;
 
         // The harmony patches fire twice and I have no idea why.
