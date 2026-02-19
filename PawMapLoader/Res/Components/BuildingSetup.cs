@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Il2CppAudio;
 using Il2CppDestructibles;
+using Il2CppFMOD;
+using Il2CppFMODUnity;
 using Il2CppScoring;
 using MelonLoader;
 using UnityEngine;
@@ -49,6 +51,10 @@ namespace PawMapLoader.Res.Components
             dmgtoscore.Type = PlayerScore.ScoreType.Building;
             
             playsoundondamage._damageable = damageable;
+            
+            var eventRef = new EventReference();
+            eventRef.Guid = GUID.Parse("c0eddfe1-93f9-4753-ab7c-c58710b5d4d7");
+            playsoundondamage._damageEvent = eventRef;
         }
     }
 }
