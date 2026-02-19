@@ -5,8 +5,9 @@
 - [X] Load a map successfully
 - [X] Load map but in a lazy way
 - [X] Unload map when exit
-- [ ] Create working damageable.
-- [ ] Make components for easy creation of different object types.
+- [ ] Finish scripting system
+- [ ] Create working damageable
+- [ ] Make components for easy creation of different object types
 - [ ] Create an SDK for use in Unity
 - [ ] Maybe fix additional things
 
