@@ -33,10 +33,11 @@ namespace PawMapLoader.Res
                     
                     MelonLogger.Msg("Adding " + pawMap.AssetFile + " level data to list.");
                     levels.Add(sceneConfig);
+                    MelonLogger.Msg("Added " + pawMap.AssetFile + " level data to list.");
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error("Could not load PawBox:\n"+e);
+                    MelonLogger.Error("Could not add data:\n"+e);
                 }
             }
             LevelDataProvider.Instance._levels =  levels.ToArray();
