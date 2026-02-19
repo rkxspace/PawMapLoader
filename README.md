@@ -40,6 +40,7 @@ Here is a template to get started:
     ]
 }
 ```
+(Comments will work. Don't worry!)
 
 To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. After creating the project, create a scene with the name format of `Author.MapName`. Add the scene to an assetbundle. As of right now, components needed to create buildings and such need to be stubbed by the user. The root game objects should be the following:
 - SceneObjects - For objects in the scene, thats it.
