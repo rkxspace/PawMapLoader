@@ -4,8 +4,8 @@ using Il2CppConfig;
 using Il2CppEffects;
 using Il2CppGame;
 using Il2CppLoadingScreen;
-using Il2CppSystem.IO;
 using MelonLoader;
+using PawMapLoader.Res.Enum;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,49 +17,46 @@ namespace PawMapLoader.Res
         [HarmonyPrefix]
         public static bool Prefix(GameManager __instance)
         {
-            if (Store.FirePrevention.IsGameStarted) return true;
-            
-            Store.FirePrevention.IsGameStarted = true;
-            
-            MelonLogger.Msg("Get Selected Scene");
             string scenename = ConfigManager.Instance.Level.Scene.SceneName;
-            Store.IsMapCustom = false;
-            if (scenename == "AtroCity" || scenename == "DownTown") return true;
-            
+            if (scenename == "AtroCity" || scenename == "DownTown") {Store.IsMapCustom = false; return true;}
+            if (Store.FirePrevention.IsGameStarted) return true;
+            if (Store.MapLoadLocked) return false;
+            if (Store.LoadedAssetBundle != null)
+            {
+                MelonLogger.Msg("|| Done.");
+                MelonLogger.Msg("Loaded " + ConfigManager.Instance.Level.Scene.SceneName);
+                MelonLogger.Msg("| Disposing stream...");
+                Store.BundleStream?.Close();
+
+                MelonLogger.Msg("|| Closed.");
+                Store.BundleStream?.Dispose();
+
+                MelonLogger.Msg("|| Disposed.");
+                
+                Store.FirePrevention.IsGameStarted = true;
+                return true;
+            }
             MelonLogger.Msg(scenename + " is custom.");
-            Stream stream = null;
+            Store.BundleStream = null;
             try
             {
                 Store.IsMapCustom = true;
             
                 MelonLogger.Msg("Loading " + scenename);
                 MelonLogger.Msg("| Opening stream...");
-                stream = FileManagement.OpenMapFile(scenename);
+                Store.BundleStream = FileManagement.OpenMapFile(scenename);
                 
                 MelonLogger.Msg("|| Done.");
                 MelonLogger.Msg("| Loading From Stream...");
-                Store.LoadedAssetBundle = AssetBundle.LoadFromStream(stream);
                 
-                MelonLogger.Msg("|| Done.");
-                MelonLogger.Msg("Loaded " + scenename);
-                MelonLogger.Msg("| Disposing stream...");
-                stream?.Close();
-                
-                MelonLogger.Msg("|| Closed.");
-                stream?.Dispose();
-                
-                MelonLogger.Msg("|| Disposed.");
+                AsyncBundleLoader.LoadBundleAndStart(Store.BundleStream);
             }
             catch (Exception e)
             {
-                Store.FirePrevention.IsGameStarted = false;
-                
-                MelonLogger.Error("Failed to load bundle " + e);
-                stream?.Close();
-                stream?.Dispose();
+                MelonLogger.Error(e.StackTrace);
             }
 
-            return true;
+            return false;
         }
     }
 
