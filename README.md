@@ -5,6 +5,7 @@
 - [X] Load a map successfully
 - [X] Load map but in a lazy way
 - [X] Unload map when exit
+- [ ] Create working damageable.
 - [ ] Make components for easy creation of different object types.
 - [ ] Create an SDK for use in Unity
 - [ ] Maybe fix additional things
@@ -40,6 +41,8 @@ Here is a template to get started:
 }
 ```
 
-To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. After creating the project, create a scene with the name format of `Author.MapName`. Add the scene to an assetbundle. As of right now, components needed to create buildings and such need to be stubbed by the user.
+To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. After creating the project, create a scene with the name format of `Author.MapName`. Add the scene to an assetbundle. As of right now, components needed to create buildings and such need to be stubbed by the user. The root game objects should be the following:
+- SceneObjects - For objects in the scene, thats it.
+- SceneConfig - Left for the mod to handle, expected to be there. Occasionally could be useful.
 
 After building the bundle, add the entry for your map to the `maps.json` file. AssetFile should be the same as your scene name, and the bundle should be placed as `Author/MapName.pawbox`
