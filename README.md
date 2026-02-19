@@ -4,7 +4,7 @@
 ## TODO
 - [X] Load a map successfully
 - [X] Load map but in a lazy way
-- [ ] Unload map when exit
+- [X] Unload map when exit
 - [ ] Make components for easy creation of different object types.
 - [ ] Create an SDK for use in Unity
 - [ ] Maybe fix additional things
@@ -23,7 +23,7 @@ Here is a template to get started:
         {
             "Name": "Testing Map",
             "LeaderboardName": "TestingMap",
-            "AssetFile": "rkxspace.TestMap", // this will load the file "Maps/rkxspace/TestMap.pawbox
+            "AssetFile": "rkxspace.TestMap", // this will load the file "Maps/rkxspace/TestMap.pawbox"
             "MapMetadata": {
                 "GrowthRateModifier": 1.0, // The multiplier for the growth rate on the map. Down Town is set to 1, Atro City is set to 0.8.
                 "GrowthShapeKeyStart": 2.0, // Internal value in which to start increasing the growth shape key.

@@ -1,3 +1,5 @@
+using MelonLoader;
+using PawMapLoader.Res;
 using PawMapLoader.Res.Enum;
 using PawMapLoader.Res.Json;
 
@@ -7,17 +9,20 @@ namespace PawMapLoader
     {
         public static void InitMelon()
         {
+            MelonLogger.Msg("InitMelon Called.");
+            MelonLogger.Msg("Patching stuff...");
             var harmonyInstance =  new HarmonyLib.Harmony("space.rkx.pawmaploader");
             harmonyInstance.PatchAll();
+            MelonLogger.Msg("Patching complete.");
             
             LevelDataProvider.WaitForDataProvider();
         }
 
         public static void InitMaps()
         {
-            Res.FileManagement.EnsureCustomMapsDirectory();
+            FileManagement.EnsureCustomMapsDirectory();
             MapJson.Read();
-            Res.AssetManager.LoadMapData();
+            AssetManager.LoadMapData();
         }
     }
 }

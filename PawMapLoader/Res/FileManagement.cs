@@ -29,6 +29,7 @@ namespace PawMapLoader.Res
 
         public static string ReturnMapsJson()
         {
+            MelonLogger.Msg("Getting \"maps.json\"...");
             return File.Exists(customMapsJsonFile) ? File.ReadAllText(customMapsJsonFile) : "{\"PawMapFileVersion\": 1, \"PawMaps\": [ ]}";
         }
 
@@ -38,6 +39,8 @@ namespace PawMapLoader.Res
             string assetPath = Path.Combine(customMapsDirectory, assetString + ".pawbox");
             if (File.Exists(assetPath))
             {
+                // For some reason we can't just use the regular way of loading bundles.
+                // Game crashes if we do. So we open a stream instead.
                 return Il2CppSystem.IO.File.Open(assetPath, FileMode.Open);
             }
             MelonLogger.Error("Map File Not Found: " + assetPath);

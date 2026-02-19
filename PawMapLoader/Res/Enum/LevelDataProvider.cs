@@ -8,6 +8,7 @@ namespace PawMapLoader.Res.Enum
     {
         public static void WaitForDataProvider()
         {
+            MelonLogger.Msg("Waiting for data provider...");
             MelonCoroutines.Start(ldpw());
             IEnumerator ldpw()
             {
@@ -15,6 +16,7 @@ namespace PawMapLoader.Res.Enum
                 {
                     yield return new WaitForSeconds(0.1f);
                 }
+                MelonLogger.Msg("Level data provider found.");
                 Init.InitMaps();
             }
         }
