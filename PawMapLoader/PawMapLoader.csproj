@@ -569,6 +569,7 @@
         <Compile Include="Res\Abstractions\AbUnityEngine.cs" />
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\Components\BuildingSetup.cs" />
+        <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\FileManagement.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
