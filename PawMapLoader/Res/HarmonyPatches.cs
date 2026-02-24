@@ -1,9 +1,11 @@
 using System;
 using HarmonyLib;
 using Il2CppConfig;
+using Il2CppDestructibles;
 using Il2CppEffects;
 using Il2CppGame;
-using Il2CppLoadingScreen;
+using Il2CppUI;
+using Il2CppUtilities;
 using MelonLoader;
 using PawMapLoader.Res.Enum;
 using UnityEngine;
@@ -37,6 +39,9 @@ namespace PawMapLoader.Res
                 return true;
             }
             MelonLogger.Msg(scenename + " is custom.");
+            if (Store.PawScript.PawScriptRestrictedClassesEnabled) DialogueManager.Instance?.DialogueWindow?.Show("Warning!", "You have Restricted PawScript classes enabled!\n" +
+                                                                       "This means maps have more control over the game, and by extension your computer.\n" +
+                                                                       "Do NOT run maps you have not personally verified!");
             Store.BundleStream = null;
             try
             {
@@ -79,7 +84,7 @@ namespace PawMapLoader.Res
         }
     }
 
-    [HarmonyPatch(typeof(LoadingScreenController), nameof(LoadingScreenController.Show))]
+    /*[HarmonyPatch(typeof(LoadingScreenController), nameof(LoadingScreenController.Show))]
     public static class LoadingScreenController_Show_Patch
     {
         [HarmonyPostfix]
@@ -87,7 +92,7 @@ namespace PawMapLoader.Res
         {
             __instance.Hide();
         }
-    }
+    }*/
 
     [HarmonyPatch(typeof(BuildingsManager), nameof(BuildingsManager.Init))]
     public static class BuildingsManager_Init_Patch
@@ -116,7 +121,7 @@ namespace PawMapLoader.Res
             }
         }
     }
-
+    
     [HarmonyPatch(typeof(GroundDecalController), nameof(GroundDecalController.IsGroundConcrete))]
     public static class GroundDecalController_IsGroundConcrete_Patch
     {
@@ -131,5 +136,57 @@ namespace PawMapLoader.Res
             }
             return __exception;
         }
+    }
+    
+    
+    [HarmonyPatch(typeof(Damageable), nameof(Damageable.UpdateHealthRecursively))]
+    public static class Damageable_UpdateHealthRecursively_Patch
+    {
+        [HarmonyFinalizer]
+        public static Exception Finalizer(Exception __exception)
+        {
+            
+            if (__exception is NullReferenceException)
+            {
+                return null;
+            }
+            return __exception;
+        }
+    }
+
+    [HarmonyPatch(typeof(Damageable), nameof(Damageable.AddDamage))]
+    public static class Damageable_AddDamage_Patch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(Damageable __instance, Damage __0)
+        {
+            if (Store.IsMapCustom)
+            {
+                __instance.Health -= __0.Amount;
+                return false;
+            }
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(MeshCombinerService), nameof(MeshCombinerService.CombineBuildingBlockMeshes))]
+    public static class MeshCombinerService_CombineBuildingBlockMeshes_Patch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(MeshCombinerService __instance) => !Store.IsMapCustom;
+    }
+
+    [HarmonyPatch(typeof(MeshCombinerService), nameof(MeshCombinerService.CombineBuildingMesh))]
+    public static class MeshCombinerService_CombineBuildingMesh_Patch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(MeshCombinerService __instance) => !Store.IsMapCustom;
+    }
+
+    [HarmonyPatch(typeof(MeshCombinerService), nameof(MeshCombinerService.CombineBuildingMeshes))]
+    public static class MeshCombinerService_CombineBuildingMeshes_Patch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(MeshCombinerService __instance) => !Store.IsMapCustom;
     }
 }
