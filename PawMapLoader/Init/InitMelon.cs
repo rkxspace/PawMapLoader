@@ -12,7 +12,10 @@ namespace PawMapLoader
             MelonLogger.Msg("InitMelon Called.");
             MelonLogger.Msg("Patching stuff...");
             var harmonyInstance =  new HarmonyLib.Harmony("space.rkx.pawmaploader");
-            harmonyInstance.PatchAll();
+            harmonyInstance.PatchAll(typeof(BuildingsManager_Init_Patch));
+            harmonyInstance.PatchAll(typeof(GameManager_OnLobbySceneLoaded_Patch));
+            harmonyInstance.PatchAll(typeof(GameManager_StartGame_Patch));
+            harmonyInstance.PatchAll(typeof(GroundDecalController_IsGroundConcrete_Patch));
             MelonLogger.Msg("Patching complete.");
             
             LevelDataProvider.WaitForDataProvider();

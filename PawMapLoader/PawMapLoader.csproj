@@ -566,10 +566,9 @@
         <Compile Include="Class1.cs"/>
         <Compile Include="Init\InitMelon.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Compile Include="Res\Abstractions\AbUnityEngine.cs" />
-        <Compile Include="Res\Additions\TextScript.cs" />
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\Components\PawScript.cs" />
+        <Compile Include="Res\Components\PawScriptDamageable.cs" />
         <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\FileManagement.cs" />
@@ -578,11 +577,23 @@
         <Compile Include="Res\Json\MapList.cs" />
         <Compile Include="Res\Json\MapMetadata.cs" />
         <Compile Include="Res\Json\PawMap.cs" />
+        <Compile Include="Res\PawScript\Claws\Animator.cs" />
+        <Compile Include="Res\PawScript\Claws\GameState.cs" />
+        <Compile Include="Res\PawScript\Claws\GarbageManager.cs" />
+        <Compile Include="Res\PawScript\Claws\Map.cs" />
+        <Compile Include="Res\PawScript\Claws\Math.cs" />
+        <Compile Include="Res\PawScript\Claws\MemPointers.cs" />
+        <Compile Include="Res\PawScript\Claws\Player.cs" />
+        <Compile Include="Res\PawScript\Claws\Restricted\Reflection.cs" />
+        <Compile Include="Res\PawScript\ComponentLogs.cs" />
         <Compile Include="Res\PawScript\Interpreter.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />
         <Compile Include="Res\PawScript\PawScriptRegister.cs" />
         <Compile Include="Res\Store.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Res\PawScript\Instanced\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,5 +8,10 @@ namespace PawMapLoader.Res.Components
 {
     [RegisterTypeInIl2Cpp]
     public class PawScript : MonoBehaviour
-    {}
+    {
+        void Awake()
+        {
+            
+        }
+    }
 }

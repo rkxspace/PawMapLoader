@@ -24,7 +24,7 @@ namespace PawMapLoader.Res.Enum
                 while (!asyncBundle.isDone)
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
-                        "Loading Custom Level...\n" + asyncBundle.progress * 100 + "%";
+                        "Loading Custom Level...\n" + Math.Round(asyncBundle.progress * 100) + "%";
                     yield return null;
                 }
 
