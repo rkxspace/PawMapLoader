@@ -569,6 +569,7 @@
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\Components\PawScript.cs" />
         <Compile Include="Res\Components\PawScriptDamageable.cs" />
+        <Compile Include="Res\Components\SceneRoot.cs" />
         <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\FileManagement.cs" />
@@ -590,10 +591,9 @@
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />
         <Compile Include="Res\PawScript\PawScriptRegister.cs" />
+        <Compile Include="Res\PawScript\Validation\PointerResolver.cs" />
+        <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Res\PawScript\Instanced\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

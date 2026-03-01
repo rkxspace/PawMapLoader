@@ -8,18 +8,19 @@ namespace PawMapLoader.Res.PawScript
 {
     public class PawScriptRegister
     {
+        // Why does melonloader return an object? Like, seriously?
         public static List<object> RunningScripts = new List<object>();
 
         public static void Start(string scriptName)
         {
             var pawScriptInstructions = JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
-            RunningScripts.Add(MelonCoroutines.Start(Runner()));
+            RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter())));
 
-            IEnumerator Runner()
+            IEnumerator Runner(Interpreter interpreter)
             {
-                foreach (PawScriptInstruction instruction in pawScriptInstructions.Instructions)
+                for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++)
                 {
-                    Interpreter.Interpret(instruction);
+                    interpreter.Interpret(pawScriptInstructions.Instructions[i], ref i);
                     yield return null;
                 }
             }

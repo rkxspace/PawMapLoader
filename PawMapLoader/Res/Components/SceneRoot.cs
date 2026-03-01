@@ -1,7 +1,11 @@
+using MelonLoader;
+using UnityEngine;
+
 namespace PawMapLoader.Res.Components
 {
-    public class SceneRoot
+    [RegisterTypeInIl2Cpp]
+    public class SceneRoot : MonoBehaviour
     {
-        
+        public static SceneRoot Instance;
     }
 }
