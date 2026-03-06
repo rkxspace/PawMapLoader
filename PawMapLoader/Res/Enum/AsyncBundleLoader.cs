@@ -13,7 +13,7 @@ namespace PawMapLoader.Res.Enum
         public static void LoadBundleAndStart(Stream stream)
         {
             Store.MapLoadLocked = true;
-            DialogueManager.Instance.DialogueWindow.Show("Loading...", "Loading Custom Level", true, "Okay...");
+            DialogueManager.Instance.DialogueWindow.Show("Loading...", "Loading Custom Level...", true, "Okay...");
             DialogueManager.Instance.DialogueWindow.ConfirmButton.gameObject.SetActive(false);
             DialogueManager.Instance.DialogueWindow.CancelButton.gameObject.SetActive(false);
             MelonCoroutines.Start(lbs());
@@ -33,7 +33,7 @@ namespace PawMapLoader.Res.Enum
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
                         "Done!\n" + asyncBundle.progress * 100 + "%";
                     DialogueManager.Instance.DialogueWindow.Close();
-                    Store.LoadedAssetBundle = asyncBundle.assetBundle??throw new NullReferenceException("asyncBundle.assetBundle failed to load.");
+                    Store.LoadedAssetBundle = asyncBundle.assetBundle??throw new NullReferenceException("AssetBundle failed to load.");
                 }
                 catch (Exception e)
                 {
