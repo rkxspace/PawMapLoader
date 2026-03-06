@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MelonLoader;
 using Newtonsoft.Json;
 using PawMapLoader.Res.PawScript.Json;
+using UnityEngine;
 
 namespace PawMapLoader.Res.PawScript
 {
@@ -20,8 +21,8 @@ namespace PawMapLoader.Res.PawScript
             {
                 for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++)
                 {
+                    yield return new WaitForSeconds(pawScriptInstructions.Instructions[i].Delay);
                     interpreter.Interpret(pawScriptInstructions.Instructions[i], ref i);
-                    yield return null;
                 }
             }
         }
@@ -29,6 +30,7 @@ namespace PawMapLoader.Res.PawScript
         public static void StopAll()
         {
             foreach (object runningScript in RunningScripts) MelonCoroutines.Stop(runningScript);
+            RunningScripts.Clear();
         }
     }
 }

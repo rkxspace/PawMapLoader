@@ -591,7 +591,6 @@
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />
         <Compile Include="Res\PawScript\PawScriptRegister.cs" />
-        <Compile Include="Res\PawScript\Validation\PointerResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
     </ItemGroup>

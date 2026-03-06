@@ -2,9 +2,9 @@ namespace PawMapLoader.Res.PawScript.Validation
 {
     public class TypeValidation
     {
-        public static void Validate<T>(object mem)
+        public static bool Validate<T>(object mem)
         {
-            
+            return mem is T;
         }
     }
 }
