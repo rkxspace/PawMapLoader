@@ -1,10 +1,10 @@
 using System;
+using System.Windows.Forms;
 using HarmonyLib;
 using Il2CppConfig;
 using Il2CppDestructibles;
 using Il2CppEffects;
 using Il2CppGame;
-using Il2CppUI;
 using Il2CppUtilities;
 using MelonLoader;
 using PawMapLoader.Res.Enum;
@@ -39,9 +39,11 @@ namespace PawMapLoader.Res
                 return true;
             }
             MelonLogger.Msg(scenename + " is custom.");
-            if (Store.PawScript.PawScriptRestrictedClassesEnabled) DialogueManager.Instance?.DialogueWindow?.Show("Warning!", "You have Restricted PawScript classes enabled!\n" +
-                                                                       "This means maps have more control over the game, and by extension your computer.\n" +
-                                                                       "Do NOT run maps you have not personally verified!");
+            if (Store.PawScript.PawScriptRestrictedClassesEnabled) {
+                MessageBox.Show("Warning!", "You have Restricted PawScript classes enabled!\n" +
+                                    "This means maps have more control over the game, and by extension your computer.\n" +
+                                    "Do NOT run maps you have not personally verified!" + "If you have not verified the map, do so now.");
+            }
             Store.BundleStream = null;
             try
             {
@@ -163,6 +165,7 @@ namespace PawMapLoader.Res
             if (Store.IsMapCustom)
             {
                 __instance.Health -= __0.Amount;
+                __0.Player.Character.AddGrow(__0.Amount/100);
                 return false;
             }
             return true;

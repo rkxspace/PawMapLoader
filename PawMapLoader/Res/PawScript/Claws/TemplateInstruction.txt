@@ -1,0 +1,3 @@
+public static void Instruction(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter) {}
+
+Alright, this is the template. Every instruction uses this.

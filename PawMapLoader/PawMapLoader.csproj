@@ -586,13 +586,20 @@
         <Compile Include="Res\PawScript\Claws\MemPointers.cs" />
         <Compile Include="Res\PawScript\Claws\Player.cs" />
         <Compile Include="Res\PawScript\Claws\Restricted\Reflection.cs" />
+        <Compile Include="Res\PawScript\Claws\Script.cs" />
         <Compile Include="Res\PawScript\ComponentLogs.cs" />
         <Compile Include="Res\PawScript\Interpreter.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />
         <Compile Include="Res\PawScript\PawScriptRegister.cs" />
+        <Compile Include="Res\PawScript\PointerResolver.cs" />
+        <Compile Include="Res\PawScript\Validation\RestrictedValidation.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
+        <Compile Include="Res\WinFormMsg.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Res\PawScript\Claws\TemplateInstruction.txt" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

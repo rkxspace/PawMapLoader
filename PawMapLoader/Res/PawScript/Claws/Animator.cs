@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using PawMapLoader.Res.PawScript.Json;
 
 namespace PawMapLoader.Res.PawScript.Claws
@@ -7,9 +9,23 @@ namespace PawMapLoader.Res.PawScript.Claws
     /// </summary>
     public class Animator
     {
+        private static void _ResolveAnimator(PawScriptInstruction instruction, Interpreter interpreter, out UnityEngine.Animator animator)
+        {
+                if (int.TryParse(instruction.Arguments[0], out int paramInt))
+                { 
+                    animator = (UnityEngine.Animator)interpreter.Memory[paramInt];
+                }
+                else
+                {
+                    animator = (UnityEngine.Animator)interpreter.Memory[interpreter.NamedPtr[instruction.Arguments[0]]];
+                }
+        }
+
         public static void SetParameter(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            UnityEngine.Animator animator = (UnityEngine.Animator)interpreter.Memory[interpreter.NamedPtr[instruction.Arguments[0]]];
+            UnityEngine.Animator animator;
+            _ResolveAnimator(instruction, interpreter, out animator);
+
             string paramName = instruction.Arguments[1];
             string paramValue = instruction.Arguments[2];
 
@@ -17,8 +33,19 @@ namespace PawMapLoader.Res.PawScript.Claws
                 animator.SetBool(paramName, boolVal);
             else if (int.TryParse(paramValue, out int intVal))
                 animator.SetInteger(paramName, intVal);
-            else if (float.TryParse(paramValue, out float floatVal))
+            else if (float.TryParse(paramValue, NumberStyles.Float, CultureInfo.InvariantCulture, out float floatVal))
                 animator.SetFloat(paramName, floatVal);
+            else throw new ArgumentException($"Unsupported parameter: '{paramValue}'");
+        }
+
+        public static void SetTrigger(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
+        {
+            UnityEngine.Animator animator;
+            _ResolveAnimator(instruction, interpreter, out animator);
+            
+            string triggerName = instruction.Arguments[1];
+            
+            animator.SetTrigger(triggerName);
         }
     }
 }
