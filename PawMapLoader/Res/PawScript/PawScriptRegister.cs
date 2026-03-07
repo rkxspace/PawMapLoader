@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MelonLoader;
 using Newtonsoft.Json;
 using PawMapLoader.Res.PawScript.Json;
+using PawMapLoader.Res.PawScript.Validation;
 using UnityEngine;
 
 namespace PawMapLoader.Res.PawScript
@@ -15,6 +16,7 @@ namespace PawMapLoader.Res.PawScript
         public static void Start(string scriptName)
         {
             var pawScriptInstructions = JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
+            RestrictedValidation.GetRestrictedClassesExist(pawScriptInstructions.Instructions.ToArray());
             RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter())));
 
             IEnumerator Runner(Interpreter interpreter)
