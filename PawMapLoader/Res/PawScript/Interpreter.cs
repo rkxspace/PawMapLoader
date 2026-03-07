@@ -45,21 +45,24 @@ namespace PawMapLoader.Res.PawScript
             Executions++;
             try
             {
-                if (CachedMethods.ContainsKey(instruction.Claw + "." + instruction.Instruction))
+                var args = new object[] { instruction, instructionSetter, this};
+                var methodText = instruction.Claw + "." + instruction.Instruction;
+                if (CachedMethods.ContainsKey(methodText))
                 {
-                    CachedMethods[instruction.Claw + instruction.Instruction].Invoke(null,
-                        new object[] { instruction, instructionSetter, this });
+                    CachedMethods[methodText].Invoke(null, args);
+                    instructionSetter = (int)args[1];
                     return;
                 }
                 
-                var type = Assembly.GetExecutingAssembly()?.GetType("PawMapLoader.Res.PawScript.Claws." + instruction.Claw);
+                var type = Assembly.GetExecutingAssembly().GetType("PawMapLoader.Res.PawScript.Claws." + instruction.Claw);
                 var method = type?.GetMethod(instruction.Instruction);
                 
                 if (method == null) throw new MissingMethodException(instruction.Claw + "." + instruction.Instruction + " does not exist.");
                 
-                CachedMethods.Add(instruction.Claw + "." + instruction.Instruction, method);
+                CachedMethods.Add(methodText, method);
                 
-                method.Invoke(null, new object[] { instruction, instructionSetter, this});
+                method.Invoke(null, args);
+                instructionSetter = (int)args[1];
             }
             catch (Exception e)
             {
