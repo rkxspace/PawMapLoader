@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using PawMapLoader.Res.PawScript.Json;
+using PawMapLoader.Res.PawScript.Resolvers;
 
 namespace PawMapLoader.Res.PawScript.Claws
 {
@@ -17,7 +18,7 @@ namespace PawMapLoader.Res.PawScript.Claws
                 }
                 else
                 {
-                    animator = (UnityEngine.Animator)interpreter.Memory[interpreter.NamedPtr[instruction.Arguments[0]]];
+                    animator = (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
                 }
         }
 
