@@ -7,7 +7,7 @@ Anyway, this mod's goal is to offer what is essentially a full map-making toolki
 
 ## TODO
 - [X] Load a map successfully
-- [X] Load map but in a lazy way
+- [X] Load map but in a lazy way (Loads when needed, not at game start)
 - [X] Unload map when exit
 - [ ] Finish scripting system
 - [ ] Create working damageable
