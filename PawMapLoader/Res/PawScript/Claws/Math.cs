@@ -55,7 +55,8 @@ namespace PawMapLoader.Res.PawScript.Claws
         public static void Evaluate(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            interpreter.WriteMemory();
+            //TODO: Implement math string parsing. Ideally with all available operations.
+            //interpreter.WriteMemory();
         }
     }
 }
