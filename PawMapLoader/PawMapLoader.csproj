@@ -586,6 +586,7 @@
         <Compile Include="Res\PawScript\Claws\MemPointers.cs" />
         <Compile Include="Res\PawScript\Claws\Player.cs" />
         <Compile Include="Res\PawScript\Claws\Restricted\Reflection.cs" />
+        <Compile Include="Res\PawScript\Claws\Scene.cs" />
         <Compile Include="Res\PawScript\Claws\Script.cs" />
         <Compile Include="Res\PawScript\ComponentLogs.cs" />
         <Compile Include="Res\PawScript\Interpreter.cs" />

@@ -29,7 +29,7 @@ namespace PawMapLoader.Res.PawScript.Claws
             Interpreter interpreter)
         {
             GameObject v1 = (GameObject)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
-            Vector4 v2 = (Vector3)PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+            Vector4 v2 = (Vector4)PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
             
             v1.transform.rotation = new Quaternion(v2.x, v2.y, v2.z, v2.w);
         }
