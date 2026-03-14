@@ -5,6 +5,7 @@ namespace PawMapLoader.Res.PawScript.Resolvers
         public static double Evaluate(string expression)
         {
             //List<string> expressions
+            return 0;
         }
     }
 }
