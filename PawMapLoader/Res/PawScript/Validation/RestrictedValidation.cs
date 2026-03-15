@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using MelonLoader;
 using PawMapLoader.Res.PawScript.Json;
@@ -23,7 +24,7 @@ namespace PawMapLoader.Res.PawScript.Validation
             }
         }
 
-        public static void GetRestrictedClassesExist(PawScriptInstruction[] instructions)
+        public static void GetRestrictedClassesExist(List<PawScriptInstruction> instructions)
         {
             if (Store.PawScript.PawScriptRestrictedClassesEnabled) return;
             foreach (PawScriptInstruction instruction in instructions)
