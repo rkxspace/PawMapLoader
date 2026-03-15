@@ -50,6 +50,7 @@ namespace PawMapLoader.Res
 
         public static string GetScriptFile(string scriptName)
         {
+            //TODO: FIX STUPID MISTAKE
             var scriptPath = (ConfigManager.Instance.Level.Scene.SceneName + ".Scripts." + scriptName).Replace(".", "\\") + ".json";
             return File.Exists(scriptPath) ? File.ReadAllText(scriptPath) : null;
         }

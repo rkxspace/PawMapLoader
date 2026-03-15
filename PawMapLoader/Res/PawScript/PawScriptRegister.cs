@@ -16,14 +16,15 @@ namespace PawMapLoader.Res.PawScript
         public static void Start(string scriptName)
         {
             var pawScriptInstructions = JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
-            RestrictedValidation.GetRestrictedClassesExist(pawScriptInstructions.Instructions.ToArray());
-            RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter())));
+            RestrictedValidation.GetRestrictedClassesExist(pawScriptInstructions.Instructions);
+            RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter {InstructionDumpReserve = pawScriptInstructions.Instructions})));
 
             IEnumerator Runner(Interpreter interpreter)
             {
                 for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++)
                 {
-                    yield return new WaitForSeconds(pawScriptInstructions.Instructions[i].Delay);
+                    if (pawScriptInstructions.Instructions[i].Delay >= 0)
+                        yield return new WaitForSeconds(pawScriptInstructions.Instructions[i].Delay);
                     interpreter.Interpret(pawScriptInstructions.Instructions[i], ref i);
                 }
             }

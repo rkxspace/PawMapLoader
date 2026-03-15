@@ -10,6 +10,7 @@ namespace PawMapLoader.Res.PawScript
     {
         public Dictionary<string, MethodInfo> CachedMethods = new Dictionary<string, MethodInfo>();
         public int Executions = 0;
+        public List<PawScriptInstruction> InstructionDumpReserve;
         public Dictionary<int, object> Memory = new Dictionary<int, object>();
         public Dictionary<string, int> NamedPtr = new Dictionary<string, int>();
         public int NextMemory = 0;
