@@ -1,3 +1,5 @@
+using System;
+
 namespace PawMapLoader.Res.PawScript.Resolvers
 {
     public class FloatResolver
@@ -9,7 +11,7 @@ namespace PawMapLoader.Res.PawScript.Resolvers
                 return float.Parse(input.Replace("(float)", ""));
             }
 
-            return float.Parse(input);
+            throw new ArgumentException("Input is not resolvable float.");
         }
     }
 }
