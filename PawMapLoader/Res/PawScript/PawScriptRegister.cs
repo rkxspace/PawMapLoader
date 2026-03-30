@@ -12,6 +12,7 @@ namespace PawMapLoader.Res.PawScript
     {
         // Why does melonloader return an object? Like, seriously?
         public static List<object> RunningScripts = new List<object>();
+        public static double lastFrameTime = 0;
 
         public static void Start(string scriptName)
         {
@@ -23,6 +24,11 @@ namespace PawMapLoader.Res.PawScript
             {
                 for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++)
                 {
+                    if ((Time.timeAsDouble - lastFrameTime) > 0.1)
+                    {
+                        MelonLogger.Msg($"Pawscript instruction delayed by 1 second: Frame has not been produced in {Time.timeAsDouble - lastFrameTime}.");
+                        yield return new WaitForSeconds(1f);
+                    }
                     if (pawScriptInstructions.Instructions[i].Delay >= 0)
                         yield return new WaitForSeconds(pawScriptInstructions.Instructions[i].Delay);
                     interpreter.Interpret(pawScriptInstructions.Instructions[i], ref i);
