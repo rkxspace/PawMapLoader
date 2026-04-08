@@ -40,12 +40,6 @@ namespace PawMapLoader.Res.PawScript.Claws
             {
                 sb.Append("| "+ptr.Key + ": " + ptr.Value);
             }
-
-            sb.Append("\nCached Methods:");
-            foreach (var method in interpreter.CachedMethods)
-            {
-                sb.Append("| " + method.Key + ": " + method.Value);
-            }
             
             MelonLogger.Msg(sb.ToString());
         }

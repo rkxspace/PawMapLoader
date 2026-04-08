@@ -16,7 +16,6 @@ namespace PawMapLoader.Res
             {
                 try
                 {
-                    MelonLogger.Msg("Adding " + pawMap.AssetFile + " data.");
                     SceneConfig sceneConfig = new SceneConfig();
                     sceneConfig.LevelName = pawMap.Name;
                     sceneConfig.LeaderboardName = pawMap.LeaderboardName;
@@ -30,10 +29,7 @@ namespace PawMapLoader.Res
                     sceneConfig.SquareKilometers = pawMap.MapMetadata.SquareKilometers;
                     sceneConfig.UnlockedBy = null;
                     sceneConfig.UnlockTargetScore = 0;
-                    
-                    MelonLogger.Msg("Adding " + pawMap.AssetFile + " level data to list.");
                     levels.Add(sceneConfig);
-                    MelonLogger.Msg("Added " + pawMap.AssetFile + " level data to list.");
                 }
                 catch (Exception e)
                 {

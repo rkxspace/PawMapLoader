@@ -14,18 +14,9 @@ namespace PawMapLoader.Res
 
         public static void EnsureCustomMapsDirectory()
         {
-            if (Directory.Exists(customMapsDirectory))
-            {
-                MelonLogger.Msg("Maps Directory Found!");
-            }
-            else
-            {
-                MelonLogger.Msg("Maps Directory Not Found!");
-                
-                Directory.CreateDirectory(customMapsDirectory);
-                
-                MelonLogger.Msg("Maps Directory Created!");
-            }
+            if (Directory.Exists(customMapsDirectory)) return;
+            Directory.CreateDirectory(customMapsDirectory);
+            MelonLogger.Msg("Maps Directory Created!");
         }
 
         public static string ReturnMapsJson()
@@ -36,21 +27,13 @@ namespace PawMapLoader.Res
 
         public static Stream OpenMapFile(string assetString)
         {
-            assetString = assetString.Replace(".", "\\");
-            string assetPath = Path.Combine(customMapsDirectory, assetString + ".pawbox");
-            if (File.Exists(assetPath))
-            {
-                // For some reason we can't just use the regular way of loading bundles.
-                // Game crashes if we do. So we open a stream instead.
-                return Il2CppSystem.IO.File.Open(assetPath, FileMode.Open);
-            }
-            MelonLogger.Error("Map File Not Found: " + assetPath);
-            return null;
+            string assetPath = Path.Combine(customMapsDirectory, assetString.Replace(".", "\\") + ".pawbox");
+            if (File.Exists(assetPath)) return Il2CppSystem.IO.File.Open(assetPath, FileMode.Open);
+            throw new FileNotFoundException("Map File Not Found: " + assetPath);
         }
 
         public static string GetScriptFile(string scriptName)
         {
-            //TODO: FIX STUPID MISTAKE
             var scriptPath = (ConfigManager.Instance.Level.Scene.SceneName + ".Scripts." + scriptName).Replace(".", "\\") + ".json";
             return File.Exists(scriptPath) ? File.ReadAllText(scriptPath) : null;
         }
