@@ -565,6 +565,7 @@
     <ItemGroup>
         <Compile Include="Class1.cs"/>
         <Compile Include="Init\InitMelon.cs" />
+        <Compile Include="Init\PatchReg.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\Components\PawScript.cs" />
@@ -579,6 +580,7 @@
         <Compile Include="Res\Json\MapList.cs" />
         <Compile Include="Res\Json\MapMetadata.cs" />
         <Compile Include="Res\Json\PawMap.cs" />
+        <Compile Include="Res\PawScript\ClawRegister.cs" />
         <Compile Include="Res\PawScript\Claws\Animator.cs" />
         <Compile Include="Res\PawScript\Claws\GameState.cs" />
         <Compile Include="Res\PawScript\Claws\GarbageManager.cs" />

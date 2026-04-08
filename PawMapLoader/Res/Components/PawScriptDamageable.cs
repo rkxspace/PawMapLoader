@@ -20,7 +20,8 @@ namespace PawMapLoader.Res.Components
 
         void Awake()
         {
-            if (health == -1f || eventScriptIndex == -1) {ComponentLogs.UnsetComponent(gameObject);
+            if (health == -1f || eventScriptIndex == -1) {
+                ComponentLogs.UnsetComponent(gameObject);
                 return;
             }
             var dmgble = gameObject.AddComponent<Damageable>();

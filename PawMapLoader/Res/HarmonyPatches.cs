@@ -10,6 +10,7 @@ using MelonLoader;
 using PawMapLoader.Res.Enum;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Math = Il2CppSystem.Math;
 
 namespace PawMapLoader.Res
 {
@@ -25,16 +26,8 @@ namespace PawMapLoader.Res
             if (Store.MapLoadLocked) return false;
             if (Store.LoadedAssetBundle != null)
             {
-                MelonLogger.Msg("|| Done.");
-                MelonLogger.Msg("Loaded " + ConfigManager.Instance.Level.Scene.SceneName);
-                MelonLogger.Msg("| Disposing stream...");
                 Store.BundleStream?.Close();
-
-                MelonLogger.Msg("|| Closed.");
                 Store.BundleStream?.Dispose();
-
-                MelonLogger.Msg("|| Disposed.");
-                
                 Store.FirePrevention.IsGameStarted = true;
                 return true;
             }
@@ -42,20 +35,13 @@ namespace PawMapLoader.Res
             if (Store.PawScript.PawScriptRestrictedClassesEnabled) {
                 MessageBox.Show("Warning!", "You have Restricted PawScript classes enabled!\n" +
                                     "This means maps have more control over the game, and by extension your computer.\n" +
-                                    "Do NOT run maps you have not personally verified!" + "If you have not verified the map, do so now.");
+                                    "Do NOT run maps you have not personally vetted!" + "If you have not vetted the map, do so now.");
             }
             Store.BundleStream = null;
             try
             {
                 Store.IsMapCustom = true;
-            
-                MelonLogger.Msg("Loading " + scenename);
-                MelonLogger.Msg("| Opening stream...");
                 Store.BundleStream = FileManagement.OpenMapFile(scenename);
-                
-                MelonLogger.Msg("|| Done.");
-                MelonLogger.Msg("| Loading From Stream...");
-                
                 AsyncBundleLoader.LoadBundleAndStart(Store.BundleStream);
             }
             catch (Exception e)
@@ -85,16 +71,6 @@ namespace PawMapLoader.Res
             return true;
         }
     }
-
-    /*[HarmonyPatch(typeof(LoadingScreenController), nameof(LoadingScreenController.Show))]
-    public static class LoadingScreenController_Show_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(LoadingScreenController __instance)
-        {
-            __instance.Hide();
-        }
-    }*/
 
     [HarmonyPatch(typeof(BuildingsManager), nameof(BuildingsManager.Init))]
     public static class BuildingsManager_Init_Patch
@@ -139,22 +115,6 @@ namespace PawMapLoader.Res
             return __exception;
         }
     }
-    
-    
-    [HarmonyPatch(typeof(Damageable), nameof(Damageable.UpdateHealthRecursively))]
-    public static class Damageable_UpdateHealthRecursively_Patch
-    {
-        [HarmonyFinalizer]
-        public static Exception Finalizer(Exception __exception)
-        {
-            
-            if (__exception is NullReferenceException)
-            {
-                return null;
-            }
-            return __exception;
-        }
-    }
 
     [HarmonyPatch(typeof(Damageable), nameof(Damageable.AddDamage))]
     public static class Damageable_AddDamage_Patch
@@ -164,8 +124,8 @@ namespace PawMapLoader.Res
         {
             if (Store.IsMapCustom)
             {
+                __0.Player.Character.AddGrow(Math.Clamp(__0.Amount/100, 0.0f, __instance.Health));
                 __instance.Health -= __0.Amount;
-                __0.Player.Character.AddGrow(__0.Amount/100);
                 return false;
             }
             return true;

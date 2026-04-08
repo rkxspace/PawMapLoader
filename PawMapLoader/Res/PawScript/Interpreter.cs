@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using MelonLoader;
 using PawMapLoader.Res.PawScript.Json;
 
@@ -8,12 +7,11 @@ namespace PawMapLoader.Res.PawScript
 {
     public class Interpreter
     {
-        public Dictionary<string, MethodInfo> CachedMethods = new Dictionary<string, MethodInfo>();
-        public int Executions = 0;
+        public int Executions;
         public List<PawScriptInstruction> InstructionDumpReserve;
         public Dictionary<int, object> Memory = new Dictionary<int, object>();
         public Dictionary<string, int> NamedPtr = new Dictionary<string, int>();
-        public int NextMemory = 0;
+        public int NextMemory;
 
         public void Reset()
         {
@@ -48,22 +46,12 @@ namespace PawMapLoader.Res.PawScript
             {
                 var args = new object[] { instruction, instructionSetter, this};
                 var methodText = instruction.Claw + "." + instruction.Instruction;
-                if (CachedMethods.ContainsKey(methodText))
+                if (ClawRegister.rClaws.ContainsKey(methodText))
                 {
-                    CachedMethods[methodText].Invoke(null, args);
+                    ClawRegister.rClaws[methodText].Invoke(null, args);
                     instructionSetter = (int)args[1];
                     return;
                 }
-                
-                var type = Assembly.GetExecutingAssembly().GetType("PawMapLoader.Res.PawScript.Claws." + instruction.Claw);
-                var method = type?.GetMethod(instruction.Instruction);
-                
-                if (method == null) throw new MissingMethodException(instruction.Claw + "." + instruction.Instruction + " does not exist.");
-                
-                CachedMethods.Add(methodText, method);
-                
-                method.Invoke(null, args);
-                instructionSetter = (int)args[1];
             }
             catch (Exception e)
             {

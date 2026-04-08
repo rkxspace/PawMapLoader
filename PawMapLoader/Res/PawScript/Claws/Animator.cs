@@ -10,22 +10,9 @@ namespace PawMapLoader.Res.PawScript.Claws
     /// </summary>
     public class Animator
     {
-        private static void _ResolveAnimator(PawScriptInstruction instruction, Interpreter interpreter, out UnityEngine.Animator animator)
-        {
-                if (int.TryParse(instruction.Arguments[0], out int paramInt))
-                { 
-                    animator = (UnityEngine.Animator)interpreter.Memory[paramInt];
-                }
-                else
-                {
-                    animator = (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
-                }
-        }
-
         public static void SetParameter(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            UnityEngine.Animator animator;
-            _ResolveAnimator(instruction, interpreter, out animator);
+            UnityEngine.Animator animator = (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
 
             string paramName = instruction.Arguments[1];
             string paramValue = instruction.Arguments[2];
@@ -41,11 +28,9 @@ namespace PawMapLoader.Res.PawScript.Claws
 
         public static void SetTrigger(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            UnityEngine.Animator animator;
-            _ResolveAnimator(instruction, interpreter, out animator);
             
+            UnityEngine.Animator animator = (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
             string triggerName = instruction.Arguments[1];
-            
             animator.SetTrigger(triggerName);
         }
     }

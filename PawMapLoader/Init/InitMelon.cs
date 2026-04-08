@@ -1,39 +1,24 @@
 using System;
-using MelonLoader;
 using PawMapLoader.Res;
 using PawMapLoader.Res.Enum;
 using PawMapLoader.Res.Json;
+using PawMapLoader.Res.PawScript.Validation;
 
 namespace PawMapLoader
 {
     public class Init
     {
         private static bool _ready = false;
+
         public static void InitMelon()
         {
-            MelonLogger.Msg("InitMelon Called.");
+            RestrictedValidation.GetRestrictedClassesEnabled();
+            Store.PawScript.inversions = !Store.PawScript.PawScriptRestrictedClassesEnabled;
             var rnd = new Random();
-            var t = rnd.NextDouble();
-            var s = rnd.NextDouble();
-            Res.PawScript.Validation.RestrictedValidation.GetRestrictedClassesEnabled();
-            if (Store.PawScript.PawScriptRestrictedClassesEnabled)
-            {
-                Store.PawScript.inversions = false;
-            }
-            else
-            {
-                Store.PawScript.inversions = true;
-            }
-            new RestrictedWatcher(s*Math.Cos(t));
+            // ReSharper disable once ObjectCreationAsStatement
+            new RestrictedWatcher(rnd.NextDouble()*Math.Cos(rnd.NextDouble()));
             _ready = true;
-            MelonLogger.Msg("Patching stuff...");
-            var harmonyInstance =  new HarmonyLib.Harmony("space.rkx.pawmaploader");
-            harmonyInstance.PatchAll(typeof(BuildingsManager_Init_Patch));
-            harmonyInstance.PatchAll(typeof(GameManager_OnLobbySceneLoaded_Patch));
-            harmonyInstance.PatchAll(typeof(GameManager_StartGame_Patch));
-            harmonyInstance.PatchAll(typeof(GroundDecalController_IsGroundConcrete_Patch));
-            MelonLogger.Msg("Patching complete.");
-            
+            PatchReg.Patch();
             LevelDataProvider.WaitForDataProvider();
         }
 
