@@ -50,8 +50,8 @@ namespace PawMapLoader.Res.PawScript
                 {
                     ClawRegister.rClaws[methodText].Invoke(null, args);
                     instructionSetter = (int)args[1];
-                    return;
                 }
+                else throw new MissingMethodException($"{methodText} does not exist.");
             }
             catch (Exception e)
             {
