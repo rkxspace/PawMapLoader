@@ -7,6 +7,7 @@ using Il2CppEffects;
 using Il2CppGame;
 using Il2CppUtilities;
 using MelonLoader;
+using PawMapLoader.Res.Components;
 using PawMapLoader.Res.Enum;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -81,20 +82,21 @@ namespace PawMapLoader.Res
             if (Store.FirePrevention.HasBlockConfig) return;
             if (Store.IsMapCustom)
             {
-                MelonLogger.Msg("Finding SceneConfig");
                 foreach (var go in SceneManager
                              .GetSceneByName(ConfigManager.Instance.Level.Scene.SceneName).GetRootGameObjects())
                 {
+                    if (go.name == "SceneObjects")
+                    {
+                        go.AddComponent<SceneRoot>();
+                    }
                     if (go.name == "SceneConfig")
                     {
-                        MelonLogger.Msg("| \"" + go.name + "\" is SceneConfig.");
                         var cblock = new GameObject("CityBlock");
                         cblock.transform.SetParent(go.transform);
                         cblock.AddComponent<CityBlockGrid>();
                         Store.FirePrevention.HasBlockConfig = true;
                         break;
                     }
-                    MelonLogger.Msg("| \"" + go.name + "\" is not SceneConfig");
                 }
             }
         }

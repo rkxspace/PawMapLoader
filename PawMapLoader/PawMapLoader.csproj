@@ -599,6 +599,7 @@
         <Compile Include="Res\PawScript\Resolvers\FloatResolver.cs" />
         <Compile Include="Res\PawScript\Resolvers\MathResolver.cs" />
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
+        <Compile Include="Res\PawScript\Resolvers\VectorResolver.cs" />
         <Compile Include="Res\PawScript\Validation\RestrictedValidation.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
