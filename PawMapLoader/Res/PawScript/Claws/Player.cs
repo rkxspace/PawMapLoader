@@ -11,7 +11,7 @@ namespace PawMapLoader.Res.PawScript.Claws
         public static void GetMainPlayer(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            int memAddr = string.IsNullOrEmpty(instruction.Arguments[0]) ? PointerResolver.ResolvePointerAddress(instruction.Arguments[0], interpreter) :-1;
+            int memAddr = !string.IsNullOrEmpty(instruction.Arguments[0]) ? PointerResolver.ResolvePointerAddress(instruction.Arguments[0], interpreter) :-1;
             interpreter.WriteMemory(PlayerManager.MainPlayer, memAddr);
         }
     }

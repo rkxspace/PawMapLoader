@@ -616,4 +616,8 @@
     </Target>
     -->
 
+    <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Debug' ">
+        <Exec Command="bash $(ProjectDir)release.sh" />
+    </Target>
+
 </Project>
