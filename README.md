@@ -17,6 +17,10 @@ Anyway, this mod's goal is to offer what is essentially a full map-making toolki
 
 This mod is made with Melonloader in mind. Not BepInEx.
 
+## Releases
+Stable: https://github.com/rkxspace/PawMapLoader/releases/latest
+Bleeding Edge: https://github.com/rkxspace/PawMapLoader/releases
+
 ## How to use
 The mod will create a `Maps` folder in `Pawperty Damage/UserData`.
 It is up to the user to make a `maps.json` inside `Maps`.
