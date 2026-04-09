@@ -95,7 +95,6 @@ namespace PawMapLoader.Res
                         cblock.transform.SetParent(go.transform);
                         cblock.AddComponent<CityBlockGrid>();
                         Store.FirePrevention.HasBlockConfig = true;
-                        break;
                     }
                 }
             }
