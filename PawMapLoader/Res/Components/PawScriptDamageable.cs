@@ -30,10 +30,5 @@ namespace PawMapLoader.Res.Components
             dmgble.enabled = true;
             dmgble.OnDamage = new DamageEvent(ptr);
         }
-
-        void RunRegisteredOnEvent()
-        {
-            
-        }
     }
 }

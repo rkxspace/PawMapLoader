@@ -7,5 +7,10 @@ namespace PawMapLoader.Res.Components
     public class SceneRoot : MonoBehaviour
     {
         public static SceneRoot Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
     }
 }
