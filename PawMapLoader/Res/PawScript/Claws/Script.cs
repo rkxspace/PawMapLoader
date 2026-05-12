@@ -22,13 +22,13 @@ namespace PawMapLoader.Res.PawScript.Claws
                 {
                     args += argument + " ";
                 }
-                sb.Append("| "+instructionCounter+": "+ins.Claw+"."+ins.Instruction+"( "+args+")");
+                sb.Append("\n| "+instructionCounter+": "+ins.Claw+"."+ins.Instruction+"( "+args+")");
                 instructionCounter++;
             }
 
             sb.Append("\nInterpreter Data ===================");
-            sb.Append("Executions: " + interpreter.Executions);
-            sb.Append("Next Auto-Write MemPos: " + interpreter.NextMemory);
+            sb.Append("\nExecutions: " + interpreter.Executions);
+            sb.Append("\nNext Auto-Write MemPos: " + interpreter.NextMemory);
             sb.Append("\nMemory:");
             foreach (var obj in interpreter.Memory)
             {
@@ -38,7 +38,7 @@ namespace PawMapLoader.Res.PawScript.Claws
             sb.Append("\nPointers:");
             foreach (var ptr in interpreter.NamedPtr)
             {
-                sb.Append("| "+ptr.Key + ": " + ptr.Value);
+                sb.Append("\n| "+ptr.Key + ": " + ptr.Value);
             }
             
             MelonLogger.Msg(sb.ToString());
@@ -78,6 +78,7 @@ namespace PawMapLoader.Res.PawScript.Claws
                 case "Less": result = Convert.ToDouble(resolved1) < Convert.ToDouble(resolved2); break;
                 case "EqualGreater": result = Convert.ToDouble(resolved1) >= Convert.ToDouble(resolved2); break;
                 case "EqualLess": result = Convert.ToDouble(resolved1) <= Convert.ToDouble(resolved2); break;
+                default: throw new InvalidOperationException("Comparison type of \"" + mode + "\" not found.");
             }
             
             instructionSetter = result?jumpTo:instructionSetter;

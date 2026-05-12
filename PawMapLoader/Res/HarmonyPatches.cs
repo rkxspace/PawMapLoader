@@ -1,5 +1,4 @@
 using System;
-using System.Windows.Forms;
 using HarmonyLib;
 using Il2CppConfig;
 using Il2CppDestructibles;
@@ -33,11 +32,6 @@ namespace PawMapLoader.Res
                 return true;
             }
             MelonLogger.Msg(scenename + " is custom.");
-            if (Store.PawScript.PawScriptRestrictedClassesEnabled) {
-                MessageBox.Show("Warning!", "You have Restricted PawScript classes enabled!\n" +
-                                    "This means maps have more control over the game, and by extension your computer.\n" +
-                                    "Do NOT run maps you have not personally vetted!" + "If you have not vetted the map, do so now.");
-            }
             Store.BundleStream = null;
             try
             {
@@ -107,7 +101,6 @@ namespace PawMapLoader.Res
         [HarmonyFinalizer]
         public static Exception Finalizer(Exception __exception, ref bool __result)
         {
-            
             if (__exception is IndexOutOfRangeException)
             {
                 __result = false;

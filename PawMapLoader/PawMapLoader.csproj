@@ -565,7 +565,6 @@
     <ItemGroup>
         <Compile Include="Class1.cs"/>
         <Compile Include="Init\InitMelon.cs" />
-        <Compile Include="Init\PatchReg.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\Components\PawScript.cs" />
@@ -573,7 +572,6 @@
         <Compile Include="Res\Components\SceneRoot.cs" />
         <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
-        <Compile Include="Res\Enum\RestrictedWatcher.cs" />
         <Compile Include="Res\FileManagement.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\Json\MapJson.cs" />
@@ -588,7 +586,6 @@
         <Compile Include="Res\PawScript\Claws\Math.cs" />
         <Compile Include="Res\PawScript\Claws\MemPointers.cs" />
         <Compile Include="Res\PawScript\Claws\Player.cs" />
-        <Compile Include="Res\PawScript\Claws\Restricted\Reflection.cs" />
         <Compile Include="Res\PawScript\Claws\Scene.cs" />
         <Compile Include="Res\PawScript\Claws\Script.cs" />
         <Compile Include="Res\PawScript\ComponentLogs.cs" />
@@ -600,7 +597,6 @@
         <Compile Include="Res\PawScript\Resolvers\MathResolver.cs" />
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
         <Compile Include="Res\PawScript\Resolvers\VectorResolver.cs" />
-        <Compile Include="Res\PawScript\Validation\RestrictedValidation.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
         <Compile Include="Res\WinFormMsg.cs" />

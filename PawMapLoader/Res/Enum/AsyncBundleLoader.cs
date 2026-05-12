@@ -43,7 +43,6 @@ namespace PawMapLoader.Res.Enum
                     MelonLogger.Error("Failed to load bundle " + e);
                     Store.BundleStream?.Close();
                     Store.BundleStream?.Dispose();
-                    MelonLogger.Msg(e.ToString());
                     yield break;
                 }
                 Store.MapLoadLocked = false;

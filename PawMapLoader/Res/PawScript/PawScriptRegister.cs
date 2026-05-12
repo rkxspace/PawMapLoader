@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MelonLoader;
 using Newtonsoft.Json;
 using PawMapLoader.Res.PawScript.Json;
-using PawMapLoader.Res.PawScript.Validation;
 using UnityEngine;
 
 namespace PawMapLoader.Res.PawScript
@@ -16,7 +15,6 @@ namespace PawMapLoader.Res.PawScript
         public static void Start(string scriptName)
         {
             var pawScriptInstructions = JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
-            RestrictedValidation.GetRestrictedClassesExist(pawScriptInstructions.Instructions);
             RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter {InstructionDumpReserve = pawScriptInstructions.Instructions})));
 
             IEnumerator Runner(Interpreter interpreter)
@@ -28,7 +26,7 @@ namespace PawMapLoader.Res.PawScript
                         MelonLogger.Warning($"Pawscript instruction delayed by 1 second: Frame has not been produced in {Time.timeAsDouble - lastFrameTime}.");
                         yield return new WaitForSeconds(1f);
                     }
-                    if (pawScriptInstructions.Instructions[i].Delay >= 0)
+                    if (pawScriptInstructions.Instructions[i].Delay > 0)
                         yield return new WaitForSeconds(pawScriptInstructions.Instructions[i].Delay);
                     interpreter.Interpret(pawScriptInstructions.Instructions[i], ref i);
                 }

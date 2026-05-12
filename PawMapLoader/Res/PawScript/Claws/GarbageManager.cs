@@ -10,10 +10,7 @@ namespace PawMapLoader.Res.PawScript.Claws
             var discardable = new List<int>();
             foreach (var valPair in interpreter.Memory)
             {
-                if (!interpreter.NamedPtr.ContainsValue(valPair.Key))
-                {
-                    discardable.Add(valPair.Key);
-                }
+                if (!interpreter.NamedPtr.ContainsValue(valPair.Key)) discardable.Add(valPair.Key);
             }
 
             foreach (var mem in discardable)
