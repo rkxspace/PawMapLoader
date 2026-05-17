@@ -12,6 +12,7 @@
         <AssemblyName>PawMapLoader</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -570,6 +571,7 @@
         <Compile Include="Res\Components\PawScript.cs" />
         <Compile Include="Res\Components\PawScriptDamageable.cs" />
         <Compile Include="Res\Components\SceneRoot.cs" />
+        <Compile Include="Res\Debug\MethodDump.cs" />
         <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\FileManagement.cs" />
