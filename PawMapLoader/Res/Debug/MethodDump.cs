@@ -15,13 +15,13 @@ namespace PawMapLoader.Res.Debug
             strh_DumpText.AppendLine("=================== GAME DUMP ===================");
             foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
             {
-                strh_DumpText.AppendLine($"[] {asm.GetName().Name} ===================");
+                strh_DumpText.AppendLine($"\n\n[] {asm.GetName().Name} ===================\n");
                 Type[] types;
                 try {types = asm.GetTypes();} catch { continue; }
 
                 foreach (var type in types)
                 {
-                    strh_DumpText.AppendLine($"|| {type.Name}");
+                    strh_DumpText.AppendLine($"|| {type.FullName}");
 
                     foreach (var method in type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic |
                                                            BindingFlags.Static | BindingFlags.Instance |
@@ -30,7 +30,7 @@ namespace PawMapLoader.Res.Debug
                         try
                         {
                             var tempstr = string.Join(", ", method.GetParameters().Select(p => $"{p.ParameterType.Name} {p.Name}"));
-                            strh_DumpText.AppendLine($"||==> {method.Name}({tempstr}) ==> ret {method.ReturnType.Name}");
+                            strh_DumpText.AppendLine($"||==> {method.Name}({tempstr}) ==> ret {method.ReturnType.FullName}");
                         }
                         catch (Exception e)
                         {
