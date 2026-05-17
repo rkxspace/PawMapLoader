@@ -580,6 +580,8 @@
         <Compile Include="Res\Json\MapList.cs" />
         <Compile Include="Res\Json\MapMetadata.cs" />
         <Compile Include="Res\Json\PawMap.cs" />
+        <Compile Include="Res\PawPack\V1\Unpacker.cs" />
+        <Compile Include="Res\PawPack\VersionHandler.cs" />
         <Compile Include="Res\PawScript\ClawRegister.cs" />
         <Compile Include="Res\PawScript\Claws\Animator.cs" />
         <Compile Include="Res\PawScript\Claws\GameState.cs" />
@@ -601,6 +603,7 @@
         <Compile Include="Res\PawScript\Resolvers\VectorResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
+        <Compile Include="Res\WinFormFilePicker.cs" />
         <Compile Include="Res\WinFormMsg.cs" />
     </ItemGroup>
     <ItemGroup>
