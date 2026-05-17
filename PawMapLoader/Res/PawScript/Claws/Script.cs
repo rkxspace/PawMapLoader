@@ -22,23 +22,23 @@ namespace PawMapLoader.Res.PawScript.Claws
                 {
                     args += argument + " ";
                 }
-                sb.Append("\n| "+instructionCounter+": "+ins.Claw+"."+ins.Instruction+"( "+args+")");
+                sb.Append($"\n| {instructionCounter}: {ins.Claw}.{ins.Instruction}( {args} )");
                 instructionCounter++;
             }
 
             sb.Append("\nInterpreter Data ===================");
-            sb.Append("\nExecutions: " + interpreter.Executions);
-            sb.Append("\nNext Auto-Write MemPos: " + interpreter.NextMemory);
+            sb.Append($"\nExecutions: {interpreter.Executions}");
+            sb.Append($"\nNext Auto-Write MemPos: {interpreter.NextMemory}");
             sb.Append("\nMemory:");
             foreach (var obj in interpreter.Memory)
             {
-                sb.Append("| "+obj.Key + ": " + Convert.ChangeType(obj.Value, obj.Value.GetType()).ToString());
+                sb.Append($"| {obj.Key}: {Convert.ChangeType(obj.Value, obj.Value.GetType())}");
             }
 
             sb.Append("\nPointers:");
             foreach (var ptr in interpreter.NamedPtr)
             {
-                sb.Append("\n| "+ptr.Key + ": " + ptr.Value);
+                sb.Append($"\n| {ptr.Key}: {ptr.Value}");
             }
             
             MelonLogger.Msg(sb.ToString());
@@ -46,7 +46,7 @@ namespace PawMapLoader.Res.PawScript.Claws
 
         public static void Log(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            MelonLogger.Msg("[Pawscript] " + (instruction.Arguments[0] ?? ""));
+            MelonLogger.Msg($"[Pawscript] {instruction.Arguments[0] ?? ""}");
         }
 
         public static void Jump(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
@@ -78,7 +78,7 @@ namespace PawMapLoader.Res.PawScript.Claws
                 case "Less": result = Convert.ToDouble(resolved1) < Convert.ToDouble(resolved2); break;
                 case "EqualGreater": result = Convert.ToDouble(resolved1) >= Convert.ToDouble(resolved2); break;
                 case "EqualLess": result = Convert.ToDouble(resolved1) <= Convert.ToDouble(resolved2); break;
-                default: throw new InvalidOperationException("Comparison type of \"" + mode + "\" not found.");
+                default: throw new InvalidOperationException($"Comparison type of \"{mode}\" not found.");
             }
             
             instructionSetter = result?jumpTo:instructionSetter;

@@ -33,7 +33,7 @@ namespace PawMapLoader.Res
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error("Could not add data:\n"+e);
+                    MelonLogger.Error($"Could not add data:\n{e}");
                 }
             }
             LevelDataProvider.Instance._levels =  levels.ToArray();

@@ -1,45 +1,46 @@
 using System.Collections.Generic;
-using System.Reflection;
 using PawMapLoader.Res.PawScript.Claws;
+using PawMapLoader.Res.PawScript.Json;
 
 namespace PawMapLoader.Res.PawScript
 {
+    public delegate void InstructionDelegate(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter);
     public class ClawRegister
     {
-        public static readonly Dictionary<string, MethodInfo> rClaws = new Dictionary<string, MethodInfo>
+        public static readonly Dictionary<string, InstructionDelegate> rClaws = new Dictionary<string, InstructionDelegate>
         {
-            {"Animator.SetParameter", typeof(Animator).GetMethod(nameof(Animator.SetParameter))},
-            {"Animator.SetTrigger", typeof(Animator).GetMethod(nameof(Animator.SetTrigger))},
+            {"Animator.SetParameter", Animator.SetParameter},
+            {"Animator.SetTrigger", Animator.SetTrigger},
             
-            {"GameState.EndGame", typeof(GameState).GetMethod(nameof(GameState.EndGame))},
-            {"GameState.RestartGame", typeof(GameState).GetMethod(nameof(GameState.RestartGame))},
-            {"GameState.SetTimeScale", typeof(GameState).GetMethod(nameof(GameState.SetTimeScale))},
-            {"GameState.ToLobby", typeof(GameState).GetMethod(nameof(GameState.ToLobby))},
+            {"GameState.EndGame", GameState.EndGame},
+            {"GameState.RestartGame", GameState.RestartGame},
+            {"GameState.SetTimeScale", GameState.SetTimeScale},
+            {"GameState.ToLobby", GameState.ToLobby},
             
-            {"GarbageManager.Collect", typeof(GarbageManager).GetMethod(nameof(GarbageManager.Collect))},
+            {"GarbageManager.Collect", GarbageManager.Collect},
             
-            {"Map.MoveObject", typeof(Map).GetMethod(nameof(Map.MoveObject))},
-            {"Map.RotateObject", typeof(Map).GetMethod(nameof(Map.RotateObject))},
-            {"Map.ScaleObject", typeof(Map).GetMethod(nameof(Map.ScaleObject))},
+            {"Map.MoveObject", Map.MoveObject},
+            {"Map.RotateObject", Map.RotateObject},
+            {"Map.ScaleObject", Map.ScaleObject},
             
-            {"Math.Evaluate", typeof(Math).GetMethod(nameof(Math.Evaluate))}, //Unfinished - Research how to evaluate.
-            {"Math.Float", typeof(Math).GetMethod(nameof(Math.Float))},
-            {"Math.Int", typeof(Math).GetMethod(nameof(Math.Int))},
-            {"Math.Vector2", typeof(Math).GetMethod(nameof(Math.Vector2))},
-            {"Math.Vector3", typeof(Math).GetMethod(nameof(Math.Vector3))},
-            {"Math.Vector4", typeof(Math).GetMethod(nameof(Math.Vector4))},
+            {"Math.Evaluate", Math.Evaluate}, //Unfinished - Research how to evaluate.
+            {"Math.Float", Math.Float},
+            {"Math.Int", Math.Int},
+            {"Math.Vector2", Math.Vector2},
+            {"Math.Vector3", Math.Vector3},
+            {"Math.Vector4", Math.Vector4},
             
-            {"MemPointers.CreatePointer", typeof(MemPointers).GetMethod(nameof(MemPointers.CreatePointer))},
-            {"MemPointers.DestroyPointer", typeof(MemPointers).GetMethod(nameof(MemPointers.DestroyPointer))},
+            {"MemPointers.CreatePointer", MemPointers.CreatePointer},
+            {"MemPointers.DestroyPointer", MemPointers.DestroyPointer},
             
-            {"Player.GetMainPlayer", typeof(Player).GetMethod(nameof(Player.GetMainPlayer))},
+            {"Player.GetMainPlayer", Player.GetMainPlayer},
             
-            {"Scene.UnityGameObjectToMemory", typeof(Scene).GetMethod(nameof(Scene.UnityGameObjectToMemory))},
+            {"Scene.UnityGameObjectToMemory", Scene.UnityGameObjectToMemory},
             
-            {"Script.ConditionalJump", typeof(Script).GetMethod(nameof(Script.ConditionalJump))},
-            {"Script.Jump", typeof(Script).GetMethod(nameof(Script.Jump))},
-            {"Script.Dump", typeof(Script).GetMethod(nameof(Script.Dump))},
-            {"Script.Log", typeof(Script).GetMethod(nameof(Script.Log))}
+            {"Script.ConditionalJump", Script.ConditionalJump},
+            {"Script.Jump", Script.Jump},
+            {"Script.Dump", Script.Dump},
+            {"Script.Log", Script.Log}
             
         };
     }

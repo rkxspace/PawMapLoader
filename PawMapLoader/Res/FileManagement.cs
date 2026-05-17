@@ -27,14 +27,15 @@ namespace PawMapLoader.Res
 
         public static Stream OpenMapFile(string assetString)
         {
-            string assetPath = Path.Combine(customMapsDirectory, assetString.Replace(".", "\\") + ".pawbox");
-            if (File.Exists(assetPath)) return Il2CppSystem.IO.File.Open(assetPath, FileMode.Open);
-            throw new FileNotFoundException("Map File Not Found: " + assetPath);
+            string assetPath = Path.Combine(customMapsDirectory, $"{assetString.Replace(".", "\\")}.pawbox");
+            return File.Exists(assetPath) ?
+                Il2CppSystem.IO.File.Open(assetPath, FileMode.Open) :
+                throw new FileNotFoundException($"Map File Not Found: {assetPath}");
         }
 
         public static string GetScriptFile(string scriptName)
         {
-            var scriptPath = (ConfigManager.Instance.Level.Scene.SceneName + ".Scripts." + scriptName).Replace(".", "\\") + ".json";
+            var scriptPath = $"{$"{ConfigManager.Instance.Level.Scene.SceneName}.Scripts.{scriptName}".Replace(".", "\\")}.json";
             return File.Exists(scriptPath) ? File.ReadAllText(scriptPath) : null;
         }
     }

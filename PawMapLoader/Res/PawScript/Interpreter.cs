@@ -25,18 +25,9 @@ namespace PawMapLoader.Res.PawScript
         {
             if (obj == null) throw new NullReferenceException();
             if (address >= 0) {Memory[address] = obj; return;}
-            for (int i = 0; i < 1; i++)
-            {
-                if (Memory.ContainsKey(NextMemory)) {
-                    NextMemory++;
-                    i--;
-                }
-                else
-                {
-                    Memory.Add(NextMemory, obj);
-                    NextMemory++;
-                }
-            }
+            while (Memory.ContainsKey(NextMemory))
+                NextMemory++;
+            Memory.Add(NextMemory, obj);
         }
 
         public void Interpret(PawScriptInstruction instruction, ref int instructionSetter)
@@ -44,12 +35,10 @@ namespace PawMapLoader.Res.PawScript
             Executions++;
             try
             {
-                var args = new object[] { instruction, instructionSetter, this};
                 var methodText = instruction.Claw + "." + instruction.Instruction;
                 if (ClawRegister.rClaws.ContainsKey(methodText))
                 {
-                    ClawRegister.rClaws[methodText].Invoke(null, args);
-                    instructionSetter = (int)args[1];
+                    ClawRegister.rClaws[methodText](instruction, ref instructionSetter, this);
                 }
                 else throw new MissingMethodException($"{methodText} does not exist.");
             }

@@ -24,14 +24,14 @@ namespace PawMapLoader.Res.Enum
                 while (!asyncBundle.isDone)
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
-                        "Loading Custom Level...\n" + Math.Round(asyncBundle.progress * 100) + "%";
+                        $"Loading Custom Level...\n{Math.Round(asyncBundle.progress * 100)}%";
                     yield return null;
                 }
 
                 try
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
-                        "Done!\n" + asyncBundle.progress * 100 + "%";
+                        $"Done!\n{asyncBundle.progress * 100}%";
                     DialogueManager.Instance.DialogueWindow.Close();
                     Store.LoadedAssetBundle = asyncBundle.assetBundle??throw new NullReferenceException("AssetBundle failed to load.");
                 }
@@ -40,7 +40,7 @@ namespace PawMapLoader.Res.Enum
                     Store.MapLoadLocked = false;
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text = "Failed to load!";
                     DialogueManager.Instance.DialogueWindow.ConfirmButton.gameObject.SetActive(true);
-                    MelonLogger.Error("Failed to load bundle " + e);
+                    MelonLogger.Error($"Failed to load bundle {e}");
                     Store.BundleStream?.Close();
                     Store.BundleStream?.Dispose();
                     yield break;

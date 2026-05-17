@@ -31,7 +31,7 @@ namespace PawMapLoader.Res
                 Store.FirePrevention.IsGameStarted = true;
                 return true;
             }
-            MelonLogger.Msg(scenename + " is custom.");
+            MelonLogger.Msg($"{scenename} is custom.");
             Store.BundleStream = null;
             try
             {
