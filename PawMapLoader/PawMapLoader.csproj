@@ -594,6 +594,7 @@
         <Compile Include="Res\PawScript\Claws\Scene.cs" />
         <Compile Include="Res\PawScript\Claws\Script.cs" />
         <Compile Include="Res\PawScript\ComponentLogs.cs" />
+        <Compile Include="Res\PawScript\Events\DamageEvent.cs" />
         <Compile Include="Res\PawScript\Interpreter.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />

@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("PawMapLoader")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Pawperty Damage Map Loader")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("rkxspace")]
 [assembly: AssemblyProduct("PawMapLoader")]
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]

@@ -14,21 +14,25 @@ namespace PawMapLoader.Res.Components
     [RegisterTypeInIl2Cpp]
     public class PawScriptDamageable : MonoBehaviour
     {
-        public bool destroyOnNoHealth;
-        public float health;
-        public int eventScriptIndex;
+        public bool destroyOnNoHealth = true;
+        public float health = -1;
+        public string eventScriptName = string.Empty;
 
         void Awake()
         {
-            if (health == -1f || eventScriptIndex == -1) {
+            if (health == -1f || eventScriptName == string.Empty) {
                 ComponentLogs.UnsetComponent(gameObject);
                 return;
             }
             var dmgble = gameObject.AddComponent<Damageable>();
             dmgble._health = new Health() {Max = health, Value = health};
-            IntPtr ptr = IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<DamageEvent>.NativeClassPtr);
             dmgble.enabled = true;
-            dmgble.OnDamage = new DamageEvent(ptr);
+            dmgble.OnDamage =
+                (Action<Damageable, Damage, DamageEventParams>)
+                ((Damageable dgb, Damage dmg, DamageEventParams degparam) =>
+                {
+                    
+                });
         }
     }
 }
