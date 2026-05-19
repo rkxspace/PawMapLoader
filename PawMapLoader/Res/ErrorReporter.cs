@@ -1,5 +1,6 @@
 using System.Net;
 using Il2CppSystem;
+using Newtonsoft.Json;
 using Uri = System.Uri;
 
 namespace PawMapLoader.Res
@@ -14,19 +15,29 @@ namespace PawMapLoader.Res
     public class ErrorReporter
     {
         public static string collectionServer = "https://errorcollection.xilenth.space/error";
-        
+
         public static void ReportIl2CppException(Exception ex)
         {
             var wc = new WebClient();
             wc.Headers.Add("user-agent", "Mozilla/5.0");
-            wc.UploadString(new Uri(collectionServer), $"{{\"error\": \"[IL2CPP]: {ex.Message}\", \"stacktrace\": \"{ex.StackTrace}\"}}");
+            var rqj = JsonConvert.SerializeObject(new
+            {
+                error = $"[IL2CPP]: {ex.Message}",
+                stacktrace = ex.StackTrace
+            });
+            wc.UploadString(new Uri(collectionServer), rqj);
         }
 
         public static void Report(System.Exception ex)
         {
             var wc = new WebClient();
             wc.Headers.Add("user-agent", "Mozilla/5.0");
-            wc.UploadString(new Uri(collectionServer), $"{{\"error\": \"{ex.Message}\", \"stacktrace\": \"{ex.StackTrace}\"}}");
+            var rqj = JsonConvert.SerializeObject(new
+            {
+                error = ex.Message,
+                stacktrace = ex.StackTrace
+            });
+            wc.UploadString(new Uri(collectionServer), rqj);
         }
     }
 }
