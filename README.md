@@ -17,6 +17,11 @@ Anyway, this mod's goal is to offer what is essentially a full map-making toolki
 
 This mod is made with Melonloader in mind. Not BepInEx.
 
+## Error Reporting
+This mod reports errors to a server hosted by rkxspace.
+If you wish to change or disable this behavior, please edit the variables at the top of `PawMapLoader/Res/ErrorReporter.cs`.
+The server hosted by rkxspace only collects errors and stack traces.
+
 ## Releases
 - Stable: https://github.com/rkxspace/PawMapLoader/releases/latest
 - Bleeding Edge: https://github.com/rkxspace/PawMapLoader/releases
