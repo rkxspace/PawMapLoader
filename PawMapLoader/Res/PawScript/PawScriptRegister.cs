@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MelonLoader;
 using Newtonsoft.Json;
+using PawMapLoader.Res.PawScript.Events;
 using PawMapLoader.Res.PawScript.Json;
 using UnityEngine;
 
@@ -12,13 +13,41 @@ namespace PawMapLoader.Res.PawScript
         public static List<object> RunningScripts = new List<object>();
         public static double lastFrameTime = 0;
 
-        public static void Start(string scriptName)
+        public static void Start(string scriptName, DamageEvent dmgEvent = null)
         {
             var pawScriptInstructions = JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
             RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter {InstructionDumpReserve = pawScriptInstructions.Instructions})));
 
             IEnumerator Runner(Interpreter interpreter)
             {
+                if (dmgEvent != null)
+                {
+                    interpreter.Memory = new Dictionary<int, object>
+                    {
+                        { 0, dmgEvent.source },
+                        { 1, dmgEvent.damageable.MaxHealth },
+                        { 2, dmgEvent.damageable.Health },
+                        { 3, dmgEvent.damage.Player },
+                        { 4, dmgEvent.damage.IsDirectHit },
+                        { 5, dmgEvent.damage.Direction },
+                        { 6, dmgEvent.damage.Amount },
+                        { 7, dmgEvent.eventParams.OldHealth },
+                        { 8, dmgEvent.eventParams.NewHealth }
+
+                    };
+                    interpreter.NamedPtr = new Dictionary<string, int>
+                    {
+                        {"EventSource", 0},
+                        {"MaxHealth", 1},
+                        {"Health", 2},
+                        {"Player", 3},
+                        {"IsDirectHit", 4},
+                        {"Direction", 5},
+                        {"Amount", 6},
+                        {"OldHealth", 7},
+                        {"NewHealth", 8},
+                    };
+                }
                 for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++) 
                 {
                     if ((Time.timeAsDouble - lastFrameTime) > 0.1)

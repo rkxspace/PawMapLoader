@@ -35,7 +35,7 @@ namespace PawMapLoader.Res
 
         public static string GetScriptFile(string scriptName)
         {
-            var scriptPath = $"{$"{ConfigManager.Instance.Level.Scene.SceneName}.Scripts.{scriptName}".Replace(".", "\\")}.json";
+            var scriptPath = $"{$"{ConfigManager.Instance.Level.Scene.SceneName}_Scripts.{scriptName}".Replace(".", "\\")}.json";
             return File.Exists(scriptPath) ? File.ReadAllText(scriptPath) : null;
         }
     }

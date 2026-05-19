@@ -12,7 +12,9 @@ namespace PawMapLoader.Res.PawScript
         public Dictionary<int, object> Memory = new Dictionary<int, object>();
         public Dictionary<string, int> NamedPtr = new Dictionary<string, int>();
         public int NextMemory;
+        public bool scriptDebug;
 
+        // leaving for debugging
         public void Reset()
         {
             Memory.Clear();
@@ -23,6 +25,7 @@ namespace PawMapLoader.Res.PawScript
 
         public void WriteMemory(object obj, int address = -1)
         {
+            if (scriptDebug) MelonLogger.Msg($"WriteMemory {address}");
             if (obj == null) throw new NullReferenceException();
             if (address >= 0) {Memory[address] = obj; return;}
             while (Memory.ContainsKey(NextMemory))
@@ -36,6 +39,7 @@ namespace PawMapLoader.Res.PawScript
             try
             {
                 var methodText = instruction.Claw + "." + instruction.Instruction;
+                if (scriptDebug) MelonLogger.Msg($"Instruction {instructionSetter}: {methodText} - Args: [{string.Join(", ", instruction.Arguments)}]");
                 if (ClawRegister.rClaws.ContainsKey(methodText))
                 {
                     ClawRegister.rClaws[methodText](instruction, ref instructionSetter, this);
