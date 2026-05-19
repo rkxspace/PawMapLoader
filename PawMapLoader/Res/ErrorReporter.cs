@@ -19,18 +19,14 @@ namespace PawMapLoader.Res
         {
             var wc = new WebClient();
             wc.Headers.Add("user-agent", "Mozilla/5.0");
-            wc.Headers.Add("error", $"[IL2CPP]: {ex.Message}");
-            wc.Headers.Add("stacktrace", ex.StackTrace);
-            wc.UploadString(new Uri(collectionServer), "");
+            wc.UploadString(new Uri(collectionServer), $"{{\"error\": \"[IL2CPP]: {ex.Message}\", \"stacktrace\": \"{ex.StackTrace}\"}}");
         }
 
         public static void Report(System.Exception ex)
         {
             var wc = new WebClient();
             wc.Headers.Add("user-agent", "Mozilla/5.0");
-            wc.Headers.Add("error", ex.Message);
-            wc.Headers.Add("stacktrace", ex.StackTrace);
-            wc.UploadString(new Uri(collectionServer), "");
+            wc.UploadString(new Uri(collectionServer), $"{{\"error\": \"{ex.Message}\", \"stacktrace\": \"{ex.StackTrace}\"}}");
         }
     }
 }
