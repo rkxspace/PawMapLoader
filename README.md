@@ -9,7 +9,7 @@ Anyway, this mod's goal is to offer what is essentially a full map-making toolki
 - [X] Load a map successfully
 - [X] Load map but in a lazy way (Loads when needed, not at game start)
 - [X] Unload map when exit
-- [ ] Finish scripting system
+- [ ] Finish scripting system [Partially done!]
 - [ ] Create working damageable
 - [ ] Make components for easy creation of different object types
 - [ ] Create an SDK for use in Unity
