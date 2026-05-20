@@ -110,22 +110,6 @@ namespace PawMapLoader.Res
         }
     }
 
-    [HarmonyPatch(typeof(Damageable), nameof(Damageable.AddDamage))]
-    public static class Damageable_AddDamage_Patch
-    {
-        [HarmonyPrefix]
-        public static bool Prefix(Damageable __instance, Damage __0)
-        {
-            if (Store.IsMapCustom)
-            {
-                __0.Player.Character.AddGrow(Math.Clamp(__0.Amount/100, 0.0f, __instance.Health));
-                __instance.Health -= __0.Amount;
-                return false;
-            }
-            return true;
-        }
-    }
-
     [HarmonyPatch(typeof(MeshCombinerService), nameof(MeshCombinerService.CombineBuildingBlockMeshes))]
     public static class MeshCombinerService_CombineBuildingBlockMeshes_Patch
     {

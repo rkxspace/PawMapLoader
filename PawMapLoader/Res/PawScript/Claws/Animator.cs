@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using PawMapLoader.Res.PawScript.Json;
 using PawMapLoader.Res.PawScript.Resolvers;
+using PawMapLoader.Res.PawScript.Validation;
 
 namespace PawMapLoader.Res.PawScript.Claws
 {
@@ -12,7 +13,10 @@ namespace PawMapLoader.Res.PawScript.Claws
     {
         public static void SetParameter(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            UnityEngine.Animator animator = (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object resolvedPointer = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            TypeValidation.Validate<UnityEngine.Animator>(resolvedPointer);
+
+            UnityEngine.Animator animator = (UnityEngine.Animator)resolvedPointer;
 
             string paramName = instruction.Arguments[1];
             string paramValue = instruction.Arguments[2];

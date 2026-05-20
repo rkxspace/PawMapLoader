@@ -4,6 +4,7 @@ using Il2CppInterop.Runtime;
 using MelonLoader;
 using PawMapLoader.Res.PawScript;
 using UnityEngine;
+using DamageEvent = PawMapLoader.Res.PawScript.Events.DamageEvent;
 
 namespace PawMapLoader.Res.Components
 {
@@ -20,19 +21,35 @@ namespace PawMapLoader.Res.Components
 
         void Awake()
         {
-            if (health == -1f || eventScriptName == string.Empty) {
-                ComponentLogs.UnsetComponent(gameObject);
-                return;
-            }
-            var dmgble = gameObject.AddComponent<Damageable>();
-            dmgble._health = new Health() {Max = health, Value = health};
-            dmgble.enabled = true;
-            dmgble.OnDamage =
-                (Action<Damageable, Damage, DamageEventParams>)
-                ((Damageable dgb, Damage dmg, DamageEventParams degparam) =>
+            try
+            {
+                if (health == -1f || eventScriptName == string.Empty)
                 {
-                    
-                });
+                    ComponentLogs.UnsetComponent(gameObject);
+                    return;
+                }
+
+                var dmgble = gameObject.AddComponent<Damageable>();
+                dmgble._health = new Health { Max = health, Value = health };
+                dmgble.enabled = true;
+                dmgble.OnDamage =
+                    (Action<Damageable, Damage, DamageEventParams>)
+                    ((dgb, dmg, degparam) =>
+                    {
+                        PawScriptRegister.Start(eventScriptName, new DamageEvent
+                        {
+                            damage = dmg,
+                            damageable = dgb,
+                            eventParams = degparam,
+                            source = gameObject
+                        });
+                    });
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"PawScriptDamageable component on {gameObject.name} encountered an error.", e);
+                ErrorReporter.Report(e);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using Il2CppGame;
 using PawMapLoader.Res.PawScript.Json;
 using PawMapLoader.Res.PawScript.Resolvers;
+using PawMapLoader.Res.PawScript.Validation;
 
 namespace PawMapLoader.Res.PawScript.Claws
 {
@@ -20,7 +21,9 @@ namespace PawMapLoader.Res.PawScript.Claws
         public static void SetTimeScale(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            float ts = (float)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object resolvedPointer = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            TypeValidation.Validate<float>(resolvedPointer);
+            float ts = (float)resolvedPointer;
             GameManager.Instance.SetTimeScale(ts);
         }
 

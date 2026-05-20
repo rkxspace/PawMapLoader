@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MelonLoader;
@@ -15,7 +16,17 @@ namespace PawMapLoader.Res.PawScript
 
         public static void Start(string scriptName, DamageEvent dmgEvent = null)
         {
-            var pawScriptInstructions = JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
+            PawScriptInstructions pawScriptInstructions;
+            try
+            {
+                pawScriptInstructions =
+                    JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"Failed to load script \"{scriptName}\".", e);
+                throw;
+            }
             RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter {InstructionDumpReserve = pawScriptInstructions.Instructions})));
 
             IEnumerator Runner(Interpreter interpreter)
@@ -52,7 +63,7 @@ namespace PawMapLoader.Res.PawScript
                 {
                     if ((Time.timeAsDouble - lastFrameTime) > 0.1)
                     {
-                        MelonLogger.Warning($"Pawscript instruction delayed by 1 second: Frame has not been produced in {Time.timeAsDouble - lastFrameTime}.");
+                        MelonLogger.Warning($"Pawscript is waiting for 1 second: Frame has not been produced in {Time.timeAsDouble - lastFrameTime}.");
                         yield return new WaitForSeconds(1f);
                     }
                     if (pawScriptInstructions.Instructions[i].Delay > 0)

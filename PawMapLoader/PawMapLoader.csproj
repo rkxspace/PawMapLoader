@@ -576,6 +576,7 @@
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\ErrorReporter.cs" />
         <Compile Include="Res\FileManagement.cs" />
+        <Compile Include="Res\GUI\PawScriptConsole.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\Json\MapJson.cs" />
         <Compile Include="Res\Json\MapList.cs" />
@@ -599,10 +600,7 @@
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />
         <Compile Include="Res\PawScript\PawScriptRegister.cs" />
-        <Compile Include="Res\PawScript\Resolvers\FloatResolver.cs" />
-        <Compile Include="Res\PawScript\Resolvers\MathResolver.cs" />
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
-        <Compile Include="Res\PawScript\Resolvers\VectorResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
         <Compile Include="Res\WinFormFilePicker.cs" />

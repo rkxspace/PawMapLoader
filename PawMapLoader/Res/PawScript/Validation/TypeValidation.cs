@@ -1,10 +1,12 @@
+using System;
+
 namespace PawMapLoader.Res.PawScript.Validation
 {
     public class TypeValidation
     {
-        public static bool Validate<T>(object mem)
+        public static void Validate<T>(object mem)
         {
-            return mem is T;
+            if (!(mem is T)) throw new ArgumentException("Invalid type passed.");
         }
     }
 }

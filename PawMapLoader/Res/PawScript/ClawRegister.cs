@@ -7,7 +7,7 @@ namespace PawMapLoader.Res.PawScript
     public delegate void InstructionDelegate(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter);
     public class ClawRegister
     {
-        public static readonly Dictionary<string, InstructionDelegate> rClaws = new Dictionary<string, InstructionDelegate>
+        public static readonly IReadOnlyDictionary<string, InstructionDelegate> rClaws = new Dictionary<string, InstructionDelegate>
         {
             {"Animator.SetParameter", Animator.SetParameter},
             {"Animator.SetTrigger", Animator.SetTrigger},
@@ -22,6 +22,7 @@ namespace PawMapLoader.Res.PawScript
             {"Map.MoveObject", Map.MoveObject},
             {"Map.RotateObject", Map.RotateObject},
             {"Map.ScaleObject", Map.ScaleObject},
+            {"Map.DestroyObject", Map.DestroyObject},
             
             {"Math.Evaluate", Math.Evaluate}, //Unfinished - Research how to evaluate.
             {"Math.Float", Math.Float},
@@ -34,6 +35,8 @@ namespace PawMapLoader.Res.PawScript
             {"MemPointers.DestroyPointer", MemPointers.DestroyPointer},
             
             {"Player.GetMainPlayer", Player.GetMainPlayer},
+            {"Player.GetPlayer", Player.GetPlayer},
+            {"Player.AddScale", Player.AddScale},
             
             {"Scene.UnityGameObjectToMemory", Scene.UnityGameObjectToMemory},
             

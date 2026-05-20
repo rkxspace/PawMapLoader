@@ -1,5 +1,6 @@
 using Il2CppInterop.Runtime;
 using Il2CppSystem;
+using MelonLoader;
 using PawMapLoader.Res;
 using PawMapLoader.Res.Enum;
 using PawMapLoader.Res.Json;
@@ -14,14 +15,24 @@ namespace PawMapLoader
     {
         public static void InitMelon()
         {
-            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
-                ErrorReporter.Report(e.ExceptionObject as Exception);
-            Il2CppSystem.AppDomain.CurrentDomain.UnhandledException = (System.Action<Object, UnhandledExceptionEventArgs>)((sender, e) =>
+            try
             {
-                var ex = e.ExceptionObject.Cast<Il2CppSystem.Exception>();
-                ErrorReporter.ReportIl2CppException(ex);
-            });
-            LevelDataProvider.WaitForDataProvider();
+                Il2CppSystem.AppDomain.CurrentDomain.UnhandledException =
+                    (System.Action<Object, UnhandledExceptionEventArgs>)((sender, e) =>
+                    {
+                        var ex = e.ExceptionObject.Cast<Il2CppSystem.Exception>();
+                        ErrorReporter.ReportIl2CppException(ex);
+                    }); // Catching Il2Cpp errors, since it is useful in the case the mod breaks something.
+
+                LevelDataProvider.WaitForDataProvider();
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error(
+                    "PawMapLoader init failure! This should never happen.", e
+                    );
+                ErrorReporter.Report(e);
+            }
         }
 
         public static void InitMaps()

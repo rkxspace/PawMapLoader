@@ -20,6 +20,9 @@ namespace PawMapLoader.Res
         public static Dictionary<string, PawScriptInstructions> ScriptCache =
             new Dictionary<string, PawScriptInstructions>();
 
+        public delegate void Update();
+        //public static 
+
         public class FirePrevention
         {
             public static bool IsGameStarted = false;
