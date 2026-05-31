@@ -5,17 +5,17 @@ It's funny, you spend 30 minutes in a game, realize you've seen all of it, 400 h
 
 Anyway, this mod's goal is to offer what is essentially a full map-making toolkit. Right now it's a bit rough, but I plan on smoothing out those edges a bit.
 
-## TODO
-- [X] Load a map successfully
-- [X] Load map but in a lazy way (Loads when needed, not at game start)
-- [X] Unload map when exit
+## TODO <sup>(In no specific order.)</sup>
 - [ ] Finish scripting system [Partially done!]
+- [ ] Distribution Format
 - [ ] Create working damageable
 - [ ] Make components for easy creation of different object types
 - [ ] Create an SDK for use in Unity
-- [ ] Maybe fix additional things
+- [ ] Make an in-game editor
+- [ ] Documentation
+- [ ] Website for documentation
 
-This mod is made with Melonloader in mind. Not BepInEx.
+> This mod is made with Melonloader in mind. Not BepInEx.
 
 ## Error Reporting
 This mod reports errors to a server hosted by rkxspace.
@@ -54,7 +54,8 @@ Here is a template to get started:
     ]
 }
 ```
-(Comments will work. Don't worry!)
+> Comments are ignored by newtonsoft.json.
+> Unused fields are ignored by the mod. Implementations are planned.
 
 To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. After creating the project, create a scene with the name format of `Author.MapName`. Add the scene to an assetbundle. As of right now, components needed to create buildings and such need to be stubbed by the user. The root game objects should be the following:
 - SceneObjects - For objects in the scene, thats it.
@@ -62,5 +63,6 @@ To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. Aft
 
 After building the bundle, add the entry for your map to the `maps.json` file. AssetFile should be the same as your scene name, and the bundle should be placed as `Author/MapName.pawbox`
 
-# Small Notice
-- rkxspace and this project are **not affiliated with nor endorsed by Dare Looks**.
+<img src="https://github.com/rkxspace/PawMapLoader/blob/master/assets/rkxspacemulti.png?raw=true" alt="rkxspace" width="400" height="300">
+
+<sup>rkxspace and this project are **not affiliated with nor endorsed by Dare Looks**.</sup>
