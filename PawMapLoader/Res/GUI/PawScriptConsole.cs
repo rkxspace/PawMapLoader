@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 namespace PawMapLoader.Res.GUI
 {
+    // This GUI crashes the game and I don't know why.
+    
     public class PawScriptConsole
     {
         public static void Register()
@@ -40,7 +42,7 @@ namespace PawMapLoader.Res.GUI
         {
             GUILayout.BeginVertical();
 
-            GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            ScrollPos = GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
             foreach (var line in Logs)
             {
                 GUILayout.Label(line);
@@ -57,7 +59,7 @@ namespace PawMapLoader.Res.GUI
             GUILayout.EndHorizontal();
             GUILayout.EndVertical();
             
-            UnityEngine.GUI.DragWindow(new Rect(0, 0, ConsoleRect.width, ConsoleRect.height*0.08f));
+            UnityEngine.GUI.DragWindow();
         }
 
         public static void HandleInput(string input)

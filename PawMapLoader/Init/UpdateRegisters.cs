@@ -9,6 +9,7 @@ namespace PawMapLoader
         public static void Register()
         {
             Store.Udevnt += () => PawScriptRegister.lastFrameTime = Time.timeAsDouble;
+            Res.GUI.PawScriptConsole.Register();
         }
     }
 }
