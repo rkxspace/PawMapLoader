@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using MelonLoader;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace PawMapLoader.Res.GUI
 {
-    // This GUI crashes the game and I don't know why.
     
     public class PawScriptConsole
     {
@@ -32,34 +32,41 @@ namespace PawMapLoader.Res.GUI
         {
             if (!ConsoleShown) return;
             
-            if (Event.current.type != EventType.Repaint && Event.current.type != EventType.Layout)
-                Event.current.Use();
-            
+            MelonLogger.Msg("crdraw");
             ConsoleRect = UnityEngine.GUI.Window(0, ConsoleRect, (UnityEngine.GUI.WindowFunction)DrawConsole, "PawScript Console");
         }
 
         public static void DrawConsole(int wid)
         {
+            MelonLogger.Msg("start");
             GUILayout.BeginVertical();
 
+            MelonLogger.Msg("1");
             ScrollPos = GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            MelonLogger.Msg("2");
             foreach (var line in Logs)
             {
                 GUILayout.Label(line);
             }
+            MelonLogger.Msg("3");
             GUILayout.EndScrollView();
-            
+            MelonLogger.Msg("4");
             GUILayout.BeginHorizontal();
-            inptex = GUILayout.TextField(inptex, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-            if (GUILayout.Button("Send", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true)))
+            MelonLogger.Msg("5");
+            inptex = GUILayout.TextField(inptex, GUILayout.ExpandWidth(true), GUILayout.Height(30));
+            MelonLogger.Msg("6");
+            if (GUILayout.Button("Send", GUILayout.Width(80), GUILayout.Height(30)))
             {
                 HandleInput(inptex);
                 inptex = "";
             }
+            MelonLogger.Msg("7");
             GUILayout.EndHorizontal();
+            MelonLogger.Msg("8");
             GUILayout.EndVertical();
-            
+            MelonLogger.Msg("9");
             UnityEngine.GUI.DragWindow();
+            MelonLogger.Msg("10");
         }
 
         public static void HandleInput(string input)
