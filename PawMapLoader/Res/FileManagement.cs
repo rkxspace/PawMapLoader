@@ -132,8 +132,8 @@ namespace PawMapLoader.Res
             try
             {
                 MelonLogger.Msg("Getting \"config.json\"...");
-                return File.Exists(customMapsJsonFile)
-                    ? File.ReadAllText(customMapsJsonFile)
+                return File.Exists($"{configDirectory}\\config.json")
+                    ? File.ReadAllText($"{configDirectory}\\config.json")
                     : CreateAndReturnConfigFile();
             }
             catch (Exception e)
