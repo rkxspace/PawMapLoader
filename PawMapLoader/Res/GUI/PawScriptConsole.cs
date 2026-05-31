@@ -15,7 +15,9 @@ namespace PawMapLoader.Res.GUI
         }
         
         public static bool ConsoleShown = false;
-        public static Rect ConsoleRect = new Rect(Screen.width*.6f, Screen.height*.04f, Screen.width*.4f, Screen.height*.6f);
+        public static Rect ConsoleRect;
+        public static string ConsoleName = "PawScript Console";
+        public static int ConsoleID = ConsoleName.GetHashCode();
         public static List<string> Logs = new List<string>();
         public static Vector2 ScrollPos = Vector2.zero;
         public static string inptex = "";
@@ -24,6 +26,7 @@ namespace PawMapLoader.Res.GUI
         {
             if (Keyboard.current.rightShiftKey.isPressed && Keyboard.current.backquoteKey.wasPressedThisFrame)
             {
+                ConsoleRect = new Rect(Screen.width * .6f, Screen.height * .04f, Screen.width * .4f, Screen.height * .6f);
                 ConsoleShown = !ConsoleShown;
             }
         }
@@ -32,12 +35,11 @@ namespace PawMapLoader.Res.GUI
         {
             if (!ConsoleShown) return;
             
-            MelonLogger.Msg("crdraw");
-            ConsoleRect = UnityEngine.GUI.Window(0, ConsoleRect, (UnityEngine.GUI.WindowFunction)DrawConsole, "PawScript Console");
+            ConsoleRect = UnityEngine.GUI.Window(ConsoleID, ConsoleRect, (UnityEngine.GUI.WindowFunction)DrawConsole, ConsoleName);
         }
 
         public static void DrawConsole(int wid)
-        { // another attempt at fixing this damned crash
+        { // Days wasted fixing crash: 0
             float inputBarHeight = 30f;
             float scrollHeight = ConsoleRect.height - inputBarHeight - 25f;
 
