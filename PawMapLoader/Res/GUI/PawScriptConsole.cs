@@ -40,7 +40,7 @@ namespace PawMapLoader.Res.GUI
         {
             GUILayout.BeginVertical();
 
-            GUILayout.BeginScrollView(ScrollPos, GUILayout.Width(ConsoleRect.width), GUILayout.Height(ConsoleRect.height*0.95f));
+            GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
             foreach (var line in Logs)
             {
                 GUILayout.Label(line);
@@ -48,13 +48,21 @@ namespace PawMapLoader.Res.GUI
             GUILayout.EndScrollView();
             
             GUILayout.BeginHorizontal();
-            inptex = GUILayout.TextField(inptex, GUILayout.Width(ConsoleRect.width*0.92f), GUILayout.Height(ConsoleRect.height*0.08f));
-            if (GUILayout.Button("Send", GUILayout.Width(ConsoleRect.width * 0.08f),
-                    GUILayout.Height(ConsoleRect.height * 0.06f))) ;
+            inptex = GUILayout.TextField(inptex, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            if (GUILayout.Button("Send", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true)))
+            {
+                HandleInput(inptex);
+                inptex = "";
+            }
             GUILayout.EndHorizontal();
             GUILayout.EndVertical();
             
             UnityEngine.GUI.DragWindow(new Rect(0, 0, ConsoleRect.width, ConsoleRect.height*0.08f));
+        }
+
+        public static void HandleInput(string input)
+        {
+            
         }
     }
 }
