@@ -19,8 +19,8 @@ This mod is made with Melonloader in mind. Not BepInEx.
 
 ## Error Reporting
 This mod reports errors to a server hosted by rkxspace.
-If you wish to change or disable this behavior, please edit the variables at the top of `PawMapLoader/Res/ErrorReporter.cs`.
-The server hosted by rkxspace only collects errors and stack traces. **Settings will be added later into development.**
+If you wish to change or disable this behavior, edit `UserData\.rkxspace\PawMapLoader\config.json`.
+The server, hosted by rkxspace, only collects errors and stack traces.
 
 ## Releases
 - Stable: https://github.com/rkxspace/PawMapLoader/releases/latest
@@ -61,3 +61,6 @@ To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. Aft
 - SceneConfig - Left for the mod to handle, expected to be there. Occasionally could be useful.
 
 After building the bundle, add the entry for your map to the `maps.json` file. AssetFile should be the same as your scene name, and the bundle should be placed as `Author/MapName.pawbox`
+
+# Small Notice
+- rkxspace and this project are **not affiliated nor endorsed by Dare Looks**.
