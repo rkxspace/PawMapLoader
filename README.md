@@ -63,6 +63,12 @@ To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. Aft
 
 After building the bundle, add the entry for your map to the `maps.json` file. AssetFile should be the same as your scene name, and the bundle should be placed as `Author/MapName.pawbox`
 
+## AI and PawMapLoader
+- **PawMapLoader is not, and will never be, written using AI.** However, that doesn't mean it isn't used. rkxspace uses AI for automatic release notes in **bleeding-edge** builds.
+- We use the following model for release notes: deepseek-v4-flash
+- Release notes for **stable builds** are written by rkxspace directly.
+- AI **WILL NEVER WRITE CODE** inside this repository.
+
 <img src="https://github.com/rkxspace/PawMapLoader/blob/master/assets/rkxspacemulti.png?raw=true" alt="rkxspace" width="200" >
 
 <sup>rkxspace and this project are **not affiliated with nor endorsed by Dare Looks**.</sup>
