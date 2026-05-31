@@ -566,6 +566,7 @@
     <ItemGroup>
         <Compile Include="Class1.cs"/>
         <Compile Include="Init\InitMelon.cs" />
+        <Compile Include="Init\UpdateRegisters.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\Components\PawScript.cs" />
@@ -603,6 +604,8 @@
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
+        <Compile Include="Res\UserConf\Json\UserConfigProperties.cs" />
+        <Compile Include="Res\UserConf\UConf.cs" />
         <Compile Include="Res\WinFormFilePicker.cs" />
         <Compile Include="Res\WinFormMsg.cs" />
     </ItemGroup>

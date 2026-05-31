@@ -1,5 +1,6 @@
 using MelonLoader;
 using PawMapLoader;
+using PawMapLoader.Res;
 using PawMapLoader.Res.PawScript;
 using UnityEngine;
 
@@ -12,9 +13,8 @@ namespace PawMapLoader
     {
         public override void OnInitializeMelon() => Init.InitMelon();
 
-        public override void OnUpdate()
-        {
-            PawScriptRegister.lastFrameTime = Time.timeAsDouble;
-        }
+        public override void OnUpdate() => Store.Udevnt();
+
+        public override void OnGUI() => Store.UdevntGUI();
     }
 }

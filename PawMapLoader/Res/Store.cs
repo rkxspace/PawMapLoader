@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Il2CppSystem.IO;
 using PawMapLoader.Res.Json;
@@ -21,8 +22,10 @@ namespace PawMapLoader.Res
             new Dictionary<string, PawScriptInstructions>();
 
         public delegate void Update();
-        //public static 
 
+        public static Update Udevnt = () => { };
+        public static Update UdevntGUI = () => { };
+        
         public class FirePrevention
         {
             public static bool IsGameStarted = false;

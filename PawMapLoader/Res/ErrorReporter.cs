@@ -2,6 +2,7 @@ using System.Net;
 using Il2CppSystem;
 using MelonLoader;
 using Newtonsoft.Json;
+using PawMapLoader.Res.UserConf;
 using Uri = System.Uri;
 
 namespace PawMapLoader.Res
@@ -12,10 +13,13 @@ namespace PawMapLoader.Res
     /// This Error Reporter will only ever report:
     /// The error.
     /// The stack trace.
+    ///
+    /// !!! ANY AND ALL PULL REQUESTS THAT EDIT THIS FILE WILL BE CLOSED !!!
+    /// !!! IF THERE ARE CHANGES TO BE MADE HERE, MAKE AN ISSUE.         !!! 
     /// </summary>
     public class ErrorReporter
     {
-        public static bool enabled = true;
+        public static bool enabled => UConf.Properties.ErrorReportingEnabled;
         public static string collectionServer = "https://errorcollection.xilenth.space/error";
         
         public static void ReportIl2CppException(Exception ex)

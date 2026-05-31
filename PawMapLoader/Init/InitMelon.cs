@@ -4,6 +4,7 @@ using MelonLoader;
 using PawMapLoader.Res;
 using PawMapLoader.Res.Enum;
 using PawMapLoader.Res.Json;
+using PawMapLoader.Res.UserConf;
 using AppDomain = System.AppDomain;
 using Exception = System.Exception;
 using IntPtr = System.IntPtr;
@@ -17,6 +18,8 @@ namespace PawMapLoader
         {
             try
             {
+                FileManagement.EnsureConfigDirectory();
+                UConf.LoadConfig();
                 Il2CppSystem.AppDomain.CurrentDomain.UnhandledException =
                     (System.Action<Object, UnhandledExceptionEventArgs>)((sender, e) =>
                     {
@@ -28,8 +31,8 @@ namespace PawMapLoader
             }
             catch (Exception e)
             {
-                MelonLogger.Error(
-                    "PawMapLoader init failure! This should never happen.", e
+                MelonLogger.BigError(
+                    "PawMapLoader init failure!", $"Something went horribly wrong in init! This should never happen.\nError:{e}\nStackTrace:\n{e.StackTrace}"
                     );
                 ErrorReporter.Report(e);
             }
@@ -37,6 +40,7 @@ namespace PawMapLoader
 
         public static void InitMaps()
         {
+            UpdateRegisters.Register();
             FileManagement.EnsureCustomMapsDirectory();
             MapJson.Read();
             AssetManager.LoadMapData();

@@ -5,6 +5,7 @@ using MelonLoader;
 using Newtonsoft.Json;
 using PawMapLoader.Res.PawScript.Events;
 using PawMapLoader.Res.PawScript.Json;
+using PawMapLoader.Res.UserConf;
 using UnityEngine;
 
 namespace PawMapLoader.Res.PawScript
@@ -16,6 +17,8 @@ namespace PawMapLoader.Res.PawScript
 
         public static void Start(string scriptName, DamageEvent dmgEvent = null)
         {
+            if (!UConf.Properties.PawScriptEnabled) return;
+            
             PawScriptInstructions pawScriptInstructions;
             try
             {

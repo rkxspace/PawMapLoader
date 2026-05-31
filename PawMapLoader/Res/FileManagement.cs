@@ -3,6 +3,7 @@ using System.IO;
 using Il2CppConfig;
 using MelonLoader;
 using MelonLoader.Utils;
+using Newtonsoft.Json;
 using FileMode = Il2CppSystem.IO.FileMode;
 using Stream = Il2CppSystem.IO.Stream;
 
@@ -11,6 +12,7 @@ namespace PawMapLoader.Res
     public class FileManagement
     {
         public static string customMapsDirectory = Path.Combine(MelonEnvironment.UserDataDirectory, "Maps");
+        public static string configDirectory = Path.Combine(MelonEnvironment.UserDataDirectory, ".rkxspace\\PawMapLoader");
         public static string customMapsJsonFile = Path.Combine(customMapsDirectory, "maps.json");
 
         public static void EnsureCustomMapsDirectory()
@@ -20,6 +22,24 @@ namespace PawMapLoader.Res
                 if (Directory.Exists(customMapsDirectory)) return;
                 Directory.CreateDirectory(customMapsDirectory);
                 MelonLogger.Msg("Maps Directory Created!");
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error("Failure to check or create maps directory, possibly due to permissions.", e);
+                ErrorReporter.Report(e);
+            }
+        }
+        
+        public static void EnsureConfigDirectory()
+        {
+            try
+            {
+                if (Directory.Exists(configDirectory)) return;
+                Directory.CreateDirectory(configDirectory);
+                File.WriteAllText($"{configDirectory}\\config.json",
+                    JsonConvert.SerializeObject(new UserConf.Json.UserConfigProperties(), Formatting.Indented)
+                    );
+                MelonLogger.Msg("Config Directory Created!");
             }
             catch (Exception e)
             {
@@ -87,6 +107,40 @@ namespace PawMapLoader.Res
                 MelonLogger.Error($"Error opening script file: {scriptName}", e);
                 ErrorReporter.Report(e);
                 throw;
+            }
+        }
+
+        private static string CreateAndReturnConfigFile()
+        {
+            var jsc = JsonConvert.SerializeObject(new UserConf.Json.UserConfigProperties(), Formatting.Indented);
+            File.WriteAllText($"{configDirectory}\\config.json",
+                jsc
+            );
+            return jsc;
+        }
+        
+        public static void WriteConfigFile(UserConf.Json.UserConfigProperties config)
+        {
+            var jsc = JsonConvert.SerializeObject(config, Formatting.Indented);
+            File.WriteAllText($"{configDirectory}\\config.json",
+                jsc
+            );
+        }
+        
+        public static string GetConfigFile()
+        {
+            try
+            {
+                MelonLogger.Msg("Getting \"config.json\"...");
+                return File.Exists(customMapsJsonFile)
+                    ? File.ReadAllText(customMapsJsonFile)
+                    : CreateAndReturnConfigFile();
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error("Error reading config.json file. Defaulting..", e);
+                ErrorReporter.Report(e);
+                return "{}";
             }
         }
     }

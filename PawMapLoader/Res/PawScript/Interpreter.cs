@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using MelonLoader;
 using PawMapLoader.Res.PawScript.Json;
+using PawMapLoader.Res.UserConf;
 
 namespace PawMapLoader.Res.PawScript
 {
@@ -12,7 +13,7 @@ namespace PawMapLoader.Res.PawScript
         public Dictionary<int, object> Memory = new Dictionary<int, object>();
         public Dictionary<string, int> NamedPtr = new Dictionary<string, int>();
         public int NextMemory;
-        public bool scriptDebug;
+        public bool scriptDebug => UConf.Properties.PawScriptDebug;
 
         // leaving for debugging
         public void Reset()
