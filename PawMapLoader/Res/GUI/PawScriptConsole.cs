@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace PawMapLoader.Res.GUI
 {
@@ -19,7 +20,7 @@ namespace PawMapLoader.Res.GUI
 
         public static void Update()
         {
-            if (Input.GetKeyDown(KeyCode.RightShift) && Input.GetKeyDown(KeyCode.Tilde))
+            if (Keyboard.current.rightShiftKey.isPressed && Keyboard.current.backquoteKey.wasPressedThisFrame)
             {
                 ConsoleShown = !ConsoleShown;
             }
@@ -47,9 +48,13 @@ namespace PawMapLoader.Res.GUI
             GUILayout.EndScrollView();
             
             GUILayout.BeginHorizontal();
-            inptex = GUILayout.TextField(inptex, GUILayout.Width(ConsoleRect.width*0.92f), GUILayout.Height(ConsoleRect.height*0.05f));
-            if (GUILayout.Button("Send", GUILayout.Width(ConsoleRect.width * 0.05f),
-                    GUILayout.Height(ConsoleRect.height * 0.08f))) ;
+            inptex = GUILayout.TextField(inptex, GUILayout.Width(ConsoleRect.width*0.92f), GUILayout.Height(ConsoleRect.height*0.08f));
+            if (GUILayout.Button("Send", GUILayout.Width(ConsoleRect.width * 0.08f),
+                    GUILayout.Height(ConsoleRect.height * 0.06f))) ;
+            GUILayout.EndHorizontal();
+            GUILayout.EndVertical();
+            
+            UnityEngine.GUI.DragWindow(new Rect(0, 0, ConsoleRect.width, ConsoleRect.height*0.08f));
         }
     }
 }
