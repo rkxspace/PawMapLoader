@@ -15,7 +15,7 @@ namespace PawMapLoader.Res.GUI
         }
         
         public static bool ConsoleShown = false;
-        public static Rect ConsoleRect = new Rect(Screen.width*.45f, Screen.height*.04f, Screen.width*.55f, Screen.height*.6f);
+        public static Rect ConsoleRect = new Rect(Screen.width*.6f, Screen.height*.04f, Screen.width*.4f, Screen.height*.6f);
         public static List<string> Logs = new List<string>();
         public static Vector2 ScrollPos = Vector2.zero;
         public static string inptex = "";
@@ -37,38 +37,32 @@ namespace PawMapLoader.Res.GUI
         }
 
         public static void DrawConsole(int wid)
-        {
-            MelonLogger.Msg("start");
+        { // another attempt at fixing this damned crash
+            float inputBarHeight = 30f;
+            float scrollHeight = ConsoleRect.height - inputBarHeight - 25f;
+
             GUILayout.BeginVertical();
 
-            MelonLogger.Msg("1");
-            ScrollPos = GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-            MelonLogger.Msg("2");
+            ScrollPos = GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.Height(scrollHeight));
             foreach (var line in Logs)
             {
                 GUILayout.Label(line);
             }
-            MelonLogger.Msg("3");
             GUILayout.EndScrollView();
-            MelonLogger.Msg("4");
+
             GUILayout.BeginHorizontal();
-            MelonLogger.Msg("5");
-            inptex = GUILayout.TextField(inptex, GUILayout.ExpandWidth(true), GUILayout.Height(30));
-            MelonLogger.Msg("6");
-            if (GUILayout.Button("Send", GUILayout.Width(80), GUILayout.Height(30)))
+            inptex = GUILayout.TextField(inptex, GUILayout.ExpandWidth(true), GUILayout.Height(inputBarHeight));
+            if (GUILayout.Button("Send", GUILayout.Width(80), GUILayout.Height(inputBarHeight)))
             {
                 HandleInput(inptex);
                 inptex = "";
             }
-            MelonLogger.Msg("7");
             GUILayout.EndHorizontal();
-            MelonLogger.Msg("8");
-            GUILayout.EndVertical();
-            MelonLogger.Msg("9");
-            UnityEngine.GUI.DragWindow();
-            MelonLogger.Msg("10");
-        }
 
+            GUILayout.EndVertical();
+            UnityEngine.GUI.DragWindow();
+        }
+        
         public static void HandleInput(string input)
         {
             
