@@ -63,4 +63,4 @@ To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. Aft
 After building the bundle, add the entry for your map to the `maps.json` file. AssetFile should be the same as your scene name, and the bundle should be placed as `Author/MapName.pawbox`
 
 # Small Notice
-- rkxspace and this project are **not affiliated nor endorsed by Dare Looks**.
+- rkxspace and this project are **not affiliated with nor endorsed by Dare Looks**.
