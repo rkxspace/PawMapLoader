@@ -45,12 +45,12 @@ namespace PawMapLoader.Res.GUI
 
             GUILayout.BeginVertical();
 
-            ScrollPos = GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.Height(scrollHeight));
+            /*ScrollPos = GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.Height(scrollHeight));
             foreach (var line in Logs)
             {
                 GUILayout.Label(line);
             }
-            GUILayout.EndScrollView();
+            GUILayout.EndScrollView();*/
 
             GUILayout.BeginHorizontal();
             inptex = GUILayout.TextField(inptex, GUILayout.ExpandWidth(true), GUILayout.Height(inputBarHeight));
