@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 namespace PawMapLoader.Res.GUI
 {
-    [RegisterTypeInIl2Cpp]
     public class PawScriptConsole
     {
         public static void Register()
