@@ -39,29 +39,7 @@ namespace PawMapLoader.Res.GUI
 
         public static void DrawConsole(int wid)
         { // Days wasted fixing crash: 0
-            float inputBarHeight = 30f;
-            float scrollHeight = ConsoleRect.height - inputBarHeight - 25f;
-
-            GUILayout.BeginVertical();
-
-            /*ScrollPos = GUILayout.BeginScrollView(ScrollPos, GUILayout.ExpandWidth(true), GUILayout.Height(scrollHeight));
-            foreach (var line in Logs)
-            {
-                GUILayout.Label(line);
-            }
-            GUILayout.EndScrollView();*/
-
-            GUILayout.BeginHorizontal();
-            inptex = GUILayout.TextField(inptex, GUILayout.ExpandWidth(true), GUILayout.Height(inputBarHeight));
-            if (GUILayout.Button("Send", GUILayout.Width(80), GUILayout.Height(inputBarHeight)))
-            {
-                HandleInput(inptex);
-                inptex = "";
-            }
-            GUILayout.EndHorizontal();
-
-            GUILayout.EndVertical();
-            UnityEngine.GUI.DragWindow();
+            // emptied to diagnose point of crash
         }
         
         public static void HandleInput(string input)
