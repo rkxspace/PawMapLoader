@@ -75,9 +75,9 @@ After building the bundle, add the entry for your map to the `maps.json` file. A
 
 <a href="https://www.star-history.com/?repos=rkxspace%2FPawMapLoader&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&theme=dark&legend=top-left&sealed_token=sC99xtK2FKm9fCuxUV0FSKvwid1SAEi8PufdZhkQwRItDRZRoR5RkfrnlfMgNq2L2_b02QSz_vJ53R0EowtkLIHAsQXM8b2OKMtrUbO-RlN2s4r4FioedrrI50VfuDSEt_ok4piEOVV1MWFlxFExz5od76vqEMQNq9sWoHQWcs32T6bHkXe6ZDK7c-QT" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=sC99xtK2FKm9fCuxUV0FSKvwid1SAEi8PufdZhkQwRItDRZRoR5RkfrnlfMgNq2L2_b02QSz_vJ53R0EowtkLIHAsQXM8b2OKMtrUbO-RlN2s4r4FioedrrI50VfuDSEt_ok4piEOVV1MWFlxFExz5od76vqEMQNq9sWoHQWcs32T6bHkXe6ZDK7c-QT" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=sC99xtK2FKm9fCuxUV0FSKvwid1SAEi8PufdZhkQwRItDRZRoR5RkfrnlfMgNq2L2_b02QSz_vJ53R0EowtkLIHAsQXM8b2OKMtrUbO-RlN2s4r4FioedrrI50VfuDSEt_ok4piEOVV1MWFlxFExz5od76vqEMQNq9sWoHQWcs32T6bHkXe6ZDK7c-QT" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&theme=dark&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
  </picture>
 </a>
 
