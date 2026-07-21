@@ -1,6 +1,8 @@
 # PawMapLoader
 <sup>The mod that loads maps into Pawperty Damage</sup>
 
+NOTE: This project is currently not my main focus. I am working on some personal projects, and I will return in some time. In the meantime, feel free to make the changes you want to see by opening PRs. Thank you for the support, and I hope I can work on this again soon.
+
 It's funny, you spend 30 minutes in a game, realize you've seen all of it, 400 hours later you're making a mod that adds more.
 
 Anyway, this mod's goal is to offer what is essentially a full map-making toolkit. Right now it's a bit rough, but I plan on smoothing out those edges a bit.
