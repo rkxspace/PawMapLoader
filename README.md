@@ -1,6 +1,8 @@
 # PawMapLoader
 <sup>The mod that loads maps into Pawperty Damage</sup>
 
+[Discord (StarShot Redirect)](https://starshot.xilenth.space/redirect?dest=eNrLKCkpKLbS10_JLE7OL0rRS0_Xj3AOL3Y0S8lwLAQAnfAKOQ) 
+
 NOTE: This project is currently not my main focus. I am working on some personal projects, and I will return in some time. In the meantime, feel free to make the changes you want to see by opening PRs. Thank you for the support, and I hope I can work on this again soon.
 
 It's funny, you spend 30 minutes in a game, realize you've seen all of it, 400 hours later you're making a mod that adds more.
