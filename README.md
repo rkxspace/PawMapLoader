@@ -1,6 +1,10 @@
 # PawMapLoader
 <sup>The mod that loads maps into Pawperty Damage</sup>
 
+Report issues and give feedback on [Discord (StarShot Redirect)](https://starshot.xilenth.space/redirect?dest=eNrLKCkpKLbS10_JLE7OL0rRS0_Xj3AOL3Y0S8lwLAQAnfAKOQ) 
+
+NOTE: This project is currently not my main focus. I am working on some personal projects, and I will return in some time. In the meantime, feel free to make the changes you want to see by opening PRs. Thank you for the support, and I hope I can work on this again soon.
+
 It's funny, you spend 30 minutes in a game, realize you've seen all of it, 400 hours later you're making a mod that adds more.
 
 Anyway, this mod's goal is to offer what is essentially a full map-making toolkit. Right now it's a bit rough, but I plan on smoothing out those edges a bit.
@@ -68,6 +72,14 @@ After building the bundle, add the entry for your map to the `maps.json` file. A
 - We use the following model for release notes: deepseek-v4-flash
 - Release notes for **stable builds** are written by rkxspace directly.
 - AI **WILL NEVER WRITE CODE** inside this repository.
+
+<a href="https://www.star-history.com/?repos=rkxspace%2FPawMapLoader&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&theme=dark&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
+ </picture>
+</a>
 
 <img src="https://github.com/rkxspace/PawMapLoader/blob/master/assets/rkxspacemulti.png?raw=true" alt="rkxspace" width="200" >
 
