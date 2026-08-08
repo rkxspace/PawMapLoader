@@ -35,7 +35,10 @@ namespace PawMapLoader.Res.PawScript
             }
 
             while (Memory.ContainsKey(NextMemory))
+            {
                 NextMemory++;
+            }
+
             Memory.Add(NextMemory, obj);
         }
 

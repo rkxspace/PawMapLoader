@@ -18,7 +18,7 @@ namespace PawMapLoader.Res.GUI
         public static int ConsoleID = ConsoleName.GetHashCode();
         public static List<string> Logs = new List<string>();
         public static Vector2 ScrollPos = Vector2.zero;
-        public static string inptex = "";
+        public static string inptex = string.Empty;
 
         public static float WindowPadding = 5f;
         public static float LineHeight = 20f;

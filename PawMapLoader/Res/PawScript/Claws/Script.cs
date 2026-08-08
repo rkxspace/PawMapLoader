@@ -18,7 +18,7 @@ namespace PawMapLoader.Res.PawScript.Claws
             int instructionCounter = 0;
             foreach (PawScriptInstruction ins in interpreter.InstructionDumpReserve)
             {
-                string args = "";
+                string args = string.Empty;
                 foreach (string argument in ins.Arguments)
                 {
                     args += argument + " ";
@@ -48,7 +48,7 @@ namespace PawMapLoader.Res.PawScript.Claws
 
         public static void Log(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            MelonLogger.Msg($"[Pawscript] {instruction.Arguments[0] ?? ""}");
+            MelonLogger.Msg($"[Pawscript] {instruction.Arguments[0] ?? string.Empty}");
         }
 
         public static void Jump(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)

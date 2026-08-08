@@ -29,7 +29,7 @@ namespace System.Windows.Forms
 
     public class OpenFileDialog
     {
-        public string FileName { get; private set; } = "";
+        public string FileName { get; private set; } = string.Empty;
         public string Filter { get; set; } = "All Files\0*.*\0";
         public string Title { get; set; } = "Open";
 
@@ -61,7 +61,7 @@ namespace System.Windows.Forms
 
     public class SaveFileDialog
     {
-        public string FileName { get; private set; } = "";
+        public string FileName { get; private set; } = string.Empty;
         public string Filter { get; set; } = "All Files\0*.*\0";
         public string Title { get; set; } = "Save";
 

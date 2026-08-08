@@ -33,7 +33,11 @@ namespace PawMapLoader.Res.PawPack
             IEnumerator waitForFilePick()
             {
                 Task<string> filepickerTask = ShowFilePicker();
-                while (!filepickerTask.IsCompleted) yield return null;
+                while (!filepickerTask.IsCompleted)
+                {
+                    yield return null;
+                }
+
                 if (filepickerTask.Result != string.Empty) Unpack(filepickerTask.Result);
             }
         }

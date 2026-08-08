@@ -8,14 +8,14 @@ namespace System.Windows.Forms
         {
             OK = 0x00000000,
             OKCancel = 0x00000001,
-            YesNo = 0x00000004,
+            YesNo = 0x00000004
         }
 
         public enum MessageBoxIcon : uint
         {
             Error = 0x00000010,
             Warning = 0x00000030,
-            Information = 0x00000040,
+            Information = 0x00000040
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = false)]
