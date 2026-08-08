@@ -73,14 +73,6 @@ After building the bundle, add the entry for your map to the `maps.json` file. A
 - Release notes for **stable builds** are written by rkxspace directly.
 - AI **WILL NEVER WRITE CODE** inside this repository.
 
-<a href="https://www.star-history.com/?repos=rkxspace%2FPawMapLoader&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&theme=dark&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=rkxspace/PawMapLoader&type=date&legend=top-left&sealed_token=QnJy06_sK4CIIRZZv6q33wai2BsmQoqbiWdyDuVHu1DxPrdPT69ffKj7BHaRRAiAEcnhjGaXx3QHvgFlky7Z0AWDmqUrEIafQ7Ow22kcbdmFpxh8yUNfHkEQoURfJttmuTC26Zoig1AyIjfHneL6FhthgLsHhv-rHhMmZ_ScAyvtjpm2n_yKrRJSKDar" />
- </picture>
-</a>
-
 <img src="https://github.com/rkxspace/PawMapLoader/blob/master/assets/rkxspacemulti.png?raw=true" alt="rkxspace" width="200" >
 
 <sup>rkxspace and this project are **not affiliated with nor endorsed by Dare Looks**.</sup>
