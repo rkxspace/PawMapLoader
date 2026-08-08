@@ -19,9 +19,9 @@ namespace PawMapLoader.Res
     /// </summary>
     public class ErrorReporter
     {
+        public static string collectionServer = "https://pmlerr.xilenth.space/error";
         public static bool enabled => UConf.Properties.ErrorReportingEnabled;
-        public static string collectionServer = "https://errorcollection.xilenth.space/error";
-        
+
         public static void ReportIl2CppException(Exception ex)
         {
             try
@@ -32,15 +32,16 @@ namespace PawMapLoader.Res
                     return;
                 }
 
-                var wc = new WebClient();
+                WebClient wc = new WebClient();
                 wc.Headers.Add("user-agent", "Mozilla/5.0");
-                var rqj = JsonConvert.SerializeObject(new
+                string rqj = JsonConvert.SerializeObject(new
                 {
                     error = $"[IL2CPP]: {ex.Message}",
                     stacktrace = ex.StackTrace
                 });
                 wc.UploadString(new Uri(collectionServer), rqj);
-            } catch {}
+            }
+            catch { }
         }
 
         public static void Report(System.Exception ex)
@@ -53,15 +54,16 @@ namespace PawMapLoader.Res
                     return;
                 }
 
-                var wc = new WebClient();
+                WebClient wc = new WebClient();
                 wc.Headers.Add("user-agent", "Mozilla/5.0");
-                var rqj = JsonConvert.SerializeObject(new
+                string rqj = JsonConvert.SerializeObject(new
                 {
                     error = ex.Message,
                     stacktrace = ex.StackTrace
                 });
                 wc.UploadString(new Uri(collectionServer), rqj);
-            } catch {}
+            }
+            catch { }
         }
     }
 }

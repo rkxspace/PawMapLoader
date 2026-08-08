@@ -28,7 +28,12 @@ namespace PawMapLoader.Res.PawScript
         {
             if (scriptDebug) MelonLogger.Msg($"WriteMemory {address}");
             if (obj == null) throw new NullReferenceException();
-            if (address >= 0) {Memory[address] = obj; return;}
+            if (address >= 0)
+            {
+                Memory[address] = obj;
+                return;
+            }
+
             while (Memory.ContainsKey(NextMemory))
                 NextMemory++;
             Memory.Add(NextMemory, obj);
@@ -39,8 +44,13 @@ namespace PawMapLoader.Res.PawScript
             Executions++;
             try
             {
-                var methodText = instruction.Claw + "." + instruction.Instruction;
-                if (scriptDebug) MelonLogger.Msg($"Instruction {instructionSetter}: {methodText} - Args: [{string.Join(", ", instruction.Arguments)}]");
+                string methodText = instruction.Claw + "." + instruction.Instruction;
+                if (scriptDebug)
+                {
+                    MelonLogger.Msg(
+                        $"Instruction {instructionSetter}: {methodText} - Args: [{string.Join(", ", instruction.Arguments)}]");
+                }
+
                 if (ClawRegister.rClaws.ContainsKey(methodText))
                 {
                     ClawRegister.rClaws[methodText](instruction, ref instructionSetter, this);

@@ -11,33 +11,44 @@ namespace PawMapLoader.Res.Debug
     {
         public static void Create()
         {
-            var strh_DumpText = new StringBuilder();
+            StringBuilder strh_DumpText = new StringBuilder();
             strh_DumpText.AppendLine("=================== GAME DUMP ===================");
-            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies())
             {
                 strh_DumpText.AppendLine($"\n\n[] {asm.GetName().Name} ===================\n");
                 Type[] types;
-                try {types = asm.GetTypes();} catch { continue; }
+                try
+                {
+                    types = asm.GetTypes();
+                }
+                catch
+                {
+                    continue;
+                }
 
-                foreach (var type in types)
+                foreach (Type type in types)
                 {
                     strh_DumpText.AppendLine($"|| {type.FullName}");
 
-                    foreach (var method in type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic |
-                                                           BindingFlags.Static | BindingFlags.Instance |
-                                                           BindingFlags.DeclaredOnly))
+                    foreach (MethodInfo method in type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic |
+                                                                  BindingFlags.Static | BindingFlags.Instance |
+                                                                  BindingFlags.DeclaredOnly))
                     {
                         try
                         {
-                            var tempstr = string.Join(", ", method.GetParameters().Select(p => $"{p.ParameterType.Name} {p.Name}"));
-                            strh_DumpText.AppendLine($"||==> {method.Name}({tempstr}) ==> ret {method.ReturnType.FullName}");
+                            string tempstr = string.Join(", ",
+                                method.GetParameters().Select(p => $"{p.ParameterType.Name} {p.Name}"));
+                            strh_DumpText.AppendLine(
+                                $"||==> {method.Name}({tempstr}) ==> ret {method.ReturnType.FullName}");
                         }
                         catch (Exception e)
                         {
                             strh_DumpText.AppendLine($"||==> {method.Name}(Unk) ==> ret Unk [error: {e.Message}]");
-                        }                    }
+                        }
+                    }
                 }
             }
+
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "GameDump.txt"), strh_DumpText.ToString());
         }
     }

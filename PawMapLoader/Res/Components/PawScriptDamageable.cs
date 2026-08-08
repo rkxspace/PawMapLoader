@@ -1,6 +1,5 @@
 using System;
 using Il2CppDestructibles;
-using Il2CppInterop.Runtime;
 using MelonLoader;
 using PawMapLoader.Res.PawScript;
 using UnityEngine;
@@ -29,7 +28,7 @@ namespace PawMapLoader.Res.Components
                     return;
                 }
 
-                var dmgble = gameObject.AddComponent<Damageable>();
+                Damageable dmgble = gameObject.AddComponent<Damageable>();
                 dmgble._health = new Health { Max = health, Value = health };
                 dmgble.enabled = true;
                 dmgble.OnDamage =

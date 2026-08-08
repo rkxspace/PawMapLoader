@@ -1,7 +1,6 @@
 using System;
 using HarmonyLib;
 using Il2CppConfig;
-using Il2CppDestructibles;
 using Il2CppEffects;
 using Il2CppGame;
 using Il2CppUtilities;
@@ -10,7 +9,6 @@ using PawMapLoader.Res.Components;
 using PawMapLoader.Res.Enum;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Math = Il2CppSystem.Math;
 
 namespace PawMapLoader.Res
 {
@@ -21,7 +19,12 @@ namespace PawMapLoader.Res
         public static bool Prefix(GameManager __instance)
         {
             string scenename = ConfigManager.Instance.Level.Scene.SceneName;
-            if (scenename == "AtroCity" || scenename == "DownTown") {Store.IsMapCustom = false; return true;}
+            if (scenename == "AtroCity" || scenename == "DownTown")
+            {
+                Store.IsMapCustom = false;
+                return true;
+            }
+
             if (Store.FirePrevention.IsGameStarted) return true;
             if (Store.MapLoadLocked) return false;
             if (Store.LoadedAssetBundle != null)
@@ -31,6 +34,7 @@ namespace PawMapLoader.Res
                 Store.FirePrevention.IsGameStarted = true;
                 return true;
             }
+
             MelonLogger.Msg($"{scenename} is custom.");
             Store.BundleStream = null;
             try
@@ -57,7 +61,7 @@ namespace PawMapLoader.Res
             if (!Store.FirePrevention.IsGameStarted) return true;
             Store.FirePrevention.IsGameStarted = false;
             Store.FirePrevention.HasBlockConfig = false;
-            
+
             MelonLogger.Msg("Unloading Scene Assetbundle");
             if (!Store.IsMapCustom) return true;
             Store.LoadedAssetBundle?.Unload(true);
@@ -76,16 +80,17 @@ namespace PawMapLoader.Res
             if (Store.FirePrevention.HasBlockConfig) return;
             if (Store.IsMapCustom)
             {
-                foreach (var go in SceneManager
+                foreach (GameObject go in SceneManager
                              .GetSceneByName(ConfigManager.Instance.Level.Scene.SceneName).GetRootGameObjects())
                 {
                     if (go.name == "SceneObjects")
                     {
                         go.AddComponent<SceneRoot>();
                     }
+
                     if (go.name == "SceneConfig")
                     {
-                        var cblock = new GameObject("CityBlock");
+                        GameObject cblock = new GameObject("CityBlock");
                         cblock.transform.SetParent(go.transform);
                         cblock.AddComponent<CityBlockGrid>();
                         Store.FirePrevention.HasBlockConfig = true;
@@ -94,7 +99,7 @@ namespace PawMapLoader.Res
             }
         }
     }
-    
+
     [HarmonyPatch(typeof(GroundDecalController), nameof(GroundDecalController.IsGroundConcrete))]
     public static class GroundDecalController_IsGroundConcrete_Patch
     {
@@ -106,6 +111,7 @@ namespace PawMapLoader.Res
                 __result = false;
                 return null;
             }
+
             return __exception;
         }
     }

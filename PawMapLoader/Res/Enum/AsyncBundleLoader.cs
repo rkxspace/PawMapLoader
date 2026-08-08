@@ -20,7 +20,7 @@ namespace PawMapLoader.Res.Enum
 
             IEnumerator lbs()
             {
-                var asyncBundle = AssetBundle.LoadFromStreamAsync(stream);
+                AssetBundleCreateRequest asyncBundle = AssetBundle.LoadFromStreamAsync(stream);
                 while (!asyncBundle.isDone)
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
@@ -33,7 +33,8 @@ namespace PawMapLoader.Res.Enum
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
                         $"Done!\n{asyncBundle.progress * 100}%";
                     DialogueManager.Instance.DialogueWindow.Close();
-                    Store.LoadedAssetBundle = asyncBundle.assetBundle??throw new NullReferenceException("AssetBundle failed to load.");
+                    Store.LoadedAssetBundle = asyncBundle.assetBundle ??
+                                              throw new NullReferenceException("AssetBundle failed to load.");
                 }
                 catch (Exception e)
                 {
@@ -45,6 +46,7 @@ namespace PawMapLoader.Res.Enum
                     Store.BundleStream?.Dispose();
                     yield break;
                 }
+
                 Store.MapLoadLocked = false;
                 GameManager.Instance.StartGame();
             }

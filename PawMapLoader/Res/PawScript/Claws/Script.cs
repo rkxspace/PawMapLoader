@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using MelonLoader;
 using PawMapLoader.Res.PawScript.Json;
@@ -15,13 +16,14 @@ namespace PawMapLoader.Res.PawScript.Claws
             StringBuilder sb = new StringBuilder();
             sb.Append("\nInstructions");
             int instructionCounter = 0;
-            foreach (var ins in interpreter.InstructionDumpReserve)
+            foreach (PawScriptInstruction ins in interpreter.InstructionDumpReserve)
             {
                 string args = "";
-                foreach (var argument in ins.Arguments)
+                foreach (string argument in ins.Arguments)
                 {
                     args += argument + " ";
                 }
+
                 sb.Append($"\n| {instructionCounter}: {ins.Claw}.{ins.Instruction}( {args} )");
                 instructionCounter++;
             }
@@ -30,17 +32,17 @@ namespace PawMapLoader.Res.PawScript.Claws
             sb.Append($"\nExecutions: {interpreter.Executions}");
             sb.Append($"\nNext Auto-Write MemPos: {interpreter.NextMemory}");
             sb.Append("\nMemory:");
-            foreach (var obj in interpreter.Memory)
+            foreach (KeyValuePair<int, object> obj in interpreter.Memory)
             {
                 sb.Append($"| {obj.Key}: {Convert.ChangeType(obj.Value, obj.Value.GetType())}");
             }
 
             sb.Append("\nPointers:");
-            foreach (var ptr in interpreter.NamedPtr)
+            foreach (KeyValuePair<string, int> ptr in interpreter.NamedPtr)
             {
                 sb.Append($"\n| {ptr.Key}: {ptr.Value}");
             }
-            
+
             MelonLogger.Msg(sb.ToString());
         }
 
@@ -57,31 +59,34 @@ namespace PawMapLoader.Res.PawScript.Claws
         public static void ConditionalJump(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            var mode = instruction.Arguments[0] ?? "";
-            var input1 = instruction.Arguments[1] ?? null;
-            var input2 = instruction.Arguments[2] ?? null;
-            var jumpTo = int.TryParse(instruction.Arguments[3], out _)
+            string mode = instruction.Arguments[0] ?? string.Empty;
+            string input1 = instruction.Arguments[1] ?? null;
+            string input2 = instruction.Arguments[2] ?? null;
+            int jumpTo = int.TryParse(instruction.Arguments[3], out _)
                 ? int.Parse(instruction.Arguments[3])
                 : throw new ArgumentNullException();
 
-            var resolved1 = PointerResolver.ResolvePointer(input1, interpreter);
-            var resolved2 = PointerResolver.ResolvePointer(input2, interpreter);
-            
+            object resolved1 = PointerResolver.ResolvePointer(input1, interpreter);
+            object resolved2 = PointerResolver.ResolvePointer(input2, interpreter);
+
             bool result = false;
-            switch (mode) {
+            switch (mode)
+            {
                 case "Equals":
                     result = Equals(resolved1, resolved2); break;
-                case "NotEqual": result = !Equals(resolved1, resolved2);
+                case "NotEqual":
+                    result = !Equals(resolved1, resolved2);
                     break;
-                case "Greater": result = Convert.ToDouble(resolved1) > Convert.ToDouble(resolved2);
+                case "Greater":
+                    result = Convert.ToDouble(resolved1) > Convert.ToDouble(resolved2);
                     break;
                 case "Less": result = Convert.ToDouble(resolved1) < Convert.ToDouble(resolved2); break;
                 case "EqualGreater": result = Convert.ToDouble(resolved1) >= Convert.ToDouble(resolved2); break;
                 case "EqualLess": result = Convert.ToDouble(resolved1) <= Convert.ToDouble(resolved2); break;
                 default: throw new InvalidOperationException($"Comparison type of \"{mode}\" not found.");
             }
-            
-            instructionSetter = result?jumpTo:instructionSetter;
+
+            instructionSetter = result ? jumpTo : instructionSetter;
         }
     }
 }

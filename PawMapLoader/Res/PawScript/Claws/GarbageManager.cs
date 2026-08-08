@@ -7,13 +7,13 @@ namespace PawMapLoader.Res.PawScript.Claws
     {
         public static void Collect(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            var discardable = new List<int>();
-            foreach (var valPair in interpreter.Memory)
+            List<int> discardable = new List<int>();
+            foreach (KeyValuePair<int, object> valPair in interpreter.Memory)
             {
                 if (!interpreter.NamedPtr.ContainsValue(valPair.Key)) discardable.Add(valPair.Key);
             }
 
-            foreach (var mem in discardable)
+            foreach (int mem in discardable)
             {
                 interpreter.Memory.Remove(mem);
             }

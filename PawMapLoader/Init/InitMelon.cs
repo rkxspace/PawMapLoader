@@ -1,14 +1,10 @@
-using Il2CppInterop.Runtime;
 using Il2CppSystem;
 using MelonLoader;
 using PawMapLoader.Res;
 using PawMapLoader.Res.Enum;
 using PawMapLoader.Res.Json;
 using PawMapLoader.Res.UserConf;
-using AppDomain = System.AppDomain;
 using Exception = System.Exception;
-using IntPtr = System.IntPtr;
-using UnhandledExceptionEventHandler = Il2CppSystem.UnhandledExceptionEventHandler;
 
 namespace PawMapLoader
 {
@@ -20,10 +16,10 @@ namespace PawMapLoader
             {
                 FileManagement.EnsureConfigDirectory();
                 UConf.LoadConfig();
-                Il2CppSystem.AppDomain.CurrentDomain.UnhandledException =
+                AppDomain.CurrentDomain.UnhandledException =
                     (System.Action<Object, UnhandledExceptionEventArgs>)((sender, e) =>
                     {
-                        var ex = e.ExceptionObject.Cast<Il2CppSystem.Exception>();
+                        Il2CppSystem.Exception ex = e.ExceptionObject.Cast<Il2CppSystem.Exception>();
                         ErrorReporter.ReportIl2CppException(ex);
                     }); // Catching Il2Cpp errors, since it is useful in the case the mod breaks something.
 
@@ -32,8 +28,9 @@ namespace PawMapLoader
             catch (Exception e)
             {
                 MelonLogger.BigError(
-                    "PawMapLoader init failure!", $"Something went horribly wrong in init! This should never happen.\nError:{e}\nStackTrace:\n{e.StackTrace}"
-                    );
+                    "PawMapLoader init failure!",
+                    $"Something went horribly wrong in init! This should never happen.\nError:{e}\nStackTrace:\n{e.StackTrace}"
+                );
                 ErrorReporter.Report(e);
             }
         }

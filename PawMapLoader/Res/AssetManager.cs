@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Il2CppGame;
 using MelonLoader;
@@ -10,8 +11,8 @@ namespace PawMapLoader.Res
     {
         public static void LoadMapData()
         {
-            var levels = LevelDataProvider.Instance._levels.ToList();
-            
+            List<SceneConfig> levels = LevelDataProvider.Instance._levels.ToList();
+
             foreach (PawMap pawMap in Store.Maps.PawMaps)
             {
                 try
@@ -27,6 +28,7 @@ namespace PawMapLoader.Res
                     sceneConfig.ShadowDistanceMax = pawMap.MapMetadata.ShadowDistanceMax;
                     sceneConfig.ShadowHeightMax = pawMap.MapMetadata.ShadowHeightMax;
                     sceneConfig.SquareKilometers = pawMap.MapMetadata.SquareKilometers;
+                    // TODO: ADD LINKING
                     sceneConfig.UnlockedBy = null;
                     sceneConfig.UnlockTargetScore = 0;
                     levels.Add(sceneConfig);
@@ -36,7 +38,8 @@ namespace PawMapLoader.Res
                     MelonLogger.Error($"Could not add data:\n{e}");
                 }
             }
-            LevelDataProvider.Instance._levels =  levels.ToArray();
+
+            LevelDataProvider.Instance._levels = levels.ToArray();
         }
     }
 }

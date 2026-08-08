@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using Il2CppCharacter;
 using PawMapLoader.Res.PawScript.Json;
 using PawMapLoader.Res.PawScript.Resolvers;
@@ -16,25 +15,35 @@ namespace PawMapLoader.Res.PawScript.Claws
         public static void GetMainPlayer(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            int memAddr = !string.IsNullOrEmpty(instruction.Arguments[0]) ? PointerResolver.ResolvePointerAddress(instruction.Arguments[0], interpreter) :-1;
+            int memAddr = !string.IsNullOrEmpty(instruction.Arguments[0])
+                ? PointerResolver.ResolvePointerAddress(instruction.Arguments[0], interpreter)
+                : -1;
             interpreter.WriteMemory(PlayerManager.MainPlayer, memAddr);
         }
 
         public static void GetPlayer(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            int memAddr = !string.IsNullOrEmpty(instruction.Arguments[1]) ? PointerResolver.ResolvePointerAddress(instruction.Arguments[1], interpreter) :-1;
-            interpreter.WriteMemory(_pm.Players[int.TryParse(instruction.Arguments[0], out var outval) ? outval : throw new ArgumentException("Arg0 is not int.")], memAddr);
+            int memAddr = !string.IsNullOrEmpty(instruction.Arguments[1])
+                ? PointerResolver.ResolvePointerAddress(instruction.Arguments[1], interpreter)
+                : -1;
+            interpreter.WriteMemory(
+                _pm.Players[
+                    int.TryParse(instruction.Arguments[0], out int outval)
+                        ? outval
+                        : throw new ArgumentException("Arg0 is not int.")], memAddr);
         }
 
         public static void AddScale(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            var resolvedPointer1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object resolvedPointer1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
             TypeValidation.Validate<Il2CppCharacter.Player>(resolvedPointer1);
-            
-            var player = (Il2CppCharacter.Player)resolvedPointer1;
-            player.Character.AddGrow(float.TryParse(instruction.Arguments[1], out var outval) ? outval : throw new ArgumentException("Arg1 is not float."));
+
+            Il2CppCharacter.Player player = (Il2CppCharacter.Player)resolvedPointer1;
+            player.Character.AddGrow(float.TryParse(instruction.Arguments[1], out float outval)
+                ? outval
+                : throw new ArgumentException("Arg1 is not float."));
         }
     }
 }

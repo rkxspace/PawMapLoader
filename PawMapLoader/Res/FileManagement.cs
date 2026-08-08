@@ -4,6 +4,7 @@ using Il2CppConfig;
 using MelonLoader;
 using MelonLoader.Utils;
 using Newtonsoft.Json;
+using PawMapLoader.Res.UserConf.Json;
 using FileMode = Il2CppSystem.IO.FileMode;
 using Stream = Il2CppSystem.IO.Stream;
 
@@ -12,7 +13,10 @@ namespace PawMapLoader.Res
     public class FileManagement
     {
         public static string customMapsDirectory = Path.Combine(MelonEnvironment.UserDataDirectory, "Maps");
-        public static string configDirectory = Path.Combine(MelonEnvironment.UserDataDirectory, ".rkxspace\\PawMapLoader");
+
+        public static string configDirectory =
+            Path.Combine(MelonEnvironment.UserDataDirectory, ".rkxspace\\PawMapLoader");
+
         public static string customMapsJsonFile = Path.Combine(customMapsDirectory, "maps.json");
 
         public static void EnsureCustomMapsDirectory()
@@ -29,7 +33,7 @@ namespace PawMapLoader.Res
                 ErrorReporter.Report(e);
             }
         }
-        
+
         public static void EnsureConfigDirectory()
         {
             try
@@ -37,8 +41,8 @@ namespace PawMapLoader.Res
                 if (Directory.Exists(configDirectory)) return;
                 Directory.CreateDirectory(configDirectory);
                 File.WriteAllText($"{configDirectory}\\config.json",
-                    JsonConvert.SerializeObject(new UserConf.Json.UserConfigProperties(), Formatting.Indented)
-                    );
+                    JsonConvert.SerializeObject(new UserConfigProperties(), Formatting.Indented)
+                );
                 MelonLogger.Msg("Config Directory Created!");
             }
             catch (Exception e)
@@ -91,7 +95,7 @@ namespace PawMapLoader.Res
         {
             try
             {
-                var scriptPath =
+                string scriptPath =
                     $"{$"{ConfigManager.Instance.Level.Scene.SceneName}_Scripts.{scriptName}".Replace(".", "\\")}.json";
                 return File.Exists(scriptPath)
                     ? File.ReadAllText(scriptPath)
@@ -112,21 +116,21 @@ namespace PawMapLoader.Res
 
         private static string CreateAndReturnConfigFile()
         {
-            var jsc = JsonConvert.SerializeObject(new UserConf.Json.UserConfigProperties(), Formatting.Indented);
+            string jsc = JsonConvert.SerializeObject(new UserConfigProperties(), Formatting.Indented);
             File.WriteAllText($"{configDirectory}\\config.json",
                 jsc
             );
             return jsc;
         }
-        
-        public static void WriteConfigFile(UserConf.Json.UserConfigProperties config)
+
+        public static void WriteConfigFile(UserConfigProperties config)
         {
-            var jsc = JsonConvert.SerializeObject(config, Formatting.Indented);
+            string jsc = JsonConvert.SerializeObject(config, Formatting.Indented);
             File.WriteAllText($"{configDirectory}\\config.json",
                 jsc
             );
         }
-        
+
         public static string GetConfigFile()
         {
             try
