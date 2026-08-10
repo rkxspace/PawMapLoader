@@ -1,4 +1,3 @@
-using System;
 using System.Globalization;
 using PawMapLoader.Res.PawScript.Json;
 using PawMapLoader.Res.PawScript.Resolvers;
@@ -63,12 +62,133 @@ namespace PawMapLoader.Res.PawScript.Claws
                 PointerResolver.ResolvePointerAddress(instruction.Arguments[4] ?? "-1", interpreter));
         }
 
-        public static void Evaluate(PawScriptInstruction instruction, ref int instructionSetter,
+        public static void FloatAdd(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
-            throw new NotImplementedException();
-            //TODO: Implement math string parsing. Ideally with all available operations you'd find on a CASIO fx-300ES PLUS.
-            //interpreter.WriteMemory();
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<float>(v1);
+            TypeValidation.Validate<float>(v2);
+
+            interpreter.WriteMemory((float)v1 + (float)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void FloatSub(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<float>(v1);
+            TypeValidation.Validate<float>(v2);
+
+            interpreter.WriteMemory((float)v1 - (float)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void FloatMul(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<float>(v1);
+            TypeValidation.Validate<float>(v2);
+
+            interpreter.WriteMemory((float)v1 * (float)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void FloatDiv(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<float>(v1);
+            TypeValidation.Validate<float>(v2);
+
+            interpreter.WriteMemory((float)v1 / (float)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void FloatMod(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<float>(v1);
+            TypeValidation.Validate<float>(v2);
+
+            interpreter.WriteMemory((float)v1 % (float)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void IntAdd(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<int>(v1);
+            TypeValidation.Validate<int>(v2);
+
+            interpreter.WriteMemory((int)v1 + (int)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void IntSub(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<int>(v1);
+            TypeValidation.Validate<int>(v2);
+
+            interpreter.WriteMemory((int)v1 - (int)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void IntMul(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<int>(v1);
+            TypeValidation.Validate<int>(v2);
+
+            interpreter.WriteMemory((int)v1 * (int)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void IntDiv(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<int>(v1);
+            TypeValidation.Validate<int>(v2);
+
+            interpreter.WriteMemory((int)v1 / (int)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
+        }
+
+        public static void IntMod(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object v1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            object v2 = PointerResolver.ResolvePointer(instruction.Arguments[1], interpreter);
+
+            TypeValidation.Validate<int>(v1);
+            TypeValidation.Validate<int>(v2);
+
+            interpreter.WriteMemory((int)v1 % (int)v2,
+                PointerResolver.ResolvePointerAddress(instruction.Arguments[2] ?? "-1", interpreter));
         }
     }
 }

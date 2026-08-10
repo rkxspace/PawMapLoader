@@ -1,15 +1,20 @@
 # PawMapLoader
-<sup>The mod that loads maps into Pawperty Damage</sup>
+This mod was created to load custom maps!
 
-Report issues and give feedback on [Discord (StarShot Redirect)](https://starshot.xilenth.space/redirect?dest=eNrLKCkpKLbS10_JLE7OL0rRS0_Xj3AOL3Y0S8lwLAQAnfAKOQ) 
+> [!TIP]
+> Report issues and give feedback on [Discord](https://starshot.xilenth.space/redirect?dest=eNrLKCkpKLbS10_JLE7OL0rRS0_Xj3AOL3Y0S8lwLAQAnfAKOQ) 
 
-NOTE: This project is currently not my main focus. I am working on some personal projects, and I will return in some time. In the meantime, feel free to make the changes you want to see by opening PRs. Thank you for the support, and I hope I can work on this again soon.
+## Releases
+> [!CAUTION]
+> These links are the ONLY verified places to download the mod.
+> <br>If someone linked you elsewhere, your system may be compromised.
 
-It's funny, you spend 30 minutes in a game, realize you've seen all of it, 400 hours later you're making a mod that adds more.
+> [!WARNING]
+> This mod is currently in development, and will have bugs. Additionally, many features are incomplete or missing.
+- Stable: https://github.com/rkxspace/PawMapLoader/releases/latest
+- Bleeding Edge: https://github.com/rkxspace/PawMapLoader/releases
 
-Anyway, this mod's goal is to offer what is essentially a full map-making toolkit. Right now it's a bit rough, but I plan on smoothing out those edges a bit.
-
-## TODO <sup>(In no specific order.)</sup>
+## TODO
 - [ ] Finish scripting system [Partially done!]
 - [ ] Distribution Format
 - [ ] Create working damageable
@@ -19,20 +24,12 @@ Anyway, this mod's goal is to offer what is essentially a full map-making toolki
 - [ ] Documentation
 - [ ] Website for documentation
 
-> This mod is made with Melonloader in mind. Not BepInEx.
-
 ## Error Reporting
-This mod reports errors to a server hosted by rkxspace.
+This mod reports errors to a server hosted by us.
 If you wish to change or disable this behavior, edit `UserData\.rkxspace\PawMapLoader\config.json`.
-The server, hosted by rkxspace, only collects errors and stack traces.
-
-## Releases
-- Stable: https://github.com/rkxspace/PawMapLoader/releases/latest
-- Bleeding Edge: https://github.com/rkxspace/PawMapLoader/releases
 
 ## How to use
-The mod will create a `Maps` folder in `Pawperty Damage/UserData`.
-It is up to the user to make a `maps.json` inside `Maps`.
+Create `UserData/Maps/maps.json`.
 
 Here is a template to get started:
 ```
@@ -58,21 +55,26 @@ Here is a template to get started:
     ]
 }
 ```
-> Comments are ignored by newtonsoft.json.
-> Unused fields are ignored by the mod. Implementations are planned.
+> [!NOTE]
+> Unused fields are ignored by the mod. Implementations are planned for UnlockedBy and UnlockTargetScore.
 
-To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. After creating the project, create a scene with the name format of `Author.MapName`. Add the scene to an assetbundle. As of right now, components needed to create buildings and such need to be stubbed by the user. The root game objects should be the following:
-- SceneObjects - For objects in the scene, thats it.
+To make a map, create a project in Unity 6000.0.27f1 using the URP pipeline. Create a scene with the name format of `Author.MapName`. Add the scene to an asset bundle. While the SDK is in progress, you will need to do the component work. The root game objects should be the following:
+- SceneObjects - For objects in the scene, that's it.
 - SceneConfig - Left for the mod to handle, expected to be there. Occasionally could be useful.
 
 After building the bundle, add the entry for your map to the `maps.json` file. AssetFile should be the same as your scene name, and the bundle should be placed as `Author/MapName.pawbox`
 
 ## AI and PawMapLoader
-- **PawMapLoader is not, and will never be, written using AI.** However, that doesn't mean it isn't used. rkxspace uses AI for automatic release notes in **bleeding-edge** builds.
-- We use the following model for release notes: deepseek-v4-flash
-- Release notes for **stable builds** are written by rkxspace directly.
-- AI **WILL NEVER WRITE CODE** inside this repository.
+We're aware of the drama that arises from using AI in any capacity. Here's the big picture for you: **We don't give a fuck.**
+<br>This repository was made for the **explicit purpose of creating a tool by hand**.
+<br>And, while we don't endorse AI entirely, we do use it to **reduce time waste better spent developing the project**.
 
-<img src="https://github.com/rkxspace/PawMapLoader/blob/master/assets/rkxspacemulti.png?raw=true" alt="rkxspace" width="200" >
+**Code, images, and other assets** within this repository are made by **human beings**. That won't change.
+<br>However, when it comes to **automatic pre-releases** we use `deepseek-v4-flash` to create release notes. Further, it is used to help find (**but not fix**) potential issues before testing, saving the headache of restarting the game constantly.
+<br>Full, **stable releases** will have release notes **made by humans, for humans**. Additionally, they are manually uploaded to GitHub.
+> [!IMPORTANT]
+> Creating pull requests with AI is forbidden in this repository. If we suspect you using AI to create or alter code, you will be blocked from making future contributions.
+
+<img src="https://github.com/rkxspace/PawMapLoader/blob/master/assets/rkxspacemulti.png?raw=true" alt="rkxspace logo" width="200" >
 
 <sup>rkxspace and this project are **not affiliated with nor endorsed by Dare Looks**.</sup>

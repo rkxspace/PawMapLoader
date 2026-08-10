@@ -18,7 +18,7 @@ namespace PawMapLoader.Res.PawScript
         public static void Start(string scriptName, DamageEvent dmgEvent = null)
         {
             if (!UConf.Properties.PawScriptEnabled) return;
-            
+
             PawScriptInstructions pawScriptInstructions;
             try
             {
@@ -30,7 +30,9 @@ namespace PawMapLoader.Res.PawScript
                 MelonLogger.Error($"Failed to load script \"{scriptName}\".", e);
                 throw;
             }
-            RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter {InstructionDumpReserve = pawScriptInstructions.Instructions})));
+
+            RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter
+                { InstructionDumpReserve = pawScriptInstructions.Instructions })));
 
             IEnumerator Runner(Interpreter interpreter)
             {
@@ -47,28 +49,30 @@ namespace PawMapLoader.Res.PawScript
                         { 6, dmgEvent.damage.Amount },
                         { 7, dmgEvent.eventParams.OldHealth },
                         { 8, dmgEvent.eventParams.NewHealth }
-
                     };
                     interpreter.NamedPtr = new Dictionary<string, int>
                     {
-                        {"EventSource", 0},
-                        {"MaxHealth", 1},
-                        {"Health", 2},
-                        {"Player", 3},
-                        {"IsDirectHit", 4},
-                        {"Direction", 5},
-                        {"Amount", 6},
-                        {"OldHealth", 7},
-                        {"NewHealth", 8},
+                        { "EventSource", 0 },
+                        { "MaxHealth", 1 },
+                        { "Health", 2 },
+                        { "Player", 3 },
+                        { "IsDirectHit", 4 },
+                        { "Direction", 5 },
+                        { "Amount", 6 },
+                        { "OldHealth", 7 },
+                        { "NewHealth", 8 }
                     };
                 }
-                for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++) 
+
+                for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++)
                 {
                     if ((Time.timeAsDouble - lastFrameTime) > 0.1)
                     {
-                        MelonLogger.Warning($"Pawscript is waiting for 1 second: Frame has not been produced in {Time.timeAsDouble - lastFrameTime}.");
+                        MelonLogger.Warning(
+                            $"Pawscript is waiting for 1 second: Frame has not been produced in {Time.timeAsDouble - lastFrameTime}.");
                         yield return new WaitForSeconds(1f);
                     }
+
                     if (pawScriptInstructions.Instructions[i].Delay > 0)
                         yield return new WaitForSeconds(pawScriptInstructions.Instructions[i].Delay);
                     interpreter.Interpret(pawScriptInstructions.Instructions[i], ref i);
@@ -78,7 +82,11 @@ namespace PawMapLoader.Res.PawScript
 
         public static void StopAll()
         {
-            foreach (object runningScript in RunningScripts) MelonCoroutines.Stop(runningScript);
+            foreach (object runningScript in RunningScripts)
+            {
+                MelonCoroutines.Stop(runningScript);
+            }
+
             RunningScripts.Clear();
         }
     }

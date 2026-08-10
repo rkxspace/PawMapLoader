@@ -47,16 +47,16 @@ namespace PawMapLoader.Res.PawScript
             Executions++;
             try
             {
-                string methodText = instruction.Claw + "." + instruction.Instruction;
+                string methodText = $"{instruction.Claw}.{instruction.Instruction}";
                 if (scriptDebug)
                 {
                     MelonLogger.Msg(
                         $"Instruction {instructionSetter}: {methodText} - Args: [{string.Join(", ", instruction.Arguments)}]");
                 }
 
-                if (ClawRegister.rClaws.ContainsKey(methodText))
+                if (ClawRegister.rClaws.TryGetValue(methodText, out InstructionDelegate exec))
                 {
-                    ClawRegister.rClaws[methodText](instruction, ref instructionSetter, this);
+                    exec(instruction, ref instructionSetter, this);
                 }
                 else throw new MissingMethodException($"{methodText} does not exist.");
             }
