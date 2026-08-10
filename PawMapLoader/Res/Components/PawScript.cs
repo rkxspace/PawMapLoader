@@ -1,4 +1,5 @@
 using MelonLoader;
+using PawMapLoader.Res.PawScript;
 using UnityEngine;
 
 // I gave up trying to recreate components and shit.
@@ -10,9 +11,10 @@ namespace PawMapLoader.Res.Components
     public class PawScript : MonoBehaviour
     {
         public string scriptName;
+
         void Awake()
         {
-            
+            PawScriptRegister.Start(scriptName);
         }
     }
 }
