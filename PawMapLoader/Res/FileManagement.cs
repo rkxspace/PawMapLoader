@@ -12,12 +12,12 @@ namespace PawMapLoader.Res
 {
     public class FileManagement
     {
-        public static string customMapsDirectory = Path.Combine(UConf.Properties.UserDataDirectory, "Maps");
+        public static string customMapsDirectory => Path.Combine(UConf.Properties.UserDataDirectory, "Maps");
 
-        public static string configDirectory =
+        public static string configDirectory =>
             Path.Combine(UConf.Properties.UserDataDirectory, ".rkxspace\\PawMapLoader");
 
-        public static string customMapsJsonFile = Path.Combine(customMapsDirectory, "maps.json");
+        public static string customMapsJsonFile => Path.Combine(customMapsDirectory, "maps.json");
 
         public static void EnsureCustomMapsDirectory()
         {
@@ -47,7 +47,7 @@ namespace PawMapLoader.Res
             }
             catch (Exception e)
             {
-                MelonLogger.Error("Failure to check or create maps directory, possibly due to permissions.", e);
+                MelonLogger.Error($"Failure to check or create config directory, possibly due to permissions. Location: {configDirectory}", e);
                 ErrorReporter.Report(e);
             }
         }

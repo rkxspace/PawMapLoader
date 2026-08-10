@@ -59,6 +59,8 @@ namespace PawMapLoader.Res.Enum
                     MelonLogger.Error($"Failed to load bundle {e}");
                     Store.BundleStream?.Close();
                     Store.BundleStream?.Dispose();
+                    Store.AdditiveBundleStream?.Close();
+                    Store.AdditiveBundleStream?.Dispose();
                     yield break;
                 }
 

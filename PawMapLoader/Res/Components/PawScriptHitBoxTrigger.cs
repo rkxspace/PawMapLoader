@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PawMapLoader.Res.Components
 {
     [RegisterTypeInIl2Cpp]
-    public class PawScriptHitBoxTrigger : MonoBehaviour //silly me, forgot MonoBehavior...
+    public class PawScriptHitBoxTrigger : MonoBehaviour
     {
         private void Awake()
         {

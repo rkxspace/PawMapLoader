@@ -6,6 +6,7 @@ namespace PawMapLoader
     {
         public static void EarlyInit()
         {
+            
             NTCheck.WineCheck();
         }
     }

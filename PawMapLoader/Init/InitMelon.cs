@@ -29,7 +29,7 @@ namespace PawMapLoader
             {
                 MelonLogger.BigError(
                     "PawMapLoader init failure!",
-                    $"Something went horribly wrong in init! This should never happen.\nError:{e}\nStackTrace:\n{e.StackTrace}"
+                    $"Error:\n{e}\nStackTrace:\n{e.StackTrace}"
                 );
                 ErrorReporter.Report(e);
             }
