@@ -16,6 +16,7 @@ namespace PawMapLoader.Res
         public static AssetBundle ExtraAssetBundle;
 
         public static Stream BundleStream;
+        public static Stream AdditiveBundleStream;
 
         public static Update Udevnt = () => { };
         public static Update UdevntGUI = () => { };

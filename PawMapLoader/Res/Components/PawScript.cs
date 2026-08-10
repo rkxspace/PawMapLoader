@@ -14,6 +14,12 @@ namespace PawMapLoader.Res.Components
 
         void Awake()
         {
+            if (scriptName == string.Empty)
+            {
+                ComponentLogs.UnsetComponent(gameObject);
+                return;
+            }
+
             PawScriptRegister.Start(scriptName);
         }
     }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Il2CppGame;
-using Il2CppSystem.IO;
 using Il2CppUI;
 using MelonLoader;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace PawMapLoader.Res.Enum
 {
     public class AsyncBundleLoader
     {
-        public static void LoadBundleAndStart(Stream stream)
+        public static void LoadBundleAndStart()
         {
             Store.MapLoadLocked = true;
             DialogueManager.Instance.DialogueWindow.Show("Loading...", "Loading Custom Level...", true, "Okay...");
@@ -20,7 +19,7 @@ namespace PawMapLoader.Res.Enum
 
             IEnumerator lbs()
             {
-                AssetBundleCreateRequest asyncBundle = AssetBundle.LoadFromStreamAsync(stream);
+                AssetBundleCreateRequest asyncBundle = AssetBundle.LoadFromStreamAsync(Store.BundleStream);
                 while (!asyncBundle.isDone)
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
@@ -28,13 +27,29 @@ namespace PawMapLoader.Res.Enum
                     yield return null;
                 }
 
+                Store.LoadedAssetBundle = asyncBundle.assetBundle ??
+                                          throw new NullReferenceException("Map AssetBundle failed to load.");
+
+                if (Store.AdditiveBundleStream != null)
+                {
+                    asyncBundle = AssetBundle.LoadFromStreamAsync(Store.AdditiveBundleStream);
+
+                    while (!asyncBundle.isDone)
+                    {
+                        DialogueManager.Instance.DialogueWindow.MessageLabel.text =
+                            $"Loading Additional Assets...\n{Math.Round(asyncBundle.progress * 100)}%";
+                        yield return null;
+                    }
+
+                    Store.ExtraAssetBundle = asyncBundle.assetBundle ??
+                                             throw new NullReferenceException("Extra AssetBundle failed to load.");
+                }
+
                 try
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
                         $"Done!\n{asyncBundle.progress * 100}%";
                     DialogueManager.Instance.DialogueWindow.Close();
-                    Store.LoadedAssetBundle = asyncBundle.assetBundle ??
-                                              throw new NullReferenceException("AssetBundle failed to load.");
                 }
                 catch (Exception e)
                 {

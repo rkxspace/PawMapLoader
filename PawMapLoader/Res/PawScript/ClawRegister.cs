@@ -51,6 +51,7 @@ namespace PawMapLoader.Res.PawScript
                 { "Player.AddScale", Player.AddScale },
 
                 { "Scene.UnityGameObjectToMemory", Scene.UnityGameObjectToMemory },
+                { "Scene.ImportObjectToScene", Scene.ImportObjectToScene },
 
                 { "Script.ConditionalJump", Script.ConditionalJump },
                 { "Script.Jump", Script.Jump },

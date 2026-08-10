@@ -80,8 +80,9 @@ namespace PawMapLoader.Res
             }
             catch (FileNotFoundException e)
             {
-                MelonLogger.Error($"Map File Not Found: {assetString}", e);
-                throw;
+                MelonLogger.Error($"File Not Found: {assetString.Replace(".", "\\")}.pawbox", e);
+                if (!assetString.EndsWith("_ADDITIVE")) throw;
+                return null;
             }
             catch (Exception e)
             {

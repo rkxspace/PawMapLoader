@@ -572,12 +572,14 @@
         <Compile Include="Res\AssetManager.cs" />
         <Compile Include="Res\Components\PawScript.cs" />
         <Compile Include="Res\Components\PawScriptDamageable.cs" />
+        <Compile Include="Res\Components\PawScriptHitBoxTrigger.cs"/>
         <Compile Include="Res\Components\SceneRoot.cs" />
         <Compile Include="Res\Debug\MethodDump.cs" />
         <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\ErrorReporter.cs" />
         <Compile Include="Res\FileManagement.cs" />
+        <Compile Include="Res\GUI\WebServer\Webserver.cs"/>
         <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\Json\MapJson.cs" />
         <Compile Include="Res\Json\MapList.cs" />
@@ -614,7 +616,7 @@
       <Content Include="Res\PawScript\Claws\TemplateInstruction.txt" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Res\GUI\WebServer\"/>
+        <Folder Include="API\"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

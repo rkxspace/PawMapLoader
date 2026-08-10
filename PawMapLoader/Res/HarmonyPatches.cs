@@ -41,7 +41,8 @@ namespace PawMapLoader.Res
             {
                 Store.IsMapCustom = true;
                 Store.BundleStream = FileManagement.OpenMapFile(scenename);
-                AsyncBundleLoader.LoadBundleAndStart(Store.BundleStream);
+                Store.AdditiveBundleStream = FileManagement.OpenMapFile($"{scenename}_ADDITIVE");
+                AsyncBundleLoader.LoadBundleAndStart();
             }
             catch (Exception e)
             {
