@@ -2,7 +2,7 @@
 This mod was created to load custom maps!
 
 > [!TIP]
-> Report issues and give feedback on [Discord](https://starshot.xilenth.space/redirect?dest=eNrLKCkpKLbS10_JLE7OL0rRS0_Xj3AOL3Y0S8lwLAQAnfAKOQ) 
+> Report issues and give feedback on [Discord](https://starshot.xilenth.space/redirect?dest=eNrLKCkpKLbS10_JLE7OL0rRS0_XN64oKXYrTfUoLAIAoKEKvA)
 
 ## Releases
 > [!CAUTION]
