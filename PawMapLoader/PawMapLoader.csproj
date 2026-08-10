@@ -565,6 +565,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class1.cs"/>
+        <Compile Include="Init\EarlyInitMelon.cs"/>
         <Compile Include="Init\InitMelon.cs" />
         <Compile Include="Init\UpdateRegisters.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
@@ -577,12 +578,12 @@
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\ErrorReporter.cs" />
         <Compile Include="Res\FileManagement.cs" />
-        <Compile Include="Res\GUI\PawScriptConsole.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\Json\MapJson.cs" />
         <Compile Include="Res\Json\MapList.cs" />
         <Compile Include="Res\Json\MapMetadata.cs" />
         <Compile Include="Res\Json\PawMap.cs" />
+        <Compile Include="Res\NTCheck.cs"/>
         <Compile Include="Res\PawPack\V1\Unpacker.cs" />
         <Compile Include="Res\PawPack\VersionHandler.cs" />
         <Compile Include="Res\PawScript\ClawRegister.cs" />
@@ -611,6 +612,9 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="Res\PawScript\Claws\TemplateInstruction.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Res\GUI\WebServer\"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
