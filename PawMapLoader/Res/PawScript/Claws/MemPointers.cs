@@ -4,7 +4,8 @@ namespace PawMapLoader.Res.PawScript.Claws
 {
     public class MemPointers
     {
-        public static void CreatePointer(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
+        public static void MkPointer(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
         {
             int addr = int.Parse(instruction.Arguments[1]);
             if (addr > -1)
@@ -13,7 +14,8 @@ namespace PawMapLoader.Res.PawScript.Claws
             }
         }
 
-        public static void DestroyPointer(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
+        public static void DelPointer(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
         {
             interpreter.NamedPtr.Remove(instruction.Arguments[0]);
         }

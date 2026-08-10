@@ -6,8 +6,6 @@ using PawMapLoader.Res.PawScript.Validation;
 
 namespace PawMapLoader.Res.PawScript.Claws
 {
-    // Probably going to leave this mod as singleplayer only. Sorry!
-    // I'm just not sure how I'll go about multiple players.
     public class Player
     {
         private static PlayerManager _pm => PlayerManager.Instance;

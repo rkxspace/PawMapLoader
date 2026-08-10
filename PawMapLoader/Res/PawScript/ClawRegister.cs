@@ -43,15 +43,15 @@ namespace PawMapLoader.Res.PawScript
                 { "Math.IntDiv", Math.IntDiv },
                 { "Math.IntMod", Math.IntMod },
 
-                { "MemPointers.CreatePointer", MemPointers.CreatePointer },
-                { "MemPointers.DestroyPointer", MemPointers.DestroyPointer },
+                { "MemPointers.MkPointer", MemPointers.MkPointer },
+                { "MemPointers.DelPointer", MemPointers.DelPointer },
 
                 { "Player.GetMainPlayer", Player.GetMainPlayer },
                 { "Player.GetPlayer", Player.GetPlayer },
                 { "Player.AddScale", Player.AddScale },
 
-                { "Scene.UnityGameObjectToMemory", Scene.UnityGameObjectToMemory },
-                { "Scene.ImportObjectToScene", Scene.ImportObjectToScene },
+                { "Scene.ObjectToMemory", Scene.ObjectToMemory },
+                { "Scene.ImportObject", Scene.ImportObject },
 
                 { "Script.ConditionalJump", Script.ConditionalJump },
                 { "Script.Jump", Script.Jump },
