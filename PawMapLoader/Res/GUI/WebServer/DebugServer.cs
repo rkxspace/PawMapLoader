@@ -24,6 +24,8 @@ namespace PawMapLoader.Res.GUI.WebServer
         public static void StartWebServer()
         {
             _ = new DebugServer().Start();
+            _interpreter = new Interpreter();
+            _instructions = new List<PawScriptInstruction>();
             MelonCoroutines.Start(InstructQueue());
             
             IEnumerator InstructQueue()
