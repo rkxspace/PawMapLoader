@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Il2CppConfig;
 using MelonLoader;
+using MelonLoader.Utils;
 using Newtonsoft.Json;
 using PawMapLoader.Res.UserConf;
 using PawMapLoader.Res.UserConf.Json;
@@ -15,7 +16,7 @@ namespace PawMapLoader.Res
         public static string customMapsDirectory => Path.Combine(UConf.Properties.UserDataDirectory, "Maps");
 
         public static string configDirectory =>
-            Path.Combine(UConf.Properties.UserDataDirectory, ".rkxspace\\PawMapLoader");
+            Path.Combine(MelonEnvironment.UserDataDirectory, ".rkxspace\\PawMapLoader");
 
         public static string customMapsJsonFile => Path.Combine(customMapsDirectory, "maps.json");
 
@@ -47,7 +48,9 @@ namespace PawMapLoader.Res
             }
             catch (Exception e)
             {
-                MelonLogger.Error($"Failure to check or create config directory, possibly due to permissions. Location: {configDirectory}", e);
+                MelonLogger.Error(
+                    $"Failure to check or create config directory, possibly due to permissions. Location: {configDirectory}",
+                    e);
                 ErrorReporter.Report(e);
             }
         }

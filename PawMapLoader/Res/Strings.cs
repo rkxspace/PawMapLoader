@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using MelonLoader;
 
@@ -9,6 +8,12 @@ namespace PawMapLoader.Res
     public class Strings
     {
         public static string Locale = CultureInfo.CurrentCulture.Name;
+
+        public static IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> StringBank =
+            new Dictionary<string, IReadOnlyDictionary<string, string>>
+            {
+                { "en-US", Languages.en_US }
+            };
 
         public static void ValidateLocaleExist()
         {
@@ -25,26 +30,16 @@ namespace PawMapLoader.Res
             {
                 return StringBank[Locale][key];
             }
-            catch (Exception e)
+            catch (KeyNotFoundException e)
             {
                 MelonLogger.Warning($"Failed to find string {key} in locale {Locale}. Falling back to en-US.");
                 return StringBank["en-US"][key];
             }
-        }
-        
-        public static IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> StringBank =
-            new Dictionary<string, IReadOnlyDictionary<string, string>>
+            catch (Exception e)
             {
-                {"en-US", new Dictionary<string, string>
-                    {
-                        { "InitFailTitle", "PawMapLoader init failure!" },
-                        { "InitFailBody", "PawMapLoader has failed to initialize.\n" +
-                                          "Please consider reporting this bug on Discord.\n" +
-                                          "For more information, please consult the log."}
-                        
-                        
-                    }
-                }
-            };
+                MelonLogger.Error("String get fail. Defaulting to key.");
+                return key;
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace PawMapLoader.Res.PawScript
     {
         public static void UnsetComponent(GameObject go)
         {
-            MelonLogger.Warning("[WARN] Unset Component on GameObject \"" + go.name + ".\"");
+            MelonLogger.Warning($"[WARN] {Strings.GetString("UnsetComponentErr")}\"{go.name}\"");
         }
     }
 }

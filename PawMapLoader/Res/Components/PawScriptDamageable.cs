@@ -46,7 +46,9 @@ namespace PawMapLoader.Res.Components
             }
             catch (Exception e)
             {
-                MelonLogger.Error($"PawScriptDamageable component on {gameObject.name} encountered an error.", e);
+                MelonLogger.Error(
+                    $"{Strings.GetString("DamageableError_Split1")}{gameObject.name}{Strings.GetString("DamageableError_Split2")}",
+                    e);
                 ErrorReporter.Report(e);
             }
         }

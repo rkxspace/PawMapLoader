@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using PawMapLoader.Res;
 
 namespace System.Windows.Forms
 {
@@ -31,7 +32,7 @@ namespace System.Windows.Forms
     {
         public string FileName { get; private set; } = string.Empty;
         public string Filter { get; set; } = "All Files\0*.*\0";
-        public string Title { get; set; } = "Open";
+        public string Title { get; set; } = Strings.GetString("FPOpen");
 
         [DllImport("comdlg32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern bool GetOpenFileName(ref OpenFileName ofn);
@@ -63,7 +64,7 @@ namespace System.Windows.Forms
     {
         public string FileName { get; private set; } = string.Empty;
         public string Filter { get; set; } = "All Files\0*.*\0";
-        public string Title { get; set; } = "Save";
+        public string Title { get; set; } = Strings.GetString("FPSave");
 
         [DllImport("comdlg32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern bool GetSaveFileName(ref OpenFileName ofn);

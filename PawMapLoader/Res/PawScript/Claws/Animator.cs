@@ -11,7 +11,8 @@ namespace PawMapLoader.Res.PawScript.Claws
     /// </summary>
     public class Animator
     {
-        public static void SetParameter(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
+        public static void SetParameter(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
         {
             object resolvedPointer = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
             TypeValidation.Validate<UnityEngine.Animator>(resolvedPointer);
@@ -27,13 +28,14 @@ namespace PawMapLoader.Res.PawScript.Claws
                 animator.SetInteger(paramName, intVal);
             else if (float.TryParse(paramValue, NumberStyles.Float, CultureInfo.InvariantCulture, out float floatVal))
                 animator.SetFloat(paramName, floatVal);
-            else throw new ArgumentException($"Unsupported parameter: '{paramValue}'");
+            else throw new ArgumentException($"{Strings.GetString("UnsupportedParamErr")}'{paramValue}'");
         }
 
-        public static void SetTrigger(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
+        public static void SetTrigger(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
         {
-            
-            UnityEngine.Animator animator = (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            UnityEngine.Animator animator =
+                (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
             string triggerName = instruction.Arguments[1];
             animator.SetTrigger(triggerName);
         }

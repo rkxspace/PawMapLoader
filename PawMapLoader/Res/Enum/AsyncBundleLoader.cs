@@ -12,7 +12,8 @@ namespace PawMapLoader.Res.Enum
         public static void LoadBundleAndStart()
         {
             Store.MapLoadLocked = true;
-            DialogueManager.Instance.DialogueWindow.Show("Loading...", "Loading Custom Level...", true, "Okay...");
+            DialogueManager.Instance.DialogueWindow.Show(Strings.GetString("LoadingHeader"),
+                Strings.GetString("LoadingMessage"), true, Strings.GetString("LoadingOkayButton"));
             DialogueManager.Instance.DialogueWindow.ConfirmButton.gameObject.SetActive(false);
             DialogueManager.Instance.DialogueWindow.CancelButton.gameObject.SetActive(false);
             MelonCoroutines.Start(lbs());
@@ -23,7 +24,7 @@ namespace PawMapLoader.Res.Enum
                 while (!asyncBundle.isDone)
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
-                        $"Loading Custom Level...\n{Math.Round(asyncBundle.progress * 100)}%";
+                        $"{Strings.GetString("LoadingMessage")}\n{Math.Round(asyncBundle.progress * 100)}%";
                     yield return null;
                 }
 
@@ -37,26 +38,26 @@ namespace PawMapLoader.Res.Enum
                     while (!asyncBundle.isDone)
                     {
                         DialogueManager.Instance.DialogueWindow.MessageLabel.text =
-                            $"Loading Additional Assets...\n{Math.Round(asyncBundle.progress * 100)}%";
+                            $"{Strings.GetString("LoadingMessageAdditional")}\n{Math.Round(asyncBundle.progress * 100)}%";
                         yield return null;
                     }
 
                     Store.ExtraAssetBundle = asyncBundle.assetBundle ??
-                                             throw new NullReferenceException("Extra AssetBundle failed to load.");
+                                             throw new NullReferenceException(Strings.GetString("AdditionalLoadFail"));
                 }
 
                 try
                 {
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text =
-                        $"Done!\n{asyncBundle.progress * 100}%";
+                        $"{Strings.GetString("LoadingFinish")}\n{asyncBundle.progress * 100}%";
                     DialogueManager.Instance.DialogueWindow.Close();
                 }
                 catch (Exception e)
                 {
                     Store.MapLoadLocked = false;
-                    DialogueManager.Instance.DialogueWindow.MessageLabel.text = "Failed to load!";
+                    DialogueManager.Instance.DialogueWindow.MessageLabel.text = Strings.GetString("MapLoadFailText");
                     DialogueManager.Instance.DialogueWindow.ConfirmButton.gameObject.SetActive(true);
-                    MelonLogger.Error($"Failed to load bundle {e}");
+                    MelonLogger.Error($"{Strings.GetString("BundleLoadError")}{e}");
                     Store.BundleStream?.Close();
                     Store.BundleStream?.Dispose();
                     Store.AdditiveBundleStream?.Close();

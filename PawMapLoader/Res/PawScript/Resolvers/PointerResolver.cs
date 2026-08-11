@@ -6,7 +6,7 @@ namespace PawMapLoader.Res.PawScript.Resolvers
         {
             if (input.StartsWith("(ptr)"))
             {
-                return interpreter.Memory[interpreter.NamedPtr[input.Replace("(ptr)", "")]];
+                return interpreter.Memory[interpreter.NamedPtr[input.Replace("(ptr)", string.Empty)]];
             }
 
             return interpreter.Memory[int.Parse(input)];
@@ -17,7 +17,7 @@ namespace PawMapLoader.Res.PawScript.Resolvers
         {
             if (input.StartsWith("(ptr)"))
             {
-                return interpreter.Memory[interpreter.NamedPtr[input.Replace("(ptr)", "")]];
+                return interpreter.Memory[interpreter.NamedPtr[input.Replace("(ptr)", string.Empty)]];
             }
 
             return input;
@@ -27,7 +27,7 @@ namespace PawMapLoader.Res.PawScript.Resolvers
         {
             if (input.StartsWith("(ptr)"))
             {
-                return interpreter.NamedPtr[input.Replace("(ptr)", "")];
+                return interpreter.NamedPtr[input.Replace("(ptr)", string.Empty)];
             }
 
             return int.Parse(input);

@@ -585,6 +585,7 @@
         <Compile Include="Res\Json\MapList.cs" />
         <Compile Include="Res\Json\MapMetadata.cs" />
         <Compile Include="Res\Json\PawMap.cs" />
+        <Compile Include="Res\Languages\en-US.cs"/>
         <Compile Include="Res\NTCheck.cs"/>
         <Compile Include="Res\PawPack\V1\Unpacker.cs" />
         <Compile Include="Res\PawPack\VersionHandler.cs" />

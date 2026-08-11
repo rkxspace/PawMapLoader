@@ -1,3 +1,4 @@
+using System.Windows.Forms;
 using Il2CppSystem;
 using MelonLoader;
 using PawMapLoader.Res;
@@ -28,10 +29,11 @@ namespace PawMapLoader
             catch (Exception e)
             {
                 MelonLogger.BigError(
-                    "PawMapLoader init failure!",
+                    Strings.GetString("InitFailTitle"),
                     $"Error:\n{e}\nStackTrace:\n{e.StackTrace}"
                 );
                 ErrorReporter.Report(e);
+                MessageBox.Show(Strings.GetString("InitFailTitle"), Strings.GetString("InitFailBody"));
             }
         }
 

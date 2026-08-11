@@ -6,7 +6,7 @@ namespace PawMapLoader.Res.PawScript.Validation
     {
         public static void Validate<T>(object mem)
         {
-            if (!(mem is T)) throw new ArgumentException("Invalid type passed.");
+            if (!(mem is T)) throw new ArgumentException(Strings.GetString("InvalidTypeErr"));
         }
     }
 }
