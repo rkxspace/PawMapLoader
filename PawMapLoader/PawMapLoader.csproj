@@ -579,7 +579,7 @@
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\ErrorReporter.cs" />
         <Compile Include="Res\FileManagement.cs" />
-        <Compile Include="Res\GUI\WebServer\Webserver.cs"/>
+        <Compile Include="Res\GUI\WebServer\DebugServer.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\Json\MapJson.cs" />
         <Compile Include="Res\Json\MapList.cs" />

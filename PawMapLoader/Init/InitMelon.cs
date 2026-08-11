@@ -3,6 +3,7 @@ using Il2CppSystem;
 using MelonLoader;
 using PawMapLoader.Res;
 using PawMapLoader.Res.Enum;
+using PawMapLoader.Res.GUI.WebServer;
 using PawMapLoader.Res.Json;
 using PawMapLoader.Res.UserConf;
 using Exception = System.Exception;
@@ -43,6 +44,7 @@ namespace PawMapLoader
             FileManagement.EnsureCustomMapsDirectory();
             MapJson.Read();
             AssetManager.LoadMapData();
+            DebugServer.StartWebServer();
         }
     }
 }
