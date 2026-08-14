@@ -6,6 +6,7 @@ namespace PawMapLoader
     {
         public static void EarlyInit()
         {
+            Strings.ValidateLocaleExist();
             NTCheck.WineCheck();
         }
     }

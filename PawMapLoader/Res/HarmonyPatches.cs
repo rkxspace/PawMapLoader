@@ -7,6 +7,7 @@ using Il2CppUtilities;
 using MelonLoader;
 using PawMapLoader.Res.Components;
 using PawMapLoader.Res.Enum;
+using PawMapLoader.Res.PawScript;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,6 +48,7 @@ namespace PawMapLoader.Res
             catch (Exception e)
             {
                 MelonLogger.Error(e.StackTrace);
+                throw;
             }
 
             return false;
@@ -63,10 +65,14 @@ namespace PawMapLoader.Res
             Store.FirePrevention.IsGameStarted = false;
             Store.FirePrevention.HasBlockConfig = false;
 
-            MelonLogger.Msg("Unloading Scene Assetbundle");
             if (!Store.IsMapCustom) return true;
+            MelonLogger.Msg("Killing PawScript interpreters...");
+            PawScriptRegister.StopAll();
+
             Store.LoadedAssetBundle?.Unload(true);
             Store.LoadedAssetBundle = null;
+            Store.ExtraAssetBundle?.Unload(true);
+            Store.ExtraAssetBundle = null;
             MelonLogger.Msg("Done.");
             return true;
         }

@@ -53,7 +53,7 @@ namespace PawMapLoader.Res.PawScript.Claws
 
         public static void Jump(PawScriptInstruction instruction, ref int instructionSetter, Interpreter interpreter)
         {
-            instructionSetter = int.Parse(instruction.Arguments[0]);
+            instructionSetter = int.Parse(instruction.Arguments[0]) - 1;
         }
 
         public static void ConditionalJump(PawScriptInstruction instruction, ref int instructionSetter,
@@ -86,7 +86,7 @@ namespace PawMapLoader.Res.PawScript.Claws
                 default: throw new InvalidOperationException($"Comparison type of \"{mode}\" not found.");
             }
 
-            instructionSetter = result ? jumpTo : instructionSetter;
+            instructionSetter = result ? jumpTo - 1 : instructionSetter;
         }
     }
 }

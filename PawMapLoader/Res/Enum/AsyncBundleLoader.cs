@@ -28,8 +28,23 @@ namespace PawMapLoader.Res.Enum
                     yield return null;
                 }
 
-                Store.LoadedAssetBundle = asyncBundle.assetBundle ??
-                                          throw new NullReferenceException("Map AssetBundle failed to load.");
+                try
+                {
+                    Store.LoadedAssetBundle = asyncBundle.assetBundle ??
+                                              throw new NullReferenceException("Map AssetBundle failed to load.");
+                }
+                catch (Exception e)
+                {
+                    Store.MapLoadLocked = false;
+                    DialogueManager.Instance.DialogueWindow.MessageLabel.text = Strings.GetString("MapLoadFailText");
+                    DialogueManager.Instance.DialogueWindow.ConfirmButton.gameObject.SetActive(true);
+                    MelonLogger.Error($"{Strings.GetString("BundleFailError")}{e}");
+                    Store.BundleStream?.Close();
+                    Store.BundleStream?.Dispose();
+                    Store.AdditiveBundleStream?.Close();
+                    Store.AdditiveBundleStream?.Dispose();
+                    throw;
+                }
 
                 if (Store.AdditiveBundleStream != null)
                 {
@@ -42,8 +57,25 @@ namespace PawMapLoader.Res.Enum
                         yield return null;
                     }
 
-                    Store.ExtraAssetBundle = asyncBundle.assetBundle ??
-                                             throw new NullReferenceException(Strings.GetString("AdditionalLoadFail"));
+                    try
+                    {
+                        Store.ExtraAssetBundle = asyncBundle.assetBundle ??
+                                                 throw new NullReferenceException(
+                                                     Strings.GetString("AdditionalLoadFail"));
+                    }
+                    catch (Exception e)
+                    {
+                        Store.MapLoadLocked = false;
+                        DialogueManager.Instance.DialogueWindow.MessageLabel.text =
+                            Strings.GetString("MapLoadFailText");
+                        DialogueManager.Instance.DialogueWindow.ConfirmButton.gameObject.SetActive(true);
+                        MelonLogger.Error($"{Strings.GetString("BundleFailError")}{e}");
+                        Store.BundleStream?.Close();
+                        Store.BundleStream?.Dispose();
+                        Store.AdditiveBundleStream?.Close();
+                        Store.AdditiveBundleStream?.Dispose();
+                        throw;
+                    }
                 }
 
                 try
@@ -57,7 +89,7 @@ namespace PawMapLoader.Res.Enum
                     Store.MapLoadLocked = false;
                     DialogueManager.Instance.DialogueWindow.MessageLabel.text = Strings.GetString("MapLoadFailText");
                     DialogueManager.Instance.DialogueWindow.ConfirmButton.gameObject.SetActive(true);
-                    MelonLogger.Error($"{Strings.GetString("BundleLoadError")}{e}");
+                    MelonLogger.Error($"{Strings.GetString("BundleFailError")}{e}");
                     Store.BundleStream?.Close();
                     Store.BundleStream?.Dispose();
                     Store.AdditiveBundleStream?.Close();

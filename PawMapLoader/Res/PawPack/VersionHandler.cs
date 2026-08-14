@@ -14,10 +14,11 @@ namespace PawMapLoader.Res.PawPack
         public static byte[] ExpectedHeader =
             { 0x5F, 0x50, 0x4D, 0x4C, 0x5F, 0x00, 0x4D, 0x41, 0x50, 0x50, 0x41, 0x43, 0x4B, 0x00 };
 
-        private static Dictionary<byte[], Unpacker> UnpackVersions = new Dictionary<byte[], Unpacker>
-        {
-            { new byte[] { 0x30, 0x30, 0x30, 0x31 }, V1.Unpacker.Unpack }
-        };
+        private static readonly Dictionary<byte[], Unpacker> UnpackVersions =
+            new Dictionary<byte[], Unpacker>(new CompareNonRef())
+            {
+                { new byte[] { 0x30, 0x30, 0x30, 0x31 }, V1.Unpacker.Unpack }
+            };
 
         public static Task<string> ShowFilePicker()
         {
@@ -60,6 +61,12 @@ namespace PawMapLoader.Res.PawPack
 
             Buffer.BlockCopy(file, version.Length + header.Length + 1, data, 0, data.Length);
             UnpackVersions[version](data);
+        }
+
+        public class CompareNonRef : IEqualityComparer<byte[]>
+        {
+            public bool Equals(byte[] x, byte[] y) => x != null && y != null && x.SequenceEqual(y);
+            public int GetHashCode(byte[] obj) => obj.Aggregate(0, (hash, x) => hash ^ x);
         }
 
         private delegate void Unpacker(byte[] data);
