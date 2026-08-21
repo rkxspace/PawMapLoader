@@ -33,6 +33,19 @@ namespace PawMapLoader.Res.PawScript.Claws
                         : throw new ArgumentException("Arg0 is not int.")], memAddr);
         }
 
+        public static void GetPlayerAnimator(PawScriptInstruction instruction, ref int instructionSetter,
+            Interpreter interpreter)
+        {
+            object resolvedPointer1 = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+            TypeValidation.Validate<Il2CppCharacter.Player>(resolvedPointer1);
+            Il2CppCharacter.Player player = (Il2CppCharacter.Player)resolvedPointer1;
+
+            int memAddr = !string.IsNullOrEmpty(instruction.Arguments[1])
+                ? PointerResolver.ResolvePointerAddress(instruction.Arguments[1], interpreter)
+                : -1;
+            interpreter.WriteMemory(player.Character.View.Animator, memAddr);
+        }
+
         public static void GetHeight(PawScriptInstruction instruction, ref int instructionSetter,
             Interpreter interpreter)
         {
