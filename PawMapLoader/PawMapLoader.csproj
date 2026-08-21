@@ -605,6 +605,15 @@
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstructions.cs" />
         <Compile Include="Res\PawScript\PawScriptRegister.cs" />
+        <Compile Include="Res\PawScript\Registers\AnimatorClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\GameStateClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\GarbageManagerClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\MapClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\MathClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\MemPointersClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\PlayerClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\SceneClaw.cs"/>
+        <Compile Include="Res\PawScript\Registers\ScriptClaw.cs"/>
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\Store.cs" />
@@ -619,7 +628,6 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="API\"/>
-        <Folder Include="Res\PawScript\Registers\"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
