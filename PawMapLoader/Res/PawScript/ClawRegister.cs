@@ -48,6 +48,7 @@ namespace PawMapLoader.Res.PawScript
 
                 { "Player.GetMainPlayer", Player.GetMainPlayer },
                 { "Player.GetPlayer", Player.GetPlayer },
+                { "Player.GetHeight", Player.GetHeight },
                 { "Player.AddScale", Player.AddScale },
 
                 { "Scene.ObjectToMemory", Scene.ObjectToMemory },
