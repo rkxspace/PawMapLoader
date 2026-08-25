@@ -1,21 +1,15 @@
-using System;
-using System.Globalization;
-using PawMapLoader.Res.PawScript.Json;
-using PawMapLoader.Res.PawScript.Resolvers;
-using PawMapLoader.Res.PawScript.Validation;
-
 namespace PawMapLoader.Res.PawScript.Claws
 {
-    /// <summary>
-    /// Access specific features of the Unity Animation Controller.
-    /// </summary>
     public class Animator
     {
-        public static void SetParameter(PawScriptInstruction instruction, ref int instructionSetter,
+        public static void SetParameter(PawMapLoader.Res.PawScript.Json.PawScriptInstruction instruction,
+            ref int instructionSetter,
             Interpreter interpreter)
         {
-            object resolvedPointer = PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
-            TypeValidation.Validate<UnityEngine.Animator>(resolvedPointer);
+            object resolvedPointer =
+                PawMapLoader.Res.PawScript.Resolvers.PointerResolver.ResolvePointer(instruction.Arguments[0],
+                    interpreter);
+            PawMapLoader.Res.PawScript.Validation.TypeValidation.Validate<UnityEngine.Animator>(resolvedPointer);
 
             UnityEngine.Animator animator = (UnityEngine.Animator)resolvedPointer;
 
@@ -26,16 +20,19 @@ namespace PawMapLoader.Res.PawScript.Claws
                 animator.SetBool(paramName, boolVal);
             else if (int.TryParse(paramValue, out int intVal))
                 animator.SetInteger(paramName, intVal);
-            else if (float.TryParse(paramValue, NumberStyles.Float, CultureInfo.InvariantCulture, out float floatVal))
+            else if (float.TryParse(paramValue, System.Globalization.NumberStyles.Float,
+                         System.Globalization.CultureInfo.InvariantCulture, out float floatVal))
                 animator.SetFloat(paramName, floatVal);
-            else throw new ArgumentException($"{Strings.GetString("UnsupportedParamErr")}'{paramValue}'");
+            else throw new System.ArgumentException($"{Strings.GetString("UnsupportedParamErr")}'{paramValue}'");
         }
 
-        public static void SetTrigger(PawScriptInstruction instruction, ref int instructionSetter,
+        public static void SetTrigger(PawMapLoader.Res.PawScript.Json.PawScriptInstruction instruction,
+            ref int instructionSetter,
             Interpreter interpreter)
         {
             UnityEngine.Animator animator =
-                (UnityEngine.Animator)PointerResolver.ResolvePointer(instruction.Arguments[0], interpreter);
+                (UnityEngine.Animator)PawMapLoader.Res.PawScript.Resolvers.PointerResolver.ResolvePointer(
+                    instruction.Arguments[0], interpreter);
             string triggerName = instruction.Arguments[1];
             animator.SetTrigger(triggerName);
         }
