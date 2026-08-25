@@ -616,6 +616,7 @@
         <Compile Include="Res\PawScript\Registers\ScriptClaw.cs"/>
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
+        <Compile Include="Res\RKXBOX_Unity_OSS\main.cs"/>
         <Compile Include="Res\Store.cs" />
         <Compile Include="Res\Strings.cs" />
         <Compile Include="Res\UserConf\Json\UserConfigProperties.cs" />
@@ -628,6 +629,8 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="API\"/>
+        <Folder Include="Res\RKXBOX_Unity_OSS\Assets\"/>
+        <Folder Include="Res\RKXBOX_Unity_OSS\Res\Camera\"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
