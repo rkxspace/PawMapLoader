@@ -12,9 +12,6 @@ namespace PawMapLoader.Res.PawScript
 {
     public class PawScriptRegister
     {
-        public static List<object> RunningScripts = new List<object>();
-        public static double lastFrameTime = 0;
-
         public static void Start(string scriptName, DamageEvent dmgEvent = null)
         {
             if (!UConf.Properties.PawScriptEnabled) return;
@@ -31,8 +28,9 @@ namespace PawMapLoader.Res.PawScript
                 throw;
             }
 
-            RunningScripts.Add(MelonCoroutines.Start(Runner(new Interpreter
-                { InstructionDumpReserve = pawScriptInstructions.Instructions })));
+            EnvyRunner.RuntimeStores.RunningScripts.Add(MelonCoroutines.Start(Runner(
+                new Interpreter
+                    { InstructionDumpReserve = pawScriptInstructions.Instructions })));
 
             IEnumerator Runner(Interpreter interpreter)
             {
@@ -66,10 +64,10 @@ namespace PawMapLoader.Res.PawScript
 
                 for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++)
                 {
-                    if ((Time.timeAsDouble - lastFrameTime) > 0.1)
+                    if (Time.timeAsDouble - EnvyRunner.RuntimeStores.lastFrameTime > 0.1)
                     {
                         MelonLogger.Warning(
-                            $"Pawscript is waiting for 1 second: Frame has not been produced in {Time.timeAsDouble - lastFrameTime}.");
+                            $"Pawscript is waiting for 1 second: Frame has not been produced in {Time.timeAsDouble - EnvyRunner.RuntimeStores.lastFrameTime}.");
                         yield return new WaitForSeconds(1f);
                     }
 
@@ -82,12 +80,12 @@ namespace PawMapLoader.Res.PawScript
 
         public static void StopAll()
         {
-            foreach (object runningScript in RunningScripts)
+            foreach (object runningScript in EnvyRunner.RuntimeStores.RunningScripts)
             {
                 MelonCoroutines.Stop(runningScript);
             }
 
-            RunningScripts.Clear();
+            EnvyRunner.RuntimeStores.RunningScripts.Clear();
         }
     }
 }

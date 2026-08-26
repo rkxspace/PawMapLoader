@@ -8,7 +8,7 @@ namespace PawMapLoader
     {
         public static void Register()
         {
-            Store.Udevnt += () => PawScriptRegister.lastFrameTime = Time.timeAsDouble;
+            Store.Udevnt += () => PawMapLoader.Res.PawScript.EnvyRunner.RuntimeStores.lastFrameTime = Time.timeAsDouble;
         }
     }
 }

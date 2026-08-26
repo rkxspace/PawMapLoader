@@ -600,6 +600,8 @@
         <Compile Include="Res\PawScript\Claws\Scene.cs" />
         <Compile Include="Res\PawScript\Claws\Script.cs" />
         <Compile Include="Res\PawScript\ComponentLogs.cs" />
+        <Compile Include="Res\PawScript\EnvyRunner\RuntimeCache.cs" />
+        <Compile Include="Res\PawScript\EnvyRunner\RuntimeStores.cs" />
         <Compile Include="Res\PawScript\Events\DamageEvent.cs" />
         <Compile Include="Res\PawScript\Interpreter.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
@@ -617,7 +619,10 @@
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\main.cs"/>
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\Camera.cs" />
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\FullScreenManager.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\SceneManagement.cs" />
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\GLHelper.cs" />
         <Compile Include="Res\Store.cs" />
         <Compile Include="Res\Strings.cs" />
         <Compile Include="Res\UserConf\Json\UserConfigProperties.cs" />
@@ -631,7 +636,7 @@
     <ItemGroup>
         <Folder Include="API\"/>
         <Folder Include="Res\RKXBOX_Unity_OSS\Assets\"/>
-        <Folder Include="Res\RKXBOX_Unity_OSS\Res\Camera\"/>
+        <Folder Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
