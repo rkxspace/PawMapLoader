@@ -11,5 +11,7 @@ namespace PawMapLoader.Res.UserConf.Json
         [JsonProperty("PawScriptDebug")] public bool PawScriptDebug = false;
         [JsonProperty("PawScriptEnabled")] public bool PawScriptEnabled = true;
         [JsonProperty("UserDataDirectory")] public string UserDataDirectory = MelonEnvironment.UserDataDirectory;
+
+        [JsonProperty("TestingSceneConfig")] public Il2CppGame.SceneConfig testingConfig = new Il2CppGame.SceneConfig();
     }
 }

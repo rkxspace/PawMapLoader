@@ -7,12 +7,12 @@ using PawMapLoader.Res.Json;
 
 namespace PawMapLoader.Res
 {
-    public class AssetManager
+    public static class AssetManager
     {
         public static void LoadMapData()
         {
             List<SceneConfig> levels = LevelDataProvider.Instance._levels.ToList();
-
+            Dictionary<string, SceneConfig> mapLkUpData = new Dictionary<string, SceneConfig>();
             foreach (PawMap pawMap in Store.Maps.PawMaps)
             {
                 try
@@ -32,13 +32,13 @@ namespace PawMapLoader.Res
                     sceneConfig.UnlockedBy = null;
                     sceneConfig.UnlockTargetScore = 0;
                     levels.Add(sceneConfig);
+                    mapLkUpData.Add(sceneConfig.LeaderboardName, sceneConfig);
                 }
                 catch (Exception e)
                 {
                     MelonLogger.Error($"{Strings.GetString("LevelDataAddFail")}\n{e}");
                 }
             }
-
             LevelDataProvider.Instance._levels = levels.ToArray();
         }
     }
