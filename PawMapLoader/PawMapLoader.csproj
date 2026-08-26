@@ -617,6 +617,7 @@
         <Compile Include="Res\PawScript\Resolvers\PointerResolver.cs" />
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\main.cs"/>
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\SceneManagement.cs" />
         <Compile Include="Res\Store.cs" />
         <Compile Include="Res\Strings.cs" />
         <Compile Include="Res\UserConf\Json\UserConfigProperties.cs" />
