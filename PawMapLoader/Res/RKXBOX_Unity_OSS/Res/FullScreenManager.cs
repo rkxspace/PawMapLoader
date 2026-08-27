@@ -1,17 +1,30 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
 {
+    using UnityEngine;
+
     public class FullScreenManager
     {
-        public static UnityEngine.FullScreenMode PreviousMode;
+        public static FullScreenMode PreviousMode;
+        public static Vector2Int PreviousResolution;
+
         public static void EnterWindowedEditorMode()
         {
-            PreviousMode = UnityEngine.Screen.fullScreenMode;
-            UnityEngine.Screen.fullScreenMode = UnityEngine.FullScreenMode.Windowed;
+            PreviousMode = Screen.fullScreenMode;
+            PreviousResolution = new Vector2Int(
+                Screen.currentResolution.width,
+                Screen.currentResolution.height
+            );
+
+            Screen.SetResolution(
+                (int)(Screen.currentResolution.width * 0.75f),
+                (int)(Screen.currentResolution.height * 0.75f),
+                FullScreenMode.Windowed
+            );
         }
 
         public static void ExitWindowedEditorMode()
         {
-            UnityEngine.Screen.fullScreenMode = PreviousMode;
+            Screen.SetResolution(PreviousResolution.x, PreviousResolution.y, PreviousMode);
         }
     }
 }
