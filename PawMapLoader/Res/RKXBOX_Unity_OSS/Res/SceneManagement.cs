@@ -4,6 +4,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
     using System.Reflection;
     using UnityEngine;
     using UnityEngine.SceneManagement;
+    using MemoryStream = Il2CppSystem.IO.MemoryStream;
     using Object = UnityEngine.Object;
 
     public class SceneManagement
@@ -13,8 +14,13 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
             Stream blank = Assembly.GetCallingAssembly().GetManifestResourceStream("PawMapLoader.Res.RKXBOX_Unity_OSS" +
                 ".Assets.blankScene");
 
-            // this is almost certainly the worst way to do this, but hey it works I guess.
-            SceneManager.LoadScene(0);
+            byte[] temp = new byte[blank.Length];
+            blank.Read(temp, 0, (int)blank.Length);
+            blank.Close();
+            MemoryStream memoryStream = new MemoryStream(temp);
+            AssetBundle.LoadFromMemory(memoryStream.ToArray());
+            SceneManager.LoadScene("BlankScene");
+
             foreach (GameObject rootGameObject in SceneManager.GetActiveScene().GetRootGameObjects())
             {
                 Object.DestroyImmediate(rootGameObject);
