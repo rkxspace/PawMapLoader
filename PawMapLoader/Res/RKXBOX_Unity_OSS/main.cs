@@ -1,6 +1,8 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS
 {
+    //TODO
     using Res;
+    using Res.ObjectHandler;
 
     public class main
     {
@@ -9,6 +11,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
             FullScreenManager.EnterWindowedEditorMode();
             SceneManagement.EnterBootScene();
             Camera.CreateEditorCamera();
+            BasePlane.CreatePlane();
         }
 
         public static void Exit()

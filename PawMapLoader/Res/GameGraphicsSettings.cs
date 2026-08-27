@@ -1,5 +1,6 @@
 namespace PawMapLoader.Res
 {
+    //TODO
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Rendering.Universal;
@@ -28,6 +29,7 @@ namespace PawMapLoader.Res
                     ScriptableObject.CreateInstance<UniversalRenderPipelineAsset>();
                 pipelineAsset.additionalLightsRenderingMode = LightRenderingMode.Disabled;
                 // pipelineAsset.additionalLightsShadowmapResolution = 
+                return null; // compiler satisfaction for now
             }
         }
     }

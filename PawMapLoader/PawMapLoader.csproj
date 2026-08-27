@@ -579,6 +579,7 @@
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\ErrorReporter.cs" />
         <Compile Include="Res\FileManagement.cs" />
+        <Compile Include="Res\GameGraphicsSettings.cs"/>
         <Compile Include="Res\GUI\WebServer\DebugServer.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\Json\MapJson.cs" />
@@ -636,10 +637,12 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="Res\PawScript\Claws\TemplateInstruction.txt" />
+        <EmbeddedResource Include="Res\RKXBOX_Unity_OSS\Assets\blankscene"/>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="API\"/>
-        <Folder Include="Res\RKXBOX_Unity_OSS\Assets\"/>
+        <Folder Include="Res\Experimental\XR\"/>
+        <Folder Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\glTF\"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
