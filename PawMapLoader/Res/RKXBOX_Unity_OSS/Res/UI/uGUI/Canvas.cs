@@ -3,7 +3,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI.uGUI
     using UnityEngine;
     using UnityEngine.UI;
 
-    public class EditorCanvas
+    public class EditorCanvas : UIElement
     {
         public Canvas Canvas;
         public CanvasScaler CanvasScaler;
@@ -14,9 +14,11 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI.uGUI
             Canvas canvas = canvasObj.AddComponent<Canvas>();
             CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
             canvasObj.AddComponent<GraphicRaycaster>();
+            canvas.worldCamera = Res.Camera.UICamera;
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             Canvas = canvas;
             CanvasScaler = canvasScaler;
+            SetUI(canvasObj);
         }
     }
 }

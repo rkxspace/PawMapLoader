@@ -8,10 +8,10 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
     {
         public static void Entry()
         {
-            FullScreenManager.EnterWindowedEditorMode();
             SceneManagement.EnterBootScene();
-            Camera.CreateEditorCamera();
             BasePlane.CreatePlane();
+            Camera.CreateEditorCamera();
+            FullScreenManager.EnterWindowedEditorMode();
         }
 
         public static void Exit()

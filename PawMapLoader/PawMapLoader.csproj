@@ -628,6 +628,7 @@
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\GLHelper.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\BoxPanel.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\Canvas.cs"/>
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\UIElement.cs" />
         <Compile Include="Res\Store.cs" />
         <Compile Include="Res\Strings.cs" />
         <Compile Include="Res\UserConf\Json\UserConfigProperties.cs" />
