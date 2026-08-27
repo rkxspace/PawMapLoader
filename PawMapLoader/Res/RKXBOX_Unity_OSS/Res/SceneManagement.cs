@@ -12,7 +12,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
         public static void EnterBootScene()
         {
             Stream blank = Assembly.GetCallingAssembly().GetManifestResourceStream("PawMapLoader.Res.RKXBOX_Unity_OSS" +
-                ".Assets.blankScene");
+                ".Assets.blankscene");
 
             byte[] temp = new byte[blank.Length];
             blank.Read(temp, 0, (int)blank.Length);
