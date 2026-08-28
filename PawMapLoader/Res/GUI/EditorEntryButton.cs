@@ -20,22 +20,30 @@ namespace PawMapLoader.Res.GUI
 
         public static bool MainMenuButton()
         {
-            Il2CppArrayBase<TextMeshProUGUI> tmpguil = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
-            TextMeshProUGUI edtb = null;
-            TextMeshProUGUI text = null;
-            foreach (TextMeshProUGUI go in tmpguil)
+            try
             {
-                if (go.gameObject.name == "CreditsButton") edtb = go;
-                if (go.gameObject.name == "Version View") text = go;
+                Il2CppArrayBase<TextMeshProUGUI> tmpguil = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
+                TextMeshProUGUI edtb = null;
+                TextMeshProUGUI text = null;
+                foreach (TextMeshProUGUI go in tmpguil)
+                {
+                    if (go.gameObject.name == "CreditsButton") edtb = go;
+                    if (go.gameObject.name == "Version View") text = go;
+                }
+
+                if (edtb == null) return false;
+                edtb.gameObject.name = Strings.GetString("EditorButton");
+                Button btn = edtb.gameObject.GetComponent<Button>();
+                btn.onClick = new Button.ButtonClickedEvent();
+                btn.onClick.AddListener((Action)(() => { main.Entry(); }));
+                if (text == null) return false;
+                text.text = VersionString.PMLVersion;
+                return true;
             }
-            if (edtb == null) return false;
-            edtb.gameObject.name = Strings.GetString("EditorButton");
-            Button btn = edtb.gameObject.GetComponent<Button>();
-            btn.onClick = new Button.ButtonClickedEvent();
-            btn.onClick.AddListener((Action)(() => { main.Entry(); }));
-            if (text == null) return false;
-            text.text = VersionString.PMLVersion;
-            return true;
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
