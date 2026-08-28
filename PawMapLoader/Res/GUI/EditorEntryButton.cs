@@ -13,24 +13,26 @@ namespace PawMapLoader.Res.GUI
         {
             Store.InitScnevnt += (i, s) =>
             {
-                if (s == "MainMenu") MainMenuButton(i);
+                if (s == "MainMenu") Res.Enum.MenuPersistent.Rescanner();
             };
         }
 
-        public static void MainMenuButton(int sceneBuildIndex)
+        public static bool MainMenuButton()
         {
+            bool result = false;
             foreach (TextMeshProUGUI go in Resources.FindObjectsOfTypeAll<TextMeshProUGUI>())
             {
-                MelonLogger.Msg($"[DEBUG] OBJ_SRCH: {go.gameObject.name} ({go.gameObject.scene.name})");
                 if (go.gameObject.name == "CreditsButton")
                 {
                     go.gameObject.name = Strings.GetString("EditorButton");
                     Button btn = go.gameObject.GetComponent<Button>();
                     btn.onClick = new Button.ButtonClickedEvent();
                     btn.onClick.AddListener((Action)(() => { main.Entry(); }));
+                    result = true;
                 }
                 if (go.gameObject.name == "Version View") go.text = VersionString.PMLVersion;
             }
+            return result;
         }
     }
 }
