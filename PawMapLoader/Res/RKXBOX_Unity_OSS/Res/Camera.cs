@@ -1,6 +1,7 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
 {
     using UnityEngine;
+    using UnityEngine.Rendering.Universal;
 
     public class EditorCameras
     {
@@ -16,12 +17,14 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
             );
             camera.rect = new Rect(0.0f, 0.3f, 0.7f, 0.7f);
             camera.depth = 0;
+            camera.tag = "MainCamera";
 
             UICamera = new GameObject("UICamera").AddComponent<Camera>();
-            UICamera.clearFlags = CameraClearFlags.Nothing;
+            UICamera.clearFlags = CameraClearFlags.Skybox;
             UICamera.orthographic = true;
-            UICamera.depth = 10;
             UICamera.cullingMask = LayerMask.GetMask("UI");
+            
+            camera.GetUniversalAdditionalCameraData().cameraStack.Add(UICamera);
         }
     }
 }
