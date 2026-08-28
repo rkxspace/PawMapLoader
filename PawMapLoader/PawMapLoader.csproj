@@ -634,6 +634,7 @@
         <Compile Include="Res\Strings.cs" />
         <Compile Include="Res\UserConf\Json\UserConfigProperties.cs" />
         <Compile Include="Res\UserConf\UConf.cs" />
+        <Compile Include="Res\VersionString.cs" />
         <Compile Include="Res\WinFormFilePicker.cs" />
         <Compile Include="Res\WinFormMsg.cs" />
     </ItemGroup>
