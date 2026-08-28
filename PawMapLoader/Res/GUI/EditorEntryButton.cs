@@ -28,11 +28,11 @@ namespace PawMapLoader.Res.GUI
                 foreach (TextMeshProUGUI go in tmpguil)
                 {
                     if (go.gameObject.transform.parent.gameObject.name == "CreditsButton") edtb = go;
-                    if (go.gameObject.transform.parent.gameObject.name == "Version View") text = go;
+                    if (go.gameObject.gameObject.name == "Version View") text = go;
                 }
 
                 if (edtb == null) return false;
-                edtb.gameObject.name = Strings.GetString("EditorButton");
+                edtb.text = Strings.GetString("EditorButton");
                 Button btn = edtb.gameObject.GetComponent<Button>();
                 btn.onClick = new Button.ButtonClickedEvent();
                 btn.onClick.AddListener((Action)(() => { main.Entry(); }));
