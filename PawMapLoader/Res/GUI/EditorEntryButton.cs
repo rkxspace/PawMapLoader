@@ -1,6 +1,7 @@
 namespace PawMapLoader.Res.GUI
 {
     using System;
+    using Il2CppInterop.Runtime.InteropTypes.Arrays;
     using Il2CppTMPro;
     using MelonLoader;
     using RKXBOX_Unity_OSS;
@@ -19,20 +20,22 @@ namespace PawMapLoader.Res.GUI
 
         public static bool MainMenuButton()
         {
-            bool result = false;
-            foreach (TextMeshProUGUI go in Resources.FindObjectsOfTypeAll<TextMeshProUGUI>())
+            Il2CppArrayBase<TextMeshProUGUI> tmpguil = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
+            TextMeshProUGUI edtb = null;
+            TextMeshProUGUI text = null;
+            foreach (TextMeshProUGUI go in tmpguil)
             {
-                if (go.gameObject.name == "CreditsButton")
-                {
-                    go.gameObject.name = Strings.GetString("EditorButton");
-                    Button btn = go.gameObject.GetComponent<Button>();
-                    btn.onClick = new Button.ButtonClickedEvent();
-                    btn.onClick.AddListener((Action)(() => { main.Entry(); }));
-                    result = true;
-                }
-                if (go.gameObject.name == "Version View") go.text = VersionString.PMLVersion;
+                if (go.gameObject.name == "CreditsButton") edtb = go;
+                if (go.gameObject.name == "Version View") text = go;
             }
-            return result;
+            if (edtb == null) return false;
+            edtb.gameObject.name = Strings.GetString("EditorButton");
+            Button btn = edtb.gameObject.GetComponent<Button>();
+            btn.onClick = new Button.ButtonClickedEvent();
+            btn.onClick.AddListener((Action)(() => { main.Entry(); }));
+            if (text == null) return false;
+            text.text = VersionString.PMLVersion;
+            return true;
         }
     }
 }
