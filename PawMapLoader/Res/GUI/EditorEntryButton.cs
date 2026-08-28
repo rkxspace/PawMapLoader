@@ -1,12 +1,14 @@
 namespace PawMapLoader.Res.GUI
 {
     using System;
+    using Il2CppGame;
     using Il2CppInterop.Runtime.InteropTypes.Arrays;
     using Il2CppTMPro;
     using MelonLoader;
     using RKXBOX_Unity_OSS;
     using UnityEngine;
     using UnityEngine.UI;
+    using Object = UnityEngine.Object;
 
     public class EditorEntryButton
     {
@@ -24,11 +26,10 @@ namespace PawMapLoader.Res.GUI
             {
                 Il2CppArrayBase<TextMeshProUGUI> tmpguil = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
                 TextMeshProUGUI edtb = null;
-                TextMeshProUGUI text = null;
+                GameVersionView text = null;
                 foreach (TextMeshProUGUI go in tmpguil)
                 {
                     if (go.gameObject.transform.parent.gameObject.name == "CreditsButton") edtb = go;
-                    if (go.gameObject.gameObject.name == "Version View") text = go;
                 }
 
                 if (edtb == null) return false;
@@ -36,8 +37,11 @@ namespace PawMapLoader.Res.GUI
                 Button btn = edtb.gameObject.GetComponent<Button>();
                 btn.onClick = new Button.ButtonClickedEvent();
                 btn.onClick.AddListener((Action)(() => { main.Entry(); }));
+                text = Resources.FindObjectsOfTypeAll<GameVersionView>()[0];
                 if (text == null) return false;
-                text.text = VersionString.PMLVersion;
+                edtb = text.gameObject.GetComponent<TextMeshProUGUI>();
+                Object.Destroy(text);
+                edtb.text = VersionString.PMLVersion;
                 return true;
             }
             catch (Exception)
