@@ -604,6 +604,7 @@
         <Compile Include="Res\PawScript\ComponentLogs.cs" />
         <Compile Include="Res\PawScript\EnvyRunner\RuntimeCache.cs" />
         <Compile Include="Res\PawScript\EnvyRunner\RuntimeStores.cs" />
+        <Compile Include="Res\PawScript\EnvyRunner\ScriptRunner.cs"/>
         <Compile Include="Res\PawScript\Events\DamageEvent.cs" />
         <Compile Include="Res\PawScript\Interpreter.cs" />
         <Compile Include="Res\PawScript\Json\PawScriptInstruction.cs" />
