@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MelonLoader;
-using Newtonsoft.Json;
-using PawMapLoader.Res.PawScript.Events;
-using PawMapLoader.Res.PawScript.Json;
-using PawMapLoader.Res.UserConf;
-using UnityEngine;
-
 namespace PawMapLoader.Res.PawScript
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using EnvyRunner;
+    using Events;
+    using Json;
+    using MelonLoader;
+    using UnityEngine;
+    using UserConf;
+
     public class PawScriptRegister
     {
         public static void Start(string scriptName, DamageEvent dmgEvent = null)
@@ -19,8 +19,7 @@ namespace PawMapLoader.Res.PawScript
             PawScriptInstructions pawScriptInstructions;
             try
             {
-                pawScriptInstructions =
-                    JsonConvert.DeserializeObject<PawScriptInstructions>(FileManagement.GetScriptFile(scriptName));
+                pawScriptInstructions = RuntimeCache.GetScript(scriptName);
             }
             catch (Exception e)
             {
@@ -28,7 +27,7 @@ namespace PawMapLoader.Res.PawScript
                 throw;
             }
 
-            EnvyRunner.RuntimeStores.RunningScripts.Add(MelonCoroutines.Start(Runner(
+            RuntimeStores.RunningScripts.Add(MelonCoroutines.Start(Runner(
                 new Interpreter
                     { InstructionDumpReserve = pawScriptInstructions.Instructions })));
 
@@ -64,10 +63,10 @@ namespace PawMapLoader.Res.PawScript
 
                 for (int i = 0; i < pawScriptInstructions.Instructions.Count; i++)
                 {
-                    if (Time.timeAsDouble - EnvyRunner.RuntimeStores.lastFrameTime > 0.1)
+                    if (Time.timeAsDouble - RuntimeStores.lastFrameTime > 0.1)
                     {
                         MelonLogger.Warning(
-                            $"Pawscript is waiting for 1 second: Frame has not been produced in {Time.timeAsDouble - EnvyRunner.RuntimeStores.lastFrameTime}.");
+                            $"Pawscript is waiting for 1 second: Frame has not been produced in {Time.timeAsDouble - RuntimeStores.lastFrameTime}.");
                         yield return new WaitForSeconds(1f);
                     }
 
@@ -80,12 +79,12 @@ namespace PawMapLoader.Res.PawScript
 
         public static void StopAll()
         {
-            foreach (object runningScript in EnvyRunner.RuntimeStores.RunningScripts)
+            foreach (object runningScript in RuntimeStores.RunningScripts)
             {
                 MelonCoroutines.Stop(runningScript);
             }
 
-            EnvyRunner.RuntimeStores.RunningScripts.Clear();
+            RuntimeStores.RunningScripts.Clear();
         }
     }
 }
