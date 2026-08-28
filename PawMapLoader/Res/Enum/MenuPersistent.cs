@@ -12,7 +12,7 @@ namespace PawMapLoader.Res.Enum
             MelonCoroutines.Start(rscn());
             IEnumerator rscn()
             {
-                while (EditorEntryButton.MainMenuButton())
+                while (!EditorEntryButton.MainMenuButton())
                 {
                     yield return new WaitForSeconds(0.1f);
                 }
