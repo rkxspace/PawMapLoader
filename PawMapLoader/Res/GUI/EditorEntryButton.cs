@@ -34,7 +34,7 @@ namespace PawMapLoader.Res.GUI
 
                 if (edtb == null) return false;
                 edtb.text = Strings.GetString("EditorButton");
-                Button btn = edtb.gameObject.GetComponent<Button>();
+                Button btn = edtb.gameObject.transform.parent.gameObject.GetComponent<Button>();
                 btn.onClick = new Button.ButtonClickedEvent();
                 btn.onClick.AddListener((Action)(() => { main.Entry(); }));
                 text = Resources.FindObjectsOfTypeAll<GameVersionView>()[0];
