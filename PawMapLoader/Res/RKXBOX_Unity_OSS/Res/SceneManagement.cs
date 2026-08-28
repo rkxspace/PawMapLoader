@@ -11,13 +11,18 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
     {
         public static void EnterBootScene()
         {
-            Stream blank = Assembly.GetCallingAssembly().GetManifestResourceStream("PawMapLoader.Res.RKXBOX_Unity_OSS" +
-                ".Assets.blankscene");
+            if (SceneManager.GetSceneByName("BlankScene").buildIndex == -1)
+            {
+                Stream blank = Assembly.GetCallingAssembly().GetManifestResourceStream(
+                    "PawMapLoader.Res.RKXBOX_Unity_OSS" +
+                    ".Assets.blankscene");
 
-            byte[] temp = new byte[blank.Length];
-            blank.Read(temp, 0, (int)blank.Length);
-            blank.Close();
-            AssetBundle.LoadFromStream(new MemoryStream(temp));
+                byte[] temp = new byte[blank.Length];
+                blank.Read(temp, 0, (int)blank.Length);
+                blank.Close();
+                AssetBundle.LoadFromStream(new MemoryStream(temp));
+            }
+            
             SceneManager.LoadScene("BlankScene");
 
             foreach (GameObject rootGameObject in SceneManager.GetActiveScene().GetRootGameObjects())

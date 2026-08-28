@@ -8,7 +8,9 @@ namespace PawMapLoader.Res.GUI
     using MelonLoader;
     using RKXBOX_Unity_OSS;
     using UnityEngine;
+    using UnityEngine.Localization.Components;
     using UnityEngine.UI;
+    using Object = UnityEngine.Object;
 
     public class EditorEntryButton
     {
@@ -39,6 +41,7 @@ namespace PawMapLoader.Res.GUI
                 btn.onClick.AddListener((Action)(() => { main.Entry(); }));
                 text = Resources.FindObjectsOfTypeAll<GameVersionView>()[0];
                 edtb = text.gameObject.GetComponent<TextMeshProUGUI>();
+                Object.Destroy(text.GetComponent<LocalizeStringEvent>());
                 edtb.text = VersionString.PMLVersion;
                 return true;
             }
