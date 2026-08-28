@@ -22,7 +22,8 @@ namespace PawMapLoader.Res.GUI
             {
                 if (text.name == "CreditsButton") cbutton = text.gameObject;
             }
-            _ = cbutton == null ? true : throw new NullReferenceException("Credits Button Missing");
+
+            _ = cbutton != null ? true : throw new NullReferenceException("Credits Button Missing");
             Button btn = cbutton.GetComponent<Button>();
             btn.onClick = new Button.ButtonClickedEvent();
             btn.onClick.AddListener((Action)(() => { main.Entry(); }));
