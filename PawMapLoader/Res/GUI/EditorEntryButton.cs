@@ -2,6 +2,7 @@ namespace PawMapLoader.Res.GUI
 {
     using System;
     using Il2CppTMPro;
+    using MelonLoader;
     using RKXBOX_Unity_OSS;
     using UnityEngine;
     using UnityEngine.UI;
@@ -20,6 +21,7 @@ namespace PawMapLoader.Res.GUI
         {
             foreach (TextMeshProUGUI go in Resources.FindObjectsOfTypeAll<TextMeshProUGUI>())
             {
+                MelonLogger.Msg($"[DEBUG] OBJ_SRCH: {go.name} ({go.gameObject.scene.name})");
                 if (go.name == "CreditsButton")
                 {
                     go.text = Strings.GetString("EditorButton");
@@ -27,7 +29,6 @@ namespace PawMapLoader.Res.GUI
                     btn.onClick = new Button.ButtonClickedEvent();
                     btn.onClick.AddListener((Action)(() => { main.Entry(); }));
                 }
-
                 if (go.name == "Version View") go.text = VersionString.PMLVersion;
             }
         }
