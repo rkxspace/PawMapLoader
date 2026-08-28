@@ -4,6 +4,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
     using System;
     using Res;
     using Res.ObjectHandler;
+    using Res.UI;
 
     public class main
     {
@@ -15,6 +16,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
                 if (s != "BlankScene") return;
                 BasePlane.CreatePlane();
                 EditorCameras.CreateEditorCamera();
+                EditorUI.Setup();
                 FullScreenManager.EnterWindowedEditorMode();
                 rm();
             });
