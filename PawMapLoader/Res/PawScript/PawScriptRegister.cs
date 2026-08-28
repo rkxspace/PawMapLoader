@@ -35,7 +35,7 @@ namespace PawMapLoader.Res.PawScript
             {
                 if (dmgEvent != null)
                 {
-                    interpreter.Memory = new Dictionary<int, object>
+                    interpreter.RtMemory.Memory = new Dictionary<int, object>
                     {
                         { 0, dmgEvent.source },
                         { 1, dmgEvent.damageable.MaxHealth },
@@ -47,7 +47,7 @@ namespace PawMapLoader.Res.PawScript
                         { 7, dmgEvent.eventParams.OldHealth },
                         { 8, dmgEvent.eventParams.NewHealth }
                     };
-                    interpreter.NamedPtr = new Dictionary<string, int>
+                    interpreter.RtMemory.NamedPtr = new Dictionary<string, int>
                     {
                         { "EventSource", 0 },
                         { "MaxHealth", 1 },

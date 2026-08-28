@@ -1,6 +1,7 @@
 namespace PawMapLoader.Res.GUI
 {
     using System;
+    using Enum;
     using Il2CppGame;
     using Il2CppInterop.Runtime.InteropTypes.Arrays;
     using Il2CppTMPro;
@@ -8,7 +9,6 @@ namespace PawMapLoader.Res.GUI
     using RKXBOX_Unity_OSS;
     using UnityEngine;
     using UnityEngine.UI;
-    using Object = UnityEngine.Object;
 
     public class EditorEntryButton
     {
@@ -16,7 +16,7 @@ namespace PawMapLoader.Res.GUI
         {
             Store.InitScnevnt += (i, s) =>
             {
-                if (s == "MainMenu") Res.Enum.MenuPersistent.Rescanner();
+                if (s == "MainMenu") MenuPersistent.Rescanner();
             };
         }
 
@@ -39,7 +39,6 @@ namespace PawMapLoader.Res.GUI
                 btn.onClick.AddListener((Action)(() => { main.Entry(); }));
                 text = Resources.FindObjectsOfTypeAll<GameVersionView>()[0];
                 edtb = text.gameObject.GetComponent<TextMeshProUGUI>();
-                Object.Destroy(text);
                 edtb.text = VersionString.PMLVersion;
                 return true;
             }

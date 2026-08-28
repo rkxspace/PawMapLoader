@@ -199,14 +199,21 @@
         <Reference Include="MelonLoader.NativeHost">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MelonLoader.NativeHost.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.9\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
         </Reference>
+        <Reference Include="Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\Microsoft.Bcl.HashCode.6.0.0\lib\net462\Microsoft.Bcl.HashCode.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.CSharp"/>
         <Reference Include="Microsoft.Diagnostics.NETCore.Client">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Diagnostics.NETCore.Client.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.Diagnostics.Runtime">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Diagnostics.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=3.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+            <HintPath>..\packages\Microsoft.DotNet.PlatformAbstractions.3.1.6\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.Extensions.Configuration">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Configuration.dll</HintPath>
@@ -219,6 +226,9 @@
         </Reference>
         <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.DependencyModel, Version=9.0.0.9, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+            <HintPath>..\packages\Microsoft.Extensions.DependencyModel.9.0.9\lib\net462\Microsoft.Extensions.DependencyModel.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.Extensions.Logging">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Microsoft.Extensions.Logging.dll</HintPath>
@@ -262,10 +272,23 @@
         <Reference Include="MonoMod.Utils">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\MonoMod.Utils.dll</HintPath>
         </Reference>
+        <Reference Include="mscorlib"/>
         <Reference Include="Newtonsoft.Json">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Newtonsoft.Json.dll</HintPath>
         </Reference>
+        <Reference Include="Silk.NET.Core, Version=2.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+            <HintPath>..\packages\Silk.NET.Core.2.23.0\lib\netstandard2.0\Silk.NET.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="Silk.NET.Maths, Version=2.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+            <HintPath>..\packages\Silk.NET.Maths.2.23.0\lib\netstandard2.0\Silk.NET.Maths.dll</HintPath>
+        </Reference>
+        <Reference Include="Silk.NET.OpenXR, Version=2.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+            <HintPath>..\packages\Silk.NET.OpenXR.2.23.0\lib\netstandard2.0\Silk.NET.OpenXR.dll</HintPath>
+        </Reference>
         <Reference Include="System"/>
+        <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+        </Reference>
         <Reference Include="System.Configuration.ConfigurationManager">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Configuration.ConfigurationManager.dll</HintPath>
         </Reference>
@@ -274,13 +297,42 @@
         <Reference Include="System.Drawing.Common">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Drawing.Common.dll</HintPath>
         </Reference>
+        <Reference Include="System.IO.Pipelines, Version=9.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.IO.Pipelines.9.0.9\lib\net462\System.IO.Pipelines.dll</HintPath>
+        </Reference>
         <Reference Include="System.Json" />
         <Reference Include="System.Json.Microsoft" />
+        <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Numerics"/>
+        <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Runtime"/>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+        </Reference>
         <Reference Include="System.Security.Cryptography.ProtectedData">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Security.Cryptography.ProtectedData.dll</HintPath>
         </Reference>
         <Reference Include="System.Security.Permissions">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Security.Permissions.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Text.Encodings.Web, Version=9.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Text.Encodings.Web.9.0.9\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Text.Json, Version=9.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Text.Json.9.0.9\lib\net462\System.Text.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+        </Reference>
+        <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
         </Reference>
         <Reference Include="System.Windows.Extensions">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\System.Windows.Extensions.dll</HintPath>
@@ -288,6 +340,9 @@
         <Reference Include="System.Xml"/>
         <Reference Include="Tomlet">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\Tomlet.dll</HintPath>
+        </Reference>
+        <Reference Include="Ultz.Bcl.Half, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+            <HintPath>..\packages\Ultz.Bcl.Half.Fallback.1.0.0\lib\netstandard2.0\Ultz.Bcl.Half.dll</HintPath>
         </Reference>
         <Reference Include="Unity.Addressables">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Unity.Addressables.dll</HintPath>
@@ -579,6 +634,7 @@
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
         <Compile Include="Res\Enum\MenuPersistent.cs" />
         <Compile Include="Res\ErrorReporter.cs" />
+        <Compile Include="Res\Experimental\XR\XREntry.cs"/>
         <Compile Include="Res\FileManagement.cs" />
         <Compile Include="Res\GameGraphicsSettings.cs"/>
         <Compile Include="Res\GUI\EditorEntryButton.cs"/>
@@ -603,6 +659,8 @@
         <Compile Include="Res\PawScript\Claws\Scene.cs" />
         <Compile Include="Res\PawScript\Claws\Script.cs" />
         <Compile Include="Res\PawScript\ComponentLogs.cs" />
+        <Compile Include="Res\PawScript\EnvyRunner\DamageEventData.cs"/>
+        <Compile Include="Res\PawScript\EnvyRunner\RuntimeMemory.cs"/>
         <Compile Include="Res\PawScript\EnvyRunner\RuntimeCache.cs" />
         <Compile Include="Res\PawScript\EnvyRunner\RuntimeStores.cs" />
         <Compile Include="Res\PawScript\EnvyRunner\ScriptRunner.cs"/>
@@ -646,8 +704,10 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="API\"/>
-        <Folder Include="Res\Experimental\XR\"/>
         <Folder Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\glTF\"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="packages.config"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

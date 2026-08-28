@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using MelonLoader;
-using PawMapLoader.Res.PawScript.Json;
-using PawMapLoader.Res.PawScript.Resolvers;
-
 namespace PawMapLoader.Res.PawScript.Claws
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using Json;
+    using MelonLoader;
+    using Resolvers;
+
     public class Script
     {
         public static void Dump(PawScriptInstruction instruction, ref int instructionSetter,
@@ -29,16 +29,16 @@ namespace PawMapLoader.Res.PawScript.Claws
             }
 
             sb.Append("\nInterpreter Data ===================");
-            sb.Append($"\nExecutions: {interpreter.Executions}");
-            sb.Append($"\nNext Auto-Write MemPos: {interpreter.NextMemory}");
+            sb.Append($"\nExecutions: {interpreter.RtMemory.Executions}");
+            sb.Append($"\nNext Auto-Write MemPos: {interpreter.RtMemory.NextMemory}");
             sb.Append("\nMemory:");
-            foreach (KeyValuePair<int, object> obj in interpreter.Memory)
+            foreach (KeyValuePair<int, object> obj in interpreter.RtMemory.Memory)
             {
                 sb.Append($"| {obj.Key}: {Convert.ChangeType(obj.Value, obj.Value.GetType())}");
             }
 
             sb.Append("\nPointers:");
-            foreach (KeyValuePair<string, int> ptr in interpreter.NamedPtr)
+            foreach (KeyValuePair<string, int> ptr in interpreter.RtMemory.NamedPtr)
             {
                 sb.Append($"\n| {ptr.Key}: {ptr.Value}");
             }

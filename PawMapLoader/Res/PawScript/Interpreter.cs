@@ -1,27 +1,25 @@
-using System;
-using System.Collections.Generic;
-using MelonLoader;
-using PawMapLoader.Res.PawScript.Json;
-using PawMapLoader.Res.UserConf;
-
 namespace PawMapLoader.Res.PawScript
 {
+    using System;
+    using System.Collections.Generic;
+    using EnvyRunner;
+    using Json;
+    using MelonLoader;
+    using UserConf;
+
     public class Interpreter
     {
-        public int Executions;
         public List<PawScriptInstruction> InstructionDumpReserve;
-        public Dictionary<int, object> Memory = new Dictionary<int, object>();
-        public Dictionary<string, int> NamedPtr = new Dictionary<string, int>();
-        public int NextMemory;
+        public RuntimeMemory RtMemory;
         public bool scriptDebug => UConf.Properties.PawScriptDebug;
 
         // leaving for debugging
         public void Reset()
         {
-            Memory.Clear();
-            NamedPtr.Clear();
-            NextMemory = 0;
-            Executions = 0;
+            RtMemory.Memory.Clear();
+            RtMemory.NamedPtr.Clear();
+            RtMemory.NextMemory = 0;
+            RtMemory.Executions = 0;
         }
 
         public void WriteMemory(object obj, int address = -1)
@@ -30,21 +28,21 @@ namespace PawMapLoader.Res.PawScript
             if (obj == null) throw new NullReferenceException();
             if (address >= 0)
             {
-                Memory[address] = obj;
+                RtMemory.Memory[address] = obj;
                 return;
             }
 
-            while (Memory.ContainsKey(NextMemory))
+            while (RtMemory.Memory.ContainsKey(RtMemory.NextMemory))
             {
-                NextMemory++;
+                RtMemory.NextMemory++;
             }
 
-            Memory.Add(NextMemory, obj);
+            RtMemory.Memory.Add(RtMemory.NextMemory, obj);
         }
 
         public void Interpret(PawScriptInstruction instruction, ref int instructionSetter)
         {
-            Executions++;
+            RtMemory.Executions++;
             try
             {
                 if (scriptDebug)
