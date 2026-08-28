@@ -27,8 +27,8 @@ namespace PawMapLoader.Res.GUI
                 TextMeshProUGUI text = null;
                 foreach (TextMeshProUGUI go in tmpguil)
                 {
-                    if (go.gameObject.name == "CreditsButton") edtb = go;
-                    if (go.gameObject.name == "Version View") text = go;
+                    if (go.gameObject.transform.parent.gameObject.name == "CreditsButton") edtb = go;
+                    if (go.gameObject.transform.parent.gameObject.name == "Version View") text = go;
                 }
 
                 if (edtb == null) return false;
