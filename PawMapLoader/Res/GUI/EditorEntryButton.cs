@@ -21,15 +21,15 @@ namespace PawMapLoader.Res.GUI
         {
             foreach (TextMeshProUGUI go in Resources.FindObjectsOfTypeAll<TextMeshProUGUI>())
             {
-                MelonLogger.Msg($"[DEBUG] OBJ_SRCH: {go.name} ({go.gameObject.scene.name})");
-                if (go.name == "CreditsButton")
+                MelonLogger.Msg($"[DEBUG] OBJ_SRCH: {go.gameObject.name} ({go.gameObject.scene.name})");
+                if (go.gameObject.name == "CreditsButton")
                 {
-                    go.text = Strings.GetString("EditorButton");
+                    go.gameObject.name = Strings.GetString("EditorButton");
                     Button btn = go.gameObject.GetComponent<Button>();
                     btn.onClick = new Button.ButtonClickedEvent();
                     btn.onClick.AddListener((Action)(() => { main.Entry(); }));
                 }
-                if (go.name == "Version View") go.text = VersionString.PMLVersion;
+                if (go.gameObject.name == "Version View") go.text = VersionString.PMLVersion;
             }
         }
     }
