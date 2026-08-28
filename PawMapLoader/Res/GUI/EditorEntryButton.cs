@@ -1,9 +1,9 @@
 namespace PawMapLoader.Res.GUI
 {
     using System;
+    using Il2CppTMPro;
     using RKXBOX_Unity_OSS;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
 
     public class EditorEntryButton
@@ -18,17 +18,18 @@ namespace PawMapLoader.Res.GUI
 
         public static void MainMenuButton(int sceneBuildIndex)
         {
-            GameObject cbutton = SceneManager.GetSceneByBuildIndex(sceneBuildIndex).GetRootGameObjects()[19]?
-                .transform.GetChild(3).GetChild(0).GetChild(2).GetChild(4).gameObject;
-            SceneManager.GetSceneByBuildIndex(sceneBuildIndex).GetRootGameObjects()[19]
-                .transform.GetChild(5).gameObject.GetComponent<Text>().text = VersionString.PMLVersion;
+            foreach (TextMeshProUGUI go in Resources.FindObjectsOfTypeAll<TextMeshProUGUI>())
+            {
+                if (go.name == "CreditsButton")
+                {
+                    go.text = Strings.GetString("EditorButton");
+                    Button btn = go.gameObject.GetComponent<Button>();
+                    btn.onClick = new Button.ButtonClickedEvent();
+                    btn.onClick.AddListener((Action)(() => { main.Entry(); }));
+                }
 
-            _ = cbutton != null ? true : throw new NullReferenceException("Credits Button Missing");
-            Button btn = cbutton.GetComponent<Button>();
-            btn.onClick = new Button.ButtonClickedEvent();
-            btn.onClick.AddListener((Action)(() => { main.Entry(); }));
-            Text txt = cbutton.GetComponent<Text>();
-            txt.text = Strings.GetString("EditorButton");
+                if (go.name == "Version View") go.text = VersionString.PMLVersion;
+            }
         }
     }
 }
