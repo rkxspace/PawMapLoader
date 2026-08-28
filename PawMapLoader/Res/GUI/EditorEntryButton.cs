@@ -35,13 +35,13 @@ namespace PawMapLoader.Res.GUI
                 }
 
                 if (edtb == null) return false;
+                Object.Destroy(edtb.gameObject.GetComponent<LocalizeStringEvent>());
                 edtb.text = Strings.GetString("EditorButton");
                 Button btn = edtb.gameObject.transform.parent.gameObject.GetComponent<Button>();
                 btn.onClick = new Button.ButtonClickedEvent();
                 btn.onClick.AddListener((Action)(() => { main.Entry(); }));
                 text = Resources.FindObjectsOfTypeAll<GameVersionView>()[0];
                 edtb = text.gameObject.GetComponent<TextMeshProUGUI>();
-                Object.Destroy(text.GetComponent<LocalizeStringEvent>());
                 edtb.text = VersionString.PMLVersion;
                 return true;
             }
