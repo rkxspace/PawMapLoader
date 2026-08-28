@@ -20,7 +20,7 @@ namespace PawMapLoader
 
         public override void OnGUI() => Store.UdevntGUI();
 
-        public override void OnSceneWasInitialized(int buildIndex, string sceneName) =>
+        public override void OnSceneWasLoaded(int buildIndex, string sceneName) =>
             Store.InitScnevnt(buildIndex, sceneName);
     }
 }
