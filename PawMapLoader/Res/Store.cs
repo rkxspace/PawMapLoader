@@ -1,11 +1,13 @@
-using Il2CppSystem.IO;
-using PawMapLoader.Res.Json;
-using UnityEngine;
-
 namespace PawMapLoader.Res
 {
+    using Il2CppSystem.IO;
+    using Json;
+    using UnityEngine;
+
     public class Store
     {
+        public delegate void SceneEv(int buildIndex, string sceneName);
+
         public delegate void Update();
 
         public static MapList Maps;
@@ -20,6 +22,7 @@ namespace PawMapLoader.Res
 
         public static Update Udevnt = () => { };
         public static Update UdevntGUI = () => { };
+        public static SceneEv InitScnevnt = (ind, scn) => { };
 
         public class FirePrevention
         {

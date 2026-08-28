@@ -2,21 +2,21 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
 {
     using UnityEngine;
 
-    public class Camera
+    public class EditorCameras
     {
-        public static UnityEngine.Camera camera;
-        public static UnityEngine.Camera UICamera;
+        public static Camera camera;
+        public static Camera UICamera;
 
         public static void CreateEditorCamera()
         {
-            camera = new GameObject("EditorSceneCamera").AddComponent<UnityEngine.Camera>();
+            camera = new GameObject("EditorSceneCamera").AddComponent<Camera>();
             camera.transform.SetPositionAndRotation(
                 new Vector3(3, 3, 3),
-                Quaternion.Euler(25, 225, 0) // what the fuck is this
+                Quaternion.Euler(25, 225, 0)
             );
-            camera.rect = new Rect(0.3f, 0f, 0.7f,  0.7f);
-            
-            UICamera = new GameObject("UICamera").AddComponent<UnityEngine.Camera>();
+            camera.rect = new Rect(0.3f, 0f, 0.7f, 0.7f);
+
+            UICamera = new GameObject("UICamera").AddComponent<Camera>();
             UICamera.clearFlags = CameraClearFlags.Depth;
             UICamera.backgroundColor = Color.black;
             UICamera.orthographic = true;

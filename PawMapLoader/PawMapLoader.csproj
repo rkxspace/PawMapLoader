@@ -580,6 +580,7 @@
         <Compile Include="Res\ErrorReporter.cs" />
         <Compile Include="Res\FileManagement.cs" />
         <Compile Include="Res\GameGraphicsSettings.cs"/>
+        <Compile Include="Res\GUI\EditorEntryButton.cs"/>
         <Compile Include="Res\GUI\WebServer\DebugServer.cs" />
         <Compile Include="Res\HarmonyPatches.cs" />
         <Compile Include="Res\Json\MapJson.cs" />

@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace PawMapLoader.Res
 {
+    using System.Collections.Generic;
+
     internal class Languages
     {
         public static IReadOnlyDictionary<string, string> en_US = new Dictionary<string, string>
@@ -38,7 +38,8 @@ namespace PawMapLoader.Res
             },
 
             { "FPOpen", "Open" },
-            { "FPSave", "Save" }
+            { "FPSave", "Save" },
+            { "EditorButton", "Map Editor" }
         };
     }
 }

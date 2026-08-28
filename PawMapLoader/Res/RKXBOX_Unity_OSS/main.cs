@@ -10,7 +10,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
         {
             SceneManagement.EnterBootScene();
             BasePlane.CreatePlane();
-            Camera.CreateEditorCamera();
+            EditorCameras.CreateEditorCamera();
             FullScreenManager.EnterWindowedEditorMode();
         }
 
