@@ -635,6 +635,7 @@
         <Compile Include="Res\Enum\MenuPersistent.cs" />
         <Compile Include="Res\ErrorReporter.cs" />
         <Compile Include="Res\Experimental\XR\XREntry.cs"/>
+        <Compile Include="Res\Experimental\XR\XRRuntime.cs"/>
         <Compile Include="Res\FileManagement.cs" />
         <Compile Include="Res\GameGraphicsSettings.cs"/>
         <Compile Include="Res\GUI\EditorEntryButton.cs"/>
@@ -720,6 +721,15 @@
 
     <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Debug' ">
         <Exec Command="bash $(ProjectDir)release.sh" />
+    </Target>
+
+    <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.46\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.46\build\ILRepack.Lib.MSBuild.Task.targets')"/>
+
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+        <PropertyGroup>
+            <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+        </PropertyGroup>
+        <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.46\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.46\build\ILRepack.Lib.MSBuild.Task.targets'))"/>
     </Target>
 
 </Project>
