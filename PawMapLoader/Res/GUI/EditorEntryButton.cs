@@ -26,7 +26,7 @@ namespace PawMapLoader.Res.GUI
             {
                 Il2CppArrayBase<TextMeshProUGUI> tmpguil = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
                 TextMeshProUGUI edtb = null;
-                GameVersionView text = null;
+                GameVersionView text;
                 foreach (TextMeshProUGUI go in tmpguil)
                 {
                     if (go.gameObject.transform.parent.gameObject.name == "CreditsButton") edtb = go;
@@ -38,14 +38,14 @@ namespace PawMapLoader.Res.GUI
                 btn.onClick = new Button.ButtonClickedEvent();
                 btn.onClick.AddListener((Action)(() => { main.Entry(); }));
                 text = Resources.FindObjectsOfTypeAll<GameVersionView>()[0];
-                if (text == null) return false;
                 edtb = text.gameObject.GetComponent<TextMeshProUGUI>();
                 Object.Destroy(text);
                 edtb.text = VersionString.PMLVersion;
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MelonLogger.Error(e);
                 return false;
             }
         }
