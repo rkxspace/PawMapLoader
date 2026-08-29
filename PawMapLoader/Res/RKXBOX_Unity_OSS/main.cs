@@ -5,9 +5,12 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
     using Res;
     using Res.ObjectHandler;
     using Res.UI;
+    using Res.ViewPortControls;
+    using UnityEngine;
 
     public class main
     {
+        private static Store.Update BindingEv = () => Bindings.MouseSelect();
         public static void Entry()
         {
             Action<int, string> t_ev = null;
@@ -18,6 +21,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
                 EditorCameras.CreateEditorCamera();
                 EditorUI.Setup();
                 EditorStates.StateSetup();
+                Store.Udevnt += BindingEv;
                 FullScreenManager.EnterWindowedEditorMode();
                 rm();
             };
@@ -33,6 +37,8 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
 
         public static void Exit()
         {
+            Store.Udevnt -= BindingEv;
+            Camera.onPostRender = (Action<Camera>)(s => { });
             FullScreenManager.ExitWindowedEditorMode();
             SceneManagement.EnterMainMenuScene();
         }

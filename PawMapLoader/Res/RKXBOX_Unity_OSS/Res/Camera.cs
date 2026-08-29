@@ -1,17 +1,18 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
 {
+    using Components;
     using UnityEngine;
     using UnityEngine.Rendering.Universal;
 
     public class EditorCameras
     {
         public static Camera camera;
-        public static Camera UICamera;
 
         public static void CreateEditorCamera()
         {
             camera = new GameObject("EditorSceneCamera").AddComponent<Camera>();
             camera.gameObject.AddComponent<UniversalAdditionalCameraData>();
+            camera.gameObject.AddComponent<PostRenderHelper>();
             camera.transform.SetPositionAndRotation(
                 new Vector3(8, 5, 8),
                 Quaternion.Euler(25, 225, 0)

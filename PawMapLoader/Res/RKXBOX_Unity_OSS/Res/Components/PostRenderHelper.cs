@@ -1,5 +1,6 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.Components
 {
+    using System;
     using MelonLoader;
     using UI;
     using UnityEngine;
@@ -7,10 +8,15 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.Components
     [RegisterTypeInIl2Cpp]
     public class PostRenderHelper : MonoBehaviour
     {
-        void OnPostRender()
+        public PostRenderHelper(IntPtr ptr) : base(ptr) { }
+
+        void OnEnable()
         {
-            if (EditorStates.instance.selectedGameObject == null) return;
-            GLHelper.Render(EditorStates.instance.selectedGameObject.transform);
+            Camera.onPostRender += (Action<Camera>)(s =>
+            {
+                if (EditorStates.instance.selectedGameObject == null) return;
+                GLHelper.Render(EditorStates.instance.selectedGameObject.transform);
+            });
         }
     }
 }
