@@ -8,7 +8,18 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
         public static void Setup()
         {
             EditorCanvas edtCanvas = new EditorCanvas();
-            BoxPanel bxpnl01 = new BoxPanel(edtCanvas, new Rect(0.0f, 0.0f, 1f, 1f));
+            BoxPanel BottomBar = new BoxPanel(
+                edtCanvas,
+                new Rect(0.0f, 0.00f, 1f, 0.03f),
+                new Color(0.08f, 0.08f, 0.08f));
+            BoxPanel BottomAlignedBox = new BoxPanel(
+                edtCanvas,
+                new Rect(0.0f, 0.03f, 0.75f, 0.27f),
+                new Color(0.08f, 0.08f, 0.08f));
+            BoxPanel RightAlignedBox = new BoxPanel(
+                edtCanvas,
+                new Rect(0.75f, 0.03f, 0.25f, 0.27f),
+                new Color(0.08f, 0.08f, 0.08f));
         }
     }
 }

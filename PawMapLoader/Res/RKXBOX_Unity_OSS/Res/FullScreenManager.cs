@@ -1,5 +1,6 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res
 {
+    using Il2CppInterop.Runtime;
     using UnityEngine;
 
     public class FullScreenManager
