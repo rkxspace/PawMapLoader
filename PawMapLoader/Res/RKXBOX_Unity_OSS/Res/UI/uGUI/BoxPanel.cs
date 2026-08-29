@@ -13,12 +13,8 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI.uGUI
             bxpnl.transform.SetParent(editorCanvas.Canvas.transform, false);
             Image image = bxpnl.AddComponent<Image>();
             image.color = colour;
-            RectTransform rt = bxpnl.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(screenSpace.x, screenSpace.y);
-            rt.anchorMax = new Vector2(screenSpace.width, screenSpace.height);
-            rt.offsetMin = Vector2.zero;
-            rt.offsetMax = Vector2.zero;
-            rectTransform = rt;
+            SetRect(bxpnl, screenSpace);
+            rectTransform = bxpnl.GetComponent<RectTransform>();
             SetUI(bxpnl);
         }
 
@@ -28,12 +24,8 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI.uGUI
             bxpnl.transform.SetParent(UprBxPnl.rectTransform, false);
             Image image = bxpnl.AddComponent<Image>();
             image.color = colour;
-            RectTransform rt = bxpnl.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(localSpace.x, localSpace.y);
-            rt.anchorMax = new Vector2(localSpace.width, localSpace.height);
-            rt.offsetMin = Vector2.zero;
-            rt.offsetMax = Vector2.zero;
-            rectTransform = rt;
+            SetRect(bxpnl, localSpace);
+            rectTransform = bxpnl.GetComponent<RectTransform>();
             SetUI(bxpnl);
         }
     }

@@ -1,7 +1,9 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
 {
+    using Il2CppTMPro;
     using uGUI;
     using UnityEngine;
+    using TextMesh = uGUI.TextMesh;
 
     public class EditorUI
     {
@@ -36,8 +38,20 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
             BoxPanel InnerBoxRightAlignedBox = new BoxPanel(
                 RightAlignedBox,
                 "InnerRightPanel",
-                new Rect(0.0f, 0.00f, 1f, 0.97f),
+                new Rect(0.0f, 0.00f, 1f, 0.967f),
                 new Color(0.12f, 0.12f, 0.12f)
+            );
+            
+            /*** BOTTOM BAR TEXT ***/
+
+            TextMesh BottomBarVersionText = new TextMesh(
+                BottomBar,
+                "VersionText",
+                VersionString.PMLVersion,
+                12,
+                TextAlignmentOptions.Left,
+                new Rect(0f, 0f, 0.5f, 1f),
+                new Color(0.6f, 0.6f, 0.6f)
             );
         }
     }

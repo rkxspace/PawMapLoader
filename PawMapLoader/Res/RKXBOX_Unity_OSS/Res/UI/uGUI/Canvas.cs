@@ -7,17 +7,15 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI.uGUI
     public class EditorCanvas : UIElement
     {
         public Canvas Canvas;
-        public CanvasScaler CanvasScaler;
 
         public EditorCanvas()
         {
             GameObject canvasObj = new GameObject("EditorUI");
             Canvas canvas = canvasObj.AddComponent<Canvas>();
-            CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
+            canvasObj.AddComponent<CanvasScaler>();
             canvasObj.AddComponent<GraphicRaycaster>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             Canvas = canvas;
-            CanvasScaler = canvasScaler;
             SetUI(canvasObj);
         }
     }
