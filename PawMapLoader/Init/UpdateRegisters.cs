@@ -1,14 +1,14 @@
-using PawMapLoader.Res;
-using PawMapLoader.Res.PawScript;
-using UnityEngine;
-
 namespace PawMapLoader
 {
+    using UnityEngine;
+    using Res;
+
     public class UpdateRegisters
     {
         public static void Register()
         {
-            Store.Udevnt += () => PawMapLoader.Res.PawScript.EnvyRunner.RuntimeStores.lastFrameTime = Time.timeAsDouble;
+            Store.Udevnt += () => Res.PawScript.EnvyRunner.RuntimeStores.lastFrameTime = Time.timeAsDouble;
         }
     }
 }
+
