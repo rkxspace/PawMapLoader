@@ -5,7 +5,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
 
     public class MouseTools
     {
-        public static Vector2 MousePos => Mouse.current.position.value;
+        public static Vector2 MousePos => Mouse.current.position.ReadValue();
         public static Vector2 NrmlMousePos => new Vector2(MousePos.x / Screen.width, MousePos.y / Screen.height);
         public static bool HoveredViewPort => EditorCameras.camera.rect.Contains(NrmlMousePos);
 
