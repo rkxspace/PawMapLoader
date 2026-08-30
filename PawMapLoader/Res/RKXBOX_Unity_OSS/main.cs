@@ -4,6 +4,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
     using System;
     using Res;
     using Res.ObjectHandler;
+    using Res.ObjectHandler.Data;
     using Res.UI;
     using Res.ViewPortControls;
     using UnityEngine;
@@ -17,6 +18,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
             t_ev = (i, s) =>
             {
                 if (s != "BlankScene") return;
+                new PML_Scene();
                 BasePlane.CreatePlane();
                 EditorCameras.CreateEditorCamera();
                 EditorUI.Setup();
