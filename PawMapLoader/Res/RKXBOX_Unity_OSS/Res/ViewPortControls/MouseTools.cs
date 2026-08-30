@@ -1,5 +1,8 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
 {
+    using System.Collections.Generic;
+    using ObjectHandler;
+    using ObjectHandler.Data;
     using UnityEngine;
     using UnityEngine.InputSystem;
 
@@ -17,18 +20,30 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
         public static GameObject GetHoveredGameObject()
         {
             if (!HoveredViewPort) return null;
-            foreach (Renderer rend in Object.FindObjectsOfType<Renderer>())
+            List<KeyValuePair<string, SceneObj>> potentialObj = new List<KeyValuePair<string, SceneObj>>();
+            foreach (KeyValuePair<string, SceneObj> sceneObj in PML_Scene.Instance.sceneData)
             {
-                if (rend.bounds.IntersectRay(
+                if (sceneObj.Value.Renderer.bounds.IntersectRay(
                         EditorCameras.camera.ViewportPointToRay(
                             new Vector3(ScaledMousePos.x, ScaledMousePos.y, 0)
                         )))
                 {
-                    return rend.transform.gameObject;
+                    potentialObj.Add(sceneObj);
                 }
             }
 
-            return null;
+            potentialObj.Sort((a, b) =>
+                {
+                    double d = Distance.DistanceBetween(
+                        a.Value.Renderer.bounds.center, Camera.current.transform.position
+                    );
+                    double e = Distance.DistanceBetween(
+                        b.Value.Renderer.bounds.center, Camera.current.transform.position
+                    );
+                    return d.CompareTo(e);
+                }
+            );
+            return potentialObj[0].Value.GameObject;
         }
     }
 }
