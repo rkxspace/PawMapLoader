@@ -14,7 +14,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.Components
         {
             Text.textMesh.text = $"MOUSE POS: {(MouseTools.HoveredViewPort ? "VPHOV" : "NHOV")} // " +
                                  $"{MouseTools.NrmlMousePos.x}|{MouseTools.NrmlMousePos.y}" +
-                                 $"\nHOVEROBJ: {MouseTools.GetHoveredGameObject().name}";
+                                 $"\nHOVEROBJ: {MouseTools.GetHoveredGameObject()?.name}";
         }
     }
 }
