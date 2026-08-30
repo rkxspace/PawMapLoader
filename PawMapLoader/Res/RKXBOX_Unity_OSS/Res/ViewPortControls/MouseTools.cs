@@ -43,7 +43,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
                     return d.CompareTo(e);
                 }
             );
-            return potentialObj[0].Value.GameObject;
+            return potentialObj.Count > 0 ? potentialObj[0].Value.GameObject : null;
         }
     }
 }
