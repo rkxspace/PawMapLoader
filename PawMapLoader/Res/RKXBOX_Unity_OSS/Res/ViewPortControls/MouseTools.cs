@@ -17,10 +17,15 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
         public static GameObject GetHoveredGameObject()
         {
             if (!HoveredViewPort) return null;
-            if (Physics.Raycast(
-                    EditorCameras.camera.ViewportPointToRay(new Vector3(ScaledMousePos.x, ScaledMousePos.y, 0)),
-                    out RaycastHit hit))
-                return hit.transform.gameObject;
+            foreach (Renderer rend in Object.FindObjectsOfType<Renderer>())
+            {
+                if (rend.bounds.IntersectRay(
+                        EditorCameras.camera.ViewportPointToRay(
+                            new Vector3(ScaledMousePos.x, ScaledMousePos.y, 0)
+                            ))) {
+                    return rend.transform.gameObject;
+                }
+            }
             return null;
         }
     }

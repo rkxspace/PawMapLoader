@@ -17,6 +17,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
                 _colourMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.One);
                 _colourMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
                 _colourMaterial.SetInt("_ZWrite", 0);
+                _colourMaterial.SetPass(0);
             }
         }
 
