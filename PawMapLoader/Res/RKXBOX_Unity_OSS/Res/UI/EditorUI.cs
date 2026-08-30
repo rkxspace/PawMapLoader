@@ -1,5 +1,6 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
 {
+    using System;
     using Il2CppTMPro;
     using uGUI;
     using UnityEngine;
@@ -25,7 +26,12 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
                 "RightPanel",
                 new Rect(0.75f, 0.03f, 1f, 1f),
                 new Color(0.08f, 0.08f, 0.08f));
-            
+            BoxPanel DebugPanel = new BoxPanel(
+                edtCanvas,
+                "DebugPanel",
+                new Rect(0.0f, 0.5f, 0.4f, 1f),
+                new Color(0.08f, 0.08f, 0.08f));
+
             /*** INNER PANEL ***/
 
             BoxPanel InnerBoxBottomAlignedBox = new BoxPanel(
@@ -41,7 +47,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
                 new Rect(0.0f, 0.00f, 1f, 0.967f),
                 new Color(0.12f, 0.12f, 0.12f)
             );
-            
+
             /*** BOTTOM BAR TEXT ***/
 
             TextMesh BottomBarVersionText = new TextMesh(
@@ -52,6 +58,16 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
                 TextAlignmentOptions.Left,
                 new Rect(0f, 0f, 0.5f, 1f),
                 new Color(0.6f, 0.6f, 0.6f)
+            );
+
+            TextMesh DebugText = new TextMesh(
+                DebugPanel,
+                "DebugText",
+                string.Empty,
+                12,
+                TextAlignmentOptions.Left,
+                new Rect(0f, 0f, 1f, 1f),
+                new Color(1f, 1f, 1f)
             );
         }
     }
