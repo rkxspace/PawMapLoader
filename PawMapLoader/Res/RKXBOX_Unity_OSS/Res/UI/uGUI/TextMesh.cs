@@ -13,7 +13,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI.uGUI
             Rect localSpace, Color textColor)
         {
             GameObject textObj = new GameObject($"TMP_{name}");
-            textObj.transform.SetParent(textObj.transform);
+            textObj.transform.SetParent(bxpnl.rectTransform);
             TextMeshProUGUI tmp = textObj.AddComponent<TextMeshProUGUI>();
             tmp.text = text;
             tmp.fontSize = fontSize;
