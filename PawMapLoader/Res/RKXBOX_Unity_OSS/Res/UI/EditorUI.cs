@@ -69,6 +69,8 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
                 new Rect(0f, 0f, 1f, 1f),
                 new Color(1f, 1f, 1f)
             );
+
+            DebugPanel.rectTransform.gameObject.AddComponent<Components.Debugger>();
         }
     }
 }
