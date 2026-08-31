@@ -12,6 +12,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
     public class main
     {
         private static Store.Update BindingEv = () => Bindings.MouseSelect();
+
         public static void Entry()
         {
             Action<int, string> t_ev = null;
@@ -19,21 +20,21 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
             {
                 if (s != "BlankScene") return;
                 new PML_Scene();
+                EditorStates.StateSetup();
                 BasePlane.CreatePlane();
                 EditorCameras.CreateEditorCamera();
                 EditorUI.Setup();
-                EditorStates.StateSetup();
                 Store.Udevnt += BindingEv;
                 FullScreenManager.EnterWindowedEditorMode();
                 rm();
             };
-            
+
             void rm()
             {
-                Store.InitScnevnt -= t_ev.Invoke; 
+                Store.InitScnevnt -= t_ev.Invoke;
             }
-            
-            Store.InitScnevnt += t_ev.Invoke; 
+
+            Store.InitScnevnt += t_ev.Invoke;
             SceneManagement.EnterBootScene();
         }
 
