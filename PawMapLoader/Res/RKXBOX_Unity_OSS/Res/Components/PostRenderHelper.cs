@@ -4,26 +4,27 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.Components
     using MelonLoader;
     using UI;
     using UnityEngine;
+    using UnityEngine.Rendering;
 
     [RegisterTypeInIl2Cpp]
     public class PostRenderHelper : MonoBehaviour
     {
-        public PostRenderHelper(IntPtr ptr) : base(ptr) { }
-        
-        private Action<Camera> Callback = (Action<Camera>)(s =>
+        private Action<ScriptableRenderContext, Camera> Callback = (s, d) =>
         {
             if (EditorStates.instance.selectedGameObject == null) return;
             GLHelper.Render(EditorStates.instance.selectedGameObject.transform);
-        });
+        };
+
+        public PostRenderHelper(IntPtr ptr) : base(ptr) { }
 
         void OnEnable()
         {
-            Camera.onPostRender += Callback;
+            RenderPipelineManager.endCameraRendering += Callback;
         }
 
         void OnDisable()
         {
-            Camera.onPostRender -= Callback;
+            RenderPipelineManager.endCameraRendering -= Callback;
         }
     }
 }
