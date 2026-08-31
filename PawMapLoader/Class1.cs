@@ -1,8 +1,11 @@
+using System.Runtime.CompilerServices;
 using MelonLoader;
 using PawMapLoader;
 
 [assembly: MelonInfo(typeof(MalonInit), "PawMapLoader", "0.0.3", "Rocky Nexit")]
 [assembly: MelonGame("Dare Looks", "Pawperty Damage")]
+[assembly: IgnoresAccessChecksTo("Assembly-CSharp")]
+[assembly: IgnoresAccessChecksTo("UnityEngine.CoreModule")]
 [assembly: MelonPriority(-20)]
 
 namespace PawMapLoader
@@ -12,6 +15,7 @@ namespace PawMapLoader
 
     public class MalonInit : MelonMod
     {
+        public override void OnPreSupportModule() => PreSupport.PSup();
         public override void OnEarlyInitializeMelon() => EarlyInitMelon.EarlyInit();
 
         public override void OnInitializeMelon() => Init.InitMelon();
