@@ -28,5 +28,13 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI.uGUI
             rectTransform = bxpnl.GetComponent<RectTransform>();
             SetUI(bxpnl);
         }
+
+        public void UpdateRect(Rect rect)
+        {
+            rectTransform.anchorMin = new Vector2(rect.x, rect.y);
+            rectTransform.anchorMax = new Vector2(rect.width, rect.height);
+            rectTransform.offsetMin = Vector2.zero;
+            rectTransform.offsetMax = Vector2.zero;
+        }
     }
 }
