@@ -1,6 +1,6 @@
 namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
 {
-    using System;
+    using Components;
     using Il2CppTMPro;
     using uGUI;
     using UnityEngine;
@@ -70,7 +70,9 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
                 new Color(1f, 1f, 1f)
             );
 
-            DebugPanel.rectTransform.gameObject.AddComponent<Components.Debugger>().Text = DebugText;
+            Debugger dbghelper = DebugPanel.rectTransform.gameObject.AddComponent<Debugger>();
+            dbghelper.Text = DebugText;
+            dbghelper.BoxPanel = DebugPanel;
         }
     }
 }
