@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <Import Project="..\packages\Publicise.MSBuild.Task.1.6.0\build\Publicise.MSBuild.Task.props" Condition="Exists('..\packages\Publicise.MSBuild.Task.1.6.0\build\Publicise.MSBuild.Task.props')"/>
+    <Import Project="..\packages\ILRepack.2.0.18\build\ILRepack.props" Condition="Exists('..\packages\ILRepack.2.0.18\build\ILRepack.props')"/>
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -50,7 +51,7 @@
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\net6\AsmResolver.PE.File.dll</HintPath>
         </Reference>
         <Reference Include="Assembly-CSharp">
-          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
+            <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Assembly-CSharp_public.dll</HintPath>
         </Reference>
         <Reference Include="Assembly-CSharp-firstpass">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Assembly-CSharp-firstpass.dll</HintPath>
@@ -429,7 +430,7 @@
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.ContentLoadModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
-          <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule_public.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.CrashReportingModule">
           <HintPath>..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.CrashReportingModule.dll</HintPath>
@@ -622,6 +623,7 @@
         <Compile Include="Class1.cs"/>
         <Compile Include="Init\EarlyInitMelon.cs"/>
         <Compile Include="Init\InitMelon.cs" />
+        <Compile Include="Init\PreSupport.cs"/>
         <Compile Include="Init\UpdateRegisters.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Res\AssetManager.cs" />
@@ -689,8 +691,9 @@
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\FullScreenManager.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\BasePlane.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Data\PML_Scene.cs" />
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Data\SceneObj.cs"/>
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Data\SceneObjHighlight.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Distance.cs"/>
-        <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\SceneObj.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\SceneManagement.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\EditorUI.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\GLHelper.cs" />
@@ -728,6 +731,20 @@
     </Target>
     -->
 
+    <ItemGroup>
+        <PackageReference Include="Publicise.MSBuild.Task" Version="1.6.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <Target Name="Publicise" BeforeTargets="BeforeBuild">
+        <Publicise AssemblyPath="..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll"
+                   OutputPath="..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\"/>
+        <Publicise AssemblyPath="..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll"
+                   OutputPath="..\..\..\steam\steamapps\common\Pawperty Damage\MelonLoader\Il2CppAssemblies\"/>
+    </Target>
+
     <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Debug' ">
         <Exec Command="bash $(ProjectDir)release.sh" />
     </Target>
@@ -739,6 +756,8 @@
             <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
         </PropertyGroup>
         <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.46\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.46\build\ILRepack.Lib.MSBuild.Task.targets'))"/>
+        <Error Condition="!Exists('..\packages\ILRepack.2.0.18\build\ILRepack.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.2.0.18\build\ILRepack.props'))"/>
+        <Error Condition="!Exists('..\packages\Publicise.MSBuild.Task.1.6.0\build\Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Publicise.MSBuild.Task.1.6.0\build\Publicise.MSBuild.Task.props'))"/>
     </Target>
 
 </Project>
