@@ -12,7 +12,7 @@ This mod was created to load custom maps!
 > [!WARNING]
 > This mod is currently in development, and will have bugs. Additionally, many features are incomplete or missing.
 - Stable: https://github.com/rkxspace/PawMapLoader/releases/latest
-- Bleeding Edge: https://github.com/rkxspace/PawMapLoader/releases
+- Bleeding Edge: [On Discord](https://starshot.xilenth.space/redirect?dest=eNrLKCkpKLbS10_JLE7OL0rRS0_XN64oKXYrTfUoLAIAoKEKvA) 
 
 ## TODO
 - [ ] Finish scripting system [Partially done!]
