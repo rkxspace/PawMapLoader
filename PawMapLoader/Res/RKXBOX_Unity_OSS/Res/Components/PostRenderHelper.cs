@@ -5,24 +5,36 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.Components
     using UI;
     using UnityEngine;
     using UnityEngine.Rendering;
+    using ViewPortControls;
 
     [RegisterTypeInIl2Cpp]
     public class PostRenderHelper : MonoBehaviour
     {
         private Action<ScriptableRenderContext, Camera> Callback = (s, d) =>
         {
-            if (EditorStates.instance.selectedGameObject == null) return;
-            GLHelper.Render(EditorStates.instance.selectedGameObject.transform);
+            try
+            {
+                if (EditorStates.instance.selectedGameObject != null)
+                    GLHelper.Render(EditorStates.instance.selectedGameObject.transform, false);
+                GameObject gohover = MouseTools.HoveredGameObject;
+                if (MouseTools.HoveredViewPort && gohover != null &&
+                    gohover != EditorStates.instance.selectedGameObject)
+                    GLHelper.Render(gohover.transform, true);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         };
 
         public PostRenderHelper(IntPtr ptr) : base(ptr) { }
 
-        void OnEnable()
+        private void Awake()
         {
             RenderPipelineManager.endCameraRendering += Callback;
         }
 
-        void OnDisable()
+        private void OnDestroy()
         {
             RenderPipelineManager.endCameraRendering -= Callback;
         }
