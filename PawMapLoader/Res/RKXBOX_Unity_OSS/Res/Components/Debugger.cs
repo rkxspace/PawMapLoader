@@ -14,6 +14,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.Components
 
         private void Update()
         {
+            if (!enabled || !gameObject.active) return;
             BoxPanel.UpdateRect(new Rect(
                 Mathf.Clamp(MouseTools.NrmlMousePos.x + 0.01f, 0.01f, 0.79f),
                 Mathf.Clamp(MouseTools.NrmlMousePos.y + 0.01f, 0.03f, 0.89f),
@@ -22,7 +23,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.Components
             ));
             Text.textMesh.text = $"MOUSE POS: {(MouseTools.HoveredViewPort ? "VPHOV" : "NHOV")} // " +
                                  $"{MouseTools.NrmlMousePos.x}|{MouseTools.NrmlMousePos.y}" +
-                                 $"\nHOVEROBJ: {MouseTools.GetHoveredGameObject()?.name}";
+                                 $"\nHOVEROBJ: {MouseTools.HoveredGameObject?.name}";
         }
     }
 }
