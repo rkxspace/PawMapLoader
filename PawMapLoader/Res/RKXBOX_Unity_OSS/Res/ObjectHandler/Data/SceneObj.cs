@@ -5,7 +5,6 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ObjectHandler.Data
     public class SceneObj
     {
         public GameObject GameObject;
-        public SceneObjHighlight Highlight;
         public Renderer Renderer;
     }
 }
