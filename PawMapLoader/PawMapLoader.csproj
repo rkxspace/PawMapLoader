@@ -631,6 +631,7 @@
         <Compile Include="Res\Components\PawScriptDamageable.cs" />
         <Compile Include="Res\Components\PawScriptHitBoxTrigger.cs"/>
         <Compile Include="Res\Components\SceneRoot.cs" />
+        <Compile Include="Res\Components\TransformCopy.cs"/>
         <Compile Include="Res\Debug\MethodDump.cs" />
         <Compile Include="Res\Enum\AsyncBundleLoader.cs" />
         <Compile Include="Res\Enum\LevelDataProvider.cs" />
@@ -685,19 +686,23 @@
         <Compile Include="Res\PawScript\Validation\TypeValidation.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\main.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\Camera.cs" />
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\Clock.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\Components\Debugger.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\Components\PostRenderHelper.cs" />
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\Components\UITab.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\EditorStates.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\FullScreenManager.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\BasePlane.cs"/>
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\CreateObject.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Data\PML_Scene.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Data\SceneObj.cs"/>
-        <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Data\SceneObjHighlight.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\Distance.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\SceneManagement.cs" />
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\CursorIcon.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\EditorUI.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\GLHelper.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\BoxPanel.cs"/>
+        <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\Button.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\Canvas.cs"/>
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\TextMesh.cs" />
         <Compile Include="Res\RKXBOX_Unity_OSS\Res\UI\uGUI\UIElement.cs" />
@@ -713,11 +718,12 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="Res\PawScript\Claws\TemplateInstruction.txt" />
+        <EmbeddedResource Include="Res\RKXBOX_Unity_OSS\Assets\Cursors\google_icon_videocamera.png"/>
         <EmbeddedResource Include="Res\RKXBOX_Unity_OSS\Assets\blankscene"/>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="API\"/>
-        <Folder Include="Res\RKXBOX_Unity_OSS\Res\ObjectHandler\glTF\"/>
+        <Folder Include="Res\GameCamera\"/>
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config"/>
