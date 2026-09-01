@@ -2,6 +2,7 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
 {
     using Components;
     using Il2CppTMPro;
+    using MelonLoader;
     using uGUI;
     using UnityEngine;
     using TextMesh = uGUI.TextMesh;
@@ -73,6 +74,19 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.UI
             Debugger dbghelper = DebugPanel.rectTransform.gameObject.AddComponent<Debugger>();
             dbghelper.Text = DebugText;
             dbghelper.BoxPanel = DebugPanel;
+
+            /** TESTING BUTTONS **/
+
+            PanelButton testButton = new PanelButton(
+                InnerBoxRightAlignedBox,
+                "TestButton",
+                "TestButtonText",
+                16, new Color(1, 1, 1),
+                TextAlignmentOptions.Center,
+                new Color(.5f, .5f, .5f),
+                () => { MelonLogger.Msg("This is a testing message."); },
+                new Rect(0f, 0f, .1f, .1f)
+            );
         }
     }
 }
