@@ -24,7 +24,9 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS
                 BasePlane.CreatePlane();
                 EditorCameras.CreateEditorCamera();
                 EditorUI.Setup();
+                CursorIcon.LoadCursors();
                 Store.Udevnt += BindingEv;
+                Clock.TimeBasedEventThirtyTick += MouseTools.UpdateHoveredGameObject;
                 FullScreenManager.EnterWindowedEditorMode();
                 rm();
             };
