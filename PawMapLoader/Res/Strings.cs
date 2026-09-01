@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using MelonLoader;
-
 namespace PawMapLoader.Res
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using MelonLoader;
+
     public class Strings
     {
         public static string Locale = CultureInfo.CurrentCulture.Name;
@@ -17,7 +17,7 @@ namespace PawMapLoader.Res
 
         public static void ValidateLocaleExist()
         {
-            if (!String.IsNullOrEmpty(Locale))
+            if (string.IsNullOrEmpty(Locale))
             {
                 MelonLogger.Warning($"Locale '{Locale}' does not exist!");
                 Locale = "en-US";
