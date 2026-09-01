@@ -11,9 +11,13 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
         public static Vector2 RotationDelta = Vector2.zero;
 
         public static Vector2 StartPos = Vector2.zero;
+
+        private static Vector2 _lastTickPos;
+        public static GameObject HoveredGameObject = null;
         public static Vector2 MousePos => Mouse.current.position.ReadValue();
         public static Vector2 NrmlMousePos => new Vector2(MousePos.x / Screen.width, MousePos.y / Screen.height);
         public static bool HoveredViewPort => EditorCameras.camera.rect.Contains(NrmlMousePos);
+
         public static double dragDistance => Distance.DistanceBetween(StartPos, NrmlMousePos);
 
         public static Vector2 ScaledMousePos => new Vector2(
@@ -21,9 +25,16 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
             (NrmlMousePos.y - EditorCameras.camera.rect.y) / EditorCameras.camera.rect.height
         );
 
+        public static void UpdateHoveredGameObject()
+        {
+            if (Distance.DistanceBetween(_lastTickPos, NrmlMousePos) < 0.03) return;
+            _lastTickPos = NrmlMousePos;
+            HoveredGameObject = GetHoveredGameObject();
+        }
+
         public static Vector2 NrmlMousePosToAbsolute(Vector2 nrmlMousePos) =>
             new Vector2(
-                NrmlMousePos.x * Screen.width, NrmlMousePos.y * Screen.height
+                nrmlMousePos.x * Screen.width, nrmlMousePos.y * Screen.height
             );
 
         public static Vector2 FullScreenToScaledPos(Vector2 fullScreenPos) =>
@@ -56,10 +67,10 @@ namespace PawMapLoader.Res.RKXBOX_Unity_OSS.Res.ViewPortControls
             potentialObj.Sort((a, b) =>
                 {
                     double d = Distance.DistanceBetween(
-                        a.Value.Renderer.bounds.center, Camera.current.transform.position
+                        a.Value.Renderer.bounds.center, EditorCameras.camera.transform.position
                     );
                     double e = Distance.DistanceBetween(
-                        b.Value.Renderer.bounds.center, Camera.current.transform.position
+                        b.Value.Renderer.bounds.center, EditorCameras.camera.transform.position
                     );
                     return d.CompareTo(e);
                 }
